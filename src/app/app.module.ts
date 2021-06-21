@@ -13,13 +13,19 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { AsistenciaComponent } from './components/asistencia/asistencia.component';
+import { CuotaComponent } from './components/cuota/cuota.component';
+import { PlanComponent } from './components/plan/plan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    AsistenciaComponent,
+    CuotaComponent,
+    PlanComponent
   ],
   imports: [
     BrowserModule,
