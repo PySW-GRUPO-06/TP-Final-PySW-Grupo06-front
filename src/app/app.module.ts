@@ -16,6 +16,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 import { CuotaComponent } from './components/cuota/cuota.component';
 import { PlanComponent } from './components/plan/plan.component';
+import { PrincipalComponent } from './components/principal/principal.component';
+import { PrincipalEntrenadorComponent } from './components/principal-entrenador/principal-entrenador.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { PlanComponent } from './components/plan/plan.component';
     LoginComponent,
     AsistenciaComponent,
     CuotaComponent,
-    PlanComponent
+    PlanComponent,
+    PrincipalComponent,
+    PrincipalEntrenadorComponent
   ],
   imports: [
     BrowserModule,
