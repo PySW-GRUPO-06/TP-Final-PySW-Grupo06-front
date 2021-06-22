@@ -60,7 +60,16 @@ export class PlanService {
     return this._http.put(this.urlBase+"plan/"+plan._id, body, httpOption);
    }
 
-   deletePlan(id:string){
+   deletePlan(id:string):Observable<any>{
+     const httpOption={
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      }),
+      params: new HttpParams({
+
+      })
+     }
+     return this._http.delete(this.urlBase+"plan/"+id,httpOption)
      
    }
 

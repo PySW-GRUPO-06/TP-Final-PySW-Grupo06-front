@@ -1,5 +1,6 @@
 export class Asistencia {
-    dia: Date=new Date;
+    _id:string="";
+    dia: Date=new Date();
     tipoAsistencia: String="";
  constructor(){}
 }
