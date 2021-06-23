@@ -18,6 +18,15 @@ import { CuotaComponent } from './components/cuota/cuota.component';
 import { PlanComponent } from './components/plan/plan.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 import { PrincipalEntrenadorComponent } from './components/principal-entrenador/principal-entrenador.component';
+import { PrincipalAlumnosComponent } from './components/principal-alumnos/principal-alumnos.component';
+import { InscribirNuevoAlumnoComponent } from './components/inscribir-nuevo-alumno/inscribir-nuevo-alumno.component';
+import { RegistrarCuotasComponent } from './components/registrar-cuotas/registrar-cuotas.component';
+import { AdministrarRutinasComponent } from './components/administrar-rutinas/administrar-rutinas.component';
+import { RegistrarAsistenciaComponent } from './components/registrar-asistencia/registrar-asistencia.component';
+import { RegistrarDieyaIdealesComponent } from './components/registrar-dieya-ideales/registrar-dieya-ideales.component';
+import { AdministrarAlumnosComponent } from './components/administrar-alumnos/administrar-alumnos.component';
+import { AdministrarDatosDeUnAlumnoComponent } from './components/administrar-datos-de-un-alumno/administrar-datos-de-un-alumno.component';
+import { AdministrarEntrenadorComponent } from './components/administrar-entrenador/administrar-entrenador.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +38,16 @@ import { PrincipalEntrenadorComponent } from './components/principal-entrenador/
     CuotaComponent,
     PlanComponent,
     PrincipalComponent,
-    PrincipalEntrenadorComponent
+    PrincipalEntrenadorComponent,
+    PrincipalAlumnosComponent,
+    InscribirNuevoAlumnoComponent,
+    RegistrarCuotasComponent,
+    AdministrarRutinasComponent,
+    RegistrarAsistenciaComponent,
+    RegistrarDieyaIdealesComponent,
+    AdministrarAlumnosComponent,
+    AdministrarDatosDeUnAlumnoComponent,
+    AdministrarEntrenadorComponent
   ],
   imports: [
     BrowserModule,
