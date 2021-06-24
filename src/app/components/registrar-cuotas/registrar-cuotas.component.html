@@ -1,1 +1,84 @@
-<p>registrar-cuotas works!</p>
+
+<div id="cuerpo">
+    <br><br>
+    <div class="row">
+        <div class="col-4">
+<label for="inputMonto" class="form-label" id="textoBuscar">Ingrese dni del Alumno para realizar la busqueda</label>
+</div>
+<div class="col-4">
+        <input type="texto" class="form-control" id="inputMonto" placeholder="37460306">
+    </div>
+    <div class="col-4">
+        <button type="button" class="btn btn-primary">Buscar</button>
+    </div>
+    </div>
+<br><br>
+
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Alumno</h5>
+          <p class="card-text">Nombre: (nombre del alumno)</p>
+          <p class="card-text">Apellido: (apellido del alumno)</p>
+          <p class="card-text"><small class="text-muted">DNI:(dni alumno)</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+
+  <div class="card text-center" id="cuadro">
+    <div class="card-header" id="encabezado">
+      Pago de cuota del alumno
+    </div>
+    <div class="card-body">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="inputState" class="form-label">Modo de pago</label>
+            <select id="inputState" class="form-select">
+              <option selected></option>
+              <option>Tarjeta</option>
+              <option>Efectivo</option>
+              <option>Transferencia</option>
+            </select>
+          </div>
+            <div class="col-md-6">
+                <label for="inputMonto" class="form-label">Monto a pagar</label>
+                <input type="texto" class="form-control" id="inputMonto">
+              </div>
+
+            <div class="col-6">
+                <label for="inputFechaPago" class="form-label">Fecha de Pago</label>
+                <input type="date" class="form-control" id="inputFechaPago">
+              </div>
+              <div class="col-md-6">
+                <label for="inputMesAPagar" class="form-label">Mes a pagar</label>
+                <select id="inputMesAPagar" class="form-select">
+                  <option selected></option>
+                  <option>Enero</option>
+                  <option>Febrero</option>
+                  <option>Marzo</option>
+                  <option>Abril</option>
+                  <option>Mayo</option>
+                  <option>Junio</option>
+                  <option>Julio</option>
+                  <option>Agosto</option>
+                  <option>Septiembre</option>
+                  <option>Octubre</option>
+                  <option>Noviembre</option>
+                  <option>Diciembre</option>
+                </select>
+              </div>
+
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Guardar Cuota</button>
+            </div>
+          </form>
+
+    </div>
+</div>
+<br><br>

@@ -1,1 +1,138 @@
-<p>administrar-rutinas works!</p>
+<div id="cuerpo">
+<div class="row">
+<div class="col-6">
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+              Rutina
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+                <div class="card text-center" id="cuadro">
+                    <div class="card-header" id="encabezado">
+                      Creacion de Rutina
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-3">
+                            <div class="col-md-4">
+                              <label for="inputNombreRutina" class="form-label">Nombre Rutina</label>
+                              <input type="texto" class="form-control" id="inputNombreRutina">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputExigencia" class="form-label">Exigencia</label>
+                                <input type="texto" class="form-control" id="inputExigencia">
+                              </div>
+                              <div class="col-md-4">
+                                <label for="inputSemanas" class="form-label">Cantidad de Semanas</label>
+                                <input type="texto" class="form-control" id="inputSemanas">
+                              </div>
+                
+                      <div class="col-4"></div>
+                      <div class="col-4"><button type="button" class="btn btn-primary">Crear Rutina</button></div>
+                            <div class="col-4"></div>
+                          </form>
+                    </div>
+                    <div class="card-footer text-muted" id="encabezado">
+                      Gym
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+              Dia
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+                <div class="card text-center" id="cuadro">
+                    <div class="card-header" id="encabezado">
+                      Dia de Rutina
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                              <label for="inputDia" class="form-label">Dia de Rutina</label>
+                              <input type="texto" class="form-control" id="inputDia">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputTipoTrabajo" class="form-label">Tipo de Trabajo</label>
+                                <input type="texto" class="form-control" id="inputTipoTrabajo">
+                              </div>
+                
+                      <div class="col-4"></div>
+                      <div class="col-4">  <button type="button" class="btn btn-primary">Agregar dia</button></div>
+                            <div class="col-4"></div>
+                          </form>
+                    </div>
+                    <div class="card-footer text-muted" id="encabezado">
+                      Gym
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+              Ejercicios
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+                <div class="card text-center" id="cuadro">
+                    <div class="card-header" id="encabezado">
+                      Ejercicios a realizar
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                              <label for="inputNombreEjercicio" class="form-label">Nombre de ejercicio</label>
+                              <input type="texto" class="form-control" id="inputNombreEjercicio">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputSeries" class="form-label">Cantidad de Series</label>
+                                <input type="texto" class="form-control" id="inputSeries">
+                              </div>
+                              <div class="col-md-4">
+                                <label for="inputRepeticiones" class="form-label">Repeticiones</label>
+                                <input type="texto" class="form-control" id="inputRepeticiones">
+                              </div>
+                              <div class="col-md-4">
+                                <label for="inputDescanso" class="form-label">Tiempos de descanso</label>
+                                <input type="texto" class="form-control" id="inputDescanso">
+                              </div>
+                              <div class="col-md-4">
+                                <label for="inputPeso" class="form-label">Peso</label>
+                                <input type="texto" class="form-control" id="inputPeso">
+                              </div>
+                            <div class="col-md-12">
+                                <button type="button" class="btn btn-primary">insertar Imagen</button>
+                                <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
+                            </div>
+
+                      <div class="col-4"><button type="button" class="btn btn-primary">Agregar Dia</button></div>
+                             <div class="col-4"><button type="button" class="btn btn-primary">Agregar ejercicio</button></div> 
+                            <div class="col-4"></div>
+                          </form>
+                    </div>
+                    <div class="card-footer text-muted" id="encabezado">
+                      Gym
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+     <button type="button" class="btn btn-primary">GUARDAR RUTINA</button>
+     <br><br><br><br><br><br><br><br><br><br>
+</div>
+<div id="tituloTabla" class="col-6">Listado de Todos los datos de la rutina generada</div>
+
+</div>
+</div>

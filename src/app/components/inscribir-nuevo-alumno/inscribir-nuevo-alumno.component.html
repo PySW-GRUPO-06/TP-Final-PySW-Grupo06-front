@@ -1,1 +1,372 @@
-<p>inscribir-nuevo-alumno works!</p>
+
+<div id="cuerpo">
+
+  <br>
+  <br>
+<div class="card text-center" id="cuadro">
+    <div class="card-header" id="encabezado">
+      Datos personales del Alumno
+    </div>
+    <div class="card-body">
+        <form class="row g-3">
+            <div class="col-md-6">
+              <label for="inputNombre" class="form-label">Nombre</label>
+              <input type="texto" class="form-control" id="inputNombre">
+            </div>
+            <div class="col-md-6">
+                <label for="inputApellido" class="form-label">Apellido</label>
+                <input type="texto" class="form-control" id="inputApellido">
+              </div>
+            <div class="col-4">
+              <label for="inputDni" class="form-label">DNI</label>
+              <input type="texto" class="form-control" id="inputDni">
+            </div>
+            <div class="col-4">
+                <label for="inputFechaNac" class="form-label">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="inputFechaNac">
+              </div>
+              <div class="col-4">
+                <label for="inputCelular" class="form-label">Celular</label>
+                <input type="texto" class="form-control" id="inputCelular">
+              </div>
+            <div class="col-4">
+              <label for="inputEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="inputEmail" placeholder="jtolababsd@gmail.com">
+            </div>
+            <div class="col-4">
+              <label for="inputDomicilio" class="form-label">Domicilio</label>
+              <input type="texto" class="form-control" id="inputDomicilio">
+            </div>
+            <div class="col-4">
+                <label for="inputFechaInicio" class="form-label">Fecha de inicio</label>
+                <input type="date" class="form-control" id="inputFechaInicio">
+              </div>
+              <div class="col-12">
+               <button type="button" class="btn btn-primary">Subir foto</button>
+               <br><br>
+               <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
+              </div>
+      <div class="col-4"></div>
+            <div class="col-2">
+              <button type="submit" class="btn btn-primary">Guardar Datos</button>
+            </div>
+            <div class="col-2">
+              <button type="submit" class="btn btn-primary">Generar usuario</button>
+            </div>
+            <div class="col-4"></div>
+          
+          </form>
+    </div>
+    <div class="card-footer text-muted" id="encabezado">
+      Gym
+    </div>
+  </div>
+  <br>
+  <div class="card text-center" id="cuadro">
+    <div class="card-header" id="encabezado">
+      Plan del Alumno
+    </div>
+    <div class="card-body">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="inputState" class="form-label">Elija un plan</label>
+            <select id="inputState" class="form-select">
+              <option selected></option>
+              <option>Pase Libre (todos los dias)</option>
+              <option>Full (5 dias)</option>
+              <option>Basico (3 dias)</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <label for="inputFechaInicioPlan" class="form-label">Fecha de inicio Plan</label>
+            <input type="date" class="form-control" id="inputFechaInicioPlan">
+          </div>
+          <div class="col-6">
+            <label for="inputFechaFinPlan" class="form-label">Fecha de Fin Plan</label>
+            <input type="date" class="form-control" id="inputFechaFinPlan">
+          </div>
+          <div class="col-md-6">
+            <label for="inputNivel" class="form-label">Nivel</label>
+            <select id="inputNivel" class="form-select">
+              <option selected></option>
+              <option>Principiante</option>
+              <option>Medio</option>
+              <option>Avanzado</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="inputObjetivo" class="form-label">Objetivo</label>
+            <select id="inputObjetivo" class="form-select">
+              <option selected></option>
+              <option>Bajar de peso</option>
+              <option>Tonificacion muscular</option>
+              <option>Ganar masa muscular</option>
+            </select>
+          </div>
+          <div class="col-md-6"></div>
+      
+            <div class="col-12">
+              <button type="button" class="btn btn-primary">Guardar Plan</button>
+            </div>
+          
+          </form>
+    </div>
+    <div class="card-footer text-muted" id="encabezado">
+      Gym
+    </div>
+  </div>
+
+
+<br>
+  <div class="card text-center" id="cuadro">
+    <div class="card-header" id="encabezado">
+      Pago de cuota del alumno
+    </div>
+    <div class="card-body">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="inputState" class="form-label">Modo de pago</label>
+            <select id="inputState" class="form-select">
+              <option selected></option>
+              <option>Tarjeta</option>
+              <option>Efectivo</option>
+              <option>Transferencia</option>
+            </select>
+          </div>
+            <div class="col-md-6">
+                <label for="inputMonto" class="form-label">Monto a pagar</label>
+                <input type="texto" class="form-control" id="inputMonto">
+              </div>
+
+            <div class="col-6">
+                <label for="inputFechaPago" class="form-label">Fecha de Pago</label>
+                <input type="date" class="form-control" id="inputFechaPago">
+              </div>
+              <div class="col-md-6">
+                <label for="inputMesAPagar" class="form-label">Mes a pagar</label>
+                <select id="inputMesAPagar" class="form-select">
+                  <option selected></option>
+                  <option>Enero</option>
+                  <option>Febrero</option>
+                  <option>Marzo</option>
+                  <option>Abril</option>
+                  <option>Mayo</option>
+                  <option>Junio</option>
+                  <option>Julio</option>
+                  <option>Agosto</option>
+                  <option>Septiembre</option>
+                  <option>Octubre</option>
+                  <option>Noviembre</option>
+                  <option>Diciembre</option>
+                </select>
+              </div>
+
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Guardar Cuota</button>
+            </div>
+          </form>
+
+    </div>
+    <div class="card-footer text-muted" id="encabezado">
+      Gym
+    </div>
+  </div>
+<br>
+
+<h5 id="tituloTabla" class="text-center">Rutina asignada</h5>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        Lunes
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nombre Ejercicio</th>
+              <th scope="col">Cant series</th>
+              <th scope="col">Peso</th>
+              <th scope="col">Repeticiones</th>
+              <th scope="col">Tiempo Descansos</th>
+              <th scope="col">imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Mark</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+              <td>Mark</td>
+              <td>Mark</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Mark</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+        Miercoles
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+      <div class="accordion-body">
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nombre Ejercicio</th>
+              <th scope="col">Cant series</th>
+              <th scope="col">Peso</th>
+              <th scope="col">Repeticiones</th>
+              <th scope="col">Tiempo Descansos</th>
+              <th scope="col">imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Mark</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+              <td>Mark</td>
+              <td>Mark</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Mark</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        Viernes
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body">
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nombre Ejercicio</th>
+              <th scope="col">Cant series</th>
+              <th scope="col">Peso</th>
+              <th scope="col">Repeticiones</th>
+              <th scope="col">Tiempo Descansos</th>
+              <th scope="col">imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Mark</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+              <td>Mark</td>
+              <td>Mark</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>Mark</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h5 id="tituloTabla" class="text-center">Dieta asignada</h5>
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br><br>
+
+<!-- <tr *ngFor="let item of mf.data">
+  <td>{{item.titulo}}</td>
+  <td>{{item.noticia}}</td>
+  <td>{{item.img}}</td>
+  <td>{{item.vigente}}</td>
+  <td> -->
+<br><br>
+
+
+
+</div>
+

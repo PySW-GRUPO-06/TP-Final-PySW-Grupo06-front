@@ -41,10 +41,10 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
       
       this.alumnoService.postCrearAlumno(this.alumno).subscribe(
         result=>{
-          if (result.status ==1) {
+/*           if (result.status ==1) {
             alert("la personel alumno se agrego correctamente")
             
-          }
+          } */
           console.log(result)
         }
       )

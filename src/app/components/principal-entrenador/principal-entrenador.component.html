@@ -1,30 +1,22 @@
-<div class="container" id="cuerpo">
+<div id="cuerpo">
 
     <div class="row">
 
         <div class="col-10">
 
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-<!--         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['punto1c']">Noticias (Punto1)</a>
-          </li> -->
-      <a class="nav-link active" aria-current="page"[routerLink]="['principalEntrenador']">Alumnos activos</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Solicitudes pendientes</a>
-    </li>
-  </ul>
+<app-header></app-header>
+<router-outlet></router-outlet>
 </div>
 
 <div class="col-2">
     <div class="btn-group-vertical">
         <button type="button" class="btn btn-primary">Inscribir nuevo alumno</button><br>
         <button type="button" class="btn btn-primary">Registrar Pago de Cuota</button> <br>
-        <button type="button" class="btn btn-primary">Generar un nuevo usuario de Alumno</button><br>
+        <button type="button" class="btn btn-primary">Registrar Asistencia</button><br>
         <button type="button" class="btn btn-primary">Generar/modificar rutina alumnos</button><br>
         <button type="button" class="btn btn-primary">Estadisticas</button><br>
-        <button type="button" class="btn btn-primary">Registro de dietas Alumnos</button><br>
+        <button type="button" class="btn btn-primary">Administrar dietas Alumnos</button><br>
+        <button type="button" class="btn btn-primary">Administrar entrenadores</button><br>
       </div>
 </div>
 
