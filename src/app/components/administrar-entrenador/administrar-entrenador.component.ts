@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EntrenadorService } from 'src/app/service/entrenador.service';
 
 @Component({
   selector: 'app-administrar-entrenador',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministrarEntrenadorComponent implements OnInit {
 
-  constructor() { }
+  listaEntrenadores:Array<any> = []
+
+  constructor(private entrenadorService: EntrenadorService) { }
 
   ngOnInit(): void {
   }
 
+  obtenerEntrenador(){
+    try {
+      this.entrenadorService.obtenerEntrenadores().subscribe(
+        (result) => {
+          /* console.log(result); */
+          const resultado = result
+          this.listaEntrenadores = result
+        });
+    } catch (error) {
+      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+    }
+  }
+  
 }

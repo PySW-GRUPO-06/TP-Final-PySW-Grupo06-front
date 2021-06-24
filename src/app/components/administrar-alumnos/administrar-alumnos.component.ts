@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministrarAlumnosComponent implements OnInit {
 
+  listaAlumnosActivos:Array<any> = []
+  listaAlumnosPendientes:Array<any> = []
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  obtenerAlumnos(){
+
+  }
+  
+  buscarAlumno(){
+
+  }
+
+  nuevoAlumno(){
+
+  }
+  
 }

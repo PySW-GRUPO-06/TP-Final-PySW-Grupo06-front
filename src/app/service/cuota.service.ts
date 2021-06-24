@@ -16,7 +16,7 @@ export class CuotaService {
     this.url = "http://localhost:3000/api/cuota/"
   }
 
-  private obtenerCuota(id: string): Observable<any> {
+  public obtenerCuota(id: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ export class CuotaService {
     return this._http.get(this.url + id, httpOptions);
   }
 
-  private obtenerCuotas(): Observable<any> {
+  public obtenerCuotas(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export class CuotaService {
     return this._http.delete(this.url + cuota._id, httpOptions);
   }
 
-  modificarCuota(cuota: Cuota): Observable<any> {
+  public modificarCuota(cuota: Cuota): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
