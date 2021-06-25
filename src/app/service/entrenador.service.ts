@@ -43,14 +43,14 @@ export class EntrenadorService {
     return this._http.post<Entrenador>(this.url, entrenador, httpOptions);
   }
 
-  public eliminarEntrenador(entrenador: Entrenador): Observable<any> {
+  public eliminarEntrenador(id:string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       })
     };
     this.toarService.success('Entrenador Eliminada correctamente', 'Entrenador')
-    return this._http.delete(this.url + entrenador._id, httpOptions);
+    return this._http.delete(this.url + id, httpOptions);
   }
 
   public modificarEntrenador(entrenador: Entrenador): Observable<any> {
