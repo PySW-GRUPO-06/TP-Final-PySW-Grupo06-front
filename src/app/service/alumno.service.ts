@@ -15,7 +15,7 @@ export class AlumnoService {
   getAllAlumno():Observable<any>{
     let option = {
       headers: new HttpHeaders({
-
+        'Content-Type': 'application/json'
       }),
       params: new HttpParams({
 
@@ -26,7 +26,7 @@ export class AlumnoService {
    getAlumno(id:string):Observable<any>{
     let option = {
       headers: new HttpHeaders({
-
+        'Content-Type': 'application/json'
       }),
       params: new HttpParams({
 
@@ -39,7 +39,7 @@ export class AlumnoService {
    getAlumnoPorPersona(persona:string):Observable<any>{
     let option = {
       headers: new HttpHeaders({
-
+        'Content-Type': 'application/json'
       }),
       params: new HttpParams({
 

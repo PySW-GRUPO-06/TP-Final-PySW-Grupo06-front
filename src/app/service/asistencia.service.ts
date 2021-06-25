@@ -14,7 +14,7 @@ export class AsistenciaService {
   getAllAsistencia():Observable<any>{
     let option = {
       headers: new HttpHeaders({
-
+        'Content-Type': 'application/json'
       }),
       params: new HttpParams({
 
@@ -25,7 +25,7 @@ export class AsistenciaService {
    getAsistencia(id:string):Observable<any>{
     let option = {
       headers: new HttpHeaders({
-
+        'Content-Type': 'application/json'
       }),
       params: new HttpParams({
 

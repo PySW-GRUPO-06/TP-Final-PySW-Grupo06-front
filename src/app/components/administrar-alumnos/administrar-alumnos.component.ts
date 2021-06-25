@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 import { AlumnoService } from 'src/app/service/alumno.service';
+import { LoginService } from 'src/app/service/login.service';
 import { PersonaService } from 'src/app/service/persona.service';
 
 @Component({
@@ -13,7 +15,18 @@ export class AdministrarAlumnosComponent implements OnInit {
   listaAlumnosPendientes:Array<any> = []
   dni:string = ''
 
-  constructor(private alumnoService:AlumnoService,private personaService: PersonaService) { }
+  constructor(private alumnoService:AlumnoService,private personaService: PersonaService,
+              public loginService: LoginService, private router: Router) {
+                
+                if(this.loginService.userLoggedIn()){
+                  //acciones normales de componente
+                  //acciones normales de componente
+                  } else {
+                  alert("Debe validarse e ingresar su usuario y clave");
+                  this.router.navigate(['login']);
+                  }
+
+     }
 
   ngOnInit(): void {
   }
