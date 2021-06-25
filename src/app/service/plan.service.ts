@@ -15,7 +15,7 @@ export class PlanService {
    getAllPlanes():Observable<any>{
     let option = {
       headers: new HttpHeaders({
-
+        'Content-Type': 'application/json'
       }),
       params: new HttpParams({
 
@@ -26,7 +26,7 @@ export class PlanService {
    getPlan(id:string):Observable<any>{
     let option = {
       headers: new HttpHeaders({
-
+        'Content-Type': 'application/json'
       }),
       params: new HttpParams({
 
