@@ -29,4 +29,9 @@ irARegistrarAsistencia():void{
 irAGenerarModifRutinas():void{
   this.route.navigate(['administrarRutinas']);
 }
+
+irAAdministrarEntrenador():void{
+  this.route.navigate(['administrarEntrenador']);
+}
+
 }

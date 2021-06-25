@@ -8,6 +8,7 @@ import { PrincipalEntrenadorComponent } from './components/principal-entrenador/
 import { PrincipalComponent } from './components/principal/principal.component';
 import { RegistrarAsistenciaComponent } from './components/registrar-asistencia/registrar-asistencia.component';
 import { RegistrarCuotasComponent } from './components/registrar-cuotas/registrar-cuotas.component';
+import { AdministrarEntrenadorComponent } from './components/administrar-entrenador/administrar-entrenador.component';
 
 const routes: Routes = [
   { path: 'principal', component: PrincipalComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'registrarAsistencia', component: RegistrarAsistenciaComponent },
   { path: 'header', component: HeaderComponent },
   { path: 'administrarRutinas', component: AdministrarRutinasComponent },
+  { path: 'administrarEntrenador', component: AdministrarEntrenadorComponent },
   { path: '**', pathMatch:'full',redirectTo:'principal' }
   
 ];

@@ -12,7 +12,9 @@ export class AdministrarEntrenadorComponent implements OnInit {
   idEntrenador:string = ''
   numeroEntrenador:number = 0
 
-  constructor(private entrenadorService: EntrenadorService) { }
+  constructor(private entrenadorService: EntrenadorService) { 
+    this.obtenerEntrenador()
+  }
 
   ngOnInit(): void {
   }
@@ -21,7 +23,7 @@ export class AdministrarEntrenadorComponent implements OnInit {
     try {
       this.entrenadorService.obtenerEntrenadores().subscribe(
         (result) => {
-          /* console.log(result); */
+          console.log(result);
           const resultado = result
           this.listaEntrenadores = result
         });
