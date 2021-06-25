@@ -35,6 +35,19 @@ export class AlumnoService {
     return this._http.get(this.urlBase+"alumno/"+id, option);
 
    }
+
+   getAlumnoPorPersona(persona:string):Observable<any>{
+    let option = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams({
+
+      })
+    }
+    return this._http.get(this.urlBase+"alumno/persona/"+persona, option);
+
+   }
    postCrearAlumno(alumno:Alumno){
     const httpOptions= {
       headers: new HttpHeaders({
