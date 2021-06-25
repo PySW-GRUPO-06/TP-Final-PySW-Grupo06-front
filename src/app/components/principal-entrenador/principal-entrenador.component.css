@@ -1,9 +1,13 @@
 #cuerpo{
 
-    background: url(./../../../assets/gym/imagen6.jpg) no-repeat center top;
+    background: url(./../../../assets/gym/imagen11.jpg) no-repeat center top;
     background-size: cover;
     font-family: sans-serif;
     height: 100vh;
     padding-left: 10%;
     padding-right: 10%;
+  }
+
+  #boton{
+    background-color: rgb(31, 31, 31);
   }
