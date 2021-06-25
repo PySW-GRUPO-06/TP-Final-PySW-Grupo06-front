@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/home';
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['principalEntrenador'];
   }
   volver() {
     this.route.navigate(['principal']);
@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    
     this.loginService.login(this.userform.userName, this.userform.password)
       .subscribe(
         (result) => {
@@ -40,6 +41,9 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem("perfil", user.perfil);
             //redirigimos a home o a pagina que llamo
             this.router.navigateByUrl(this.returnUrl);
+            
+            console.log('entroooooooooooooooooooo'+this.userform.userName)
+            this.irAPricipalEntrenador()
           } else {
             //usuario no encontrado muestro mensaje en la vista
             this.msglogin = "Credenciales incorrectas..";
@@ -49,5 +53,6 @@ export class LoginComponent implements OnInit {
           console.log("error en conexion");
           console.log(error);
         });
+
   }
 }
