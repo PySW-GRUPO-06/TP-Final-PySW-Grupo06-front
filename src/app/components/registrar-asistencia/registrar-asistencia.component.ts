@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Alumno } from 'src/app/models/alumno';
 import { Asistencia } from 'src/app/models/asistencia';
+import { AlumnoService } from 'src/app/service/alumno.service';
 import { AsistenciaService } from 'src/app/service/asistencia.service';
 import { PersonaService } from 'src/app/service/persona.service';
 
@@ -14,8 +16,11 @@ export class RegistrarAsistenciaComponent implements OnInit {
   dia!:Date
   tipoDeAsistencia:string=''
   persona:any
+  alumno! : Alumno
+  asistencia!:Asistencia
 
-  constructor(private asistenciaService: AsistenciaService,private personaService: PersonaService) { }
+  constructor(private asistenciaService: AsistenciaService,private personaService: PersonaService,
+    private alumnoService: AlumnoService) { }
 
   ngOnInit(): void {
   }
@@ -34,17 +39,45 @@ export class RegistrarAsistenciaComponent implements OnInit {
   }
 
   guardarAsistencia(){
-    var asistencia:Asistencia
-    asistencia=new Asistencia()
+    
+    this.asistencia=new Asistencia()
 
     try {
-      this.asistenciaService.postCrearAsistencia(asistencia).subscribe(
+      this.asistenciaService.postCrearAsistencia(this.asistencia).subscribe(
         (result) => {
           /* console.log(result); */
           const resultado = result
+
+          this.guardarAsistenciaAlumno()
         });
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
+  }
+
+  private guardarAsistenciaAlumno(){
+    try {
+      this.alumnoService.getAlumnoPorPersona(this.persona._id).subscribe(
+        (result) => {
+          /* console.log(result); */
+          const resultado = result
+          this.alumno = result
+        });
+
+        this.alumno.asistencia.push(this.asistencia._id)
+        try {
+          this.alumnoService.putEditarAlumno(this.alumno).subscribe(
+            (result) => {
+              /* console.log(result); */
+              const resultado = result
+            });
+        } catch (error) {
+          console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+        }
+    } catch (error) {
+      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+    }
+
+    
   }
 }

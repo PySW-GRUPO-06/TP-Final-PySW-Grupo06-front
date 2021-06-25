@@ -8,7 +8,7 @@ export class Alumno {
  fechaInicio: Date=new Date();
  registroPlan: Array<Plan>=new Array<Plan>();
  planActivo: Plan=new Plan();
- asistencia: Array<Asistencia>=new Array<Asistencia>();
+ asistencia: Array<string>=new Array<string>();
 
     constructor(){}
 }
