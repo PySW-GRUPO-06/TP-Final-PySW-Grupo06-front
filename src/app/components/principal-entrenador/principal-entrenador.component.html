@@ -1,118 +1,204 @@
+<!-- <button type="button" id="deslogin" class="btn btn-primary float-right">desloguearse</button> -->
 <div id="cuerpo">
 
-    <div class="row">
+ <br>
 
-        <div class="col-10">
-
-<!-- <app-header></app-header>
+  <div class="row">
+    <div class="col-10">
+      <!-- <app-header></app-header>
 <router-outlet></router-outlet> -->
 
-<p>
-    <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Alumnos activos</a>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Solicitudes pendientes</button>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Contraer Todo</button>
-  </p>
-  <div class="row">
-    <div class="col">
-      <div class="collapse multi-collapse" id="multiCollapseExample1">
-        <div class="card card-body">
-            <h5 id="tituloTabla" class="text-center">Alumnos activos</h5>
-            <table class="table table-dark table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Apellido</th>
-                  <th scope="col">Dni</th>
-                  <th scope="col">Opcion</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Jorge</td>
-                  <td>Tolaba</td>
-                  <td>37.460.306</td>
-                  <td><button type="button" class="btn btn-primary">Ver Alumno</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jorge</td>
-                  <td>Tolaba</td>
-                  <td>37.460.306</td>
-                  <td><button type="button" class="btn btn-primary">Ver Alumno</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jorge</td>
-                    <td>Tolaba</td>
-                    <td>37.460.306</td>
-                    <td><button type="button" class="btn btn-primary">Ver Alumno</button></td>
+      <p>
+        <a
+          class="btn btn-primary"
+          data-bs-toggle="collapse"
+          href="#multiCollapseExample1"
+          role="button"
+          aria-expanded="false"
+          aria-controls="multiCollapseExample1"
+          >Alumnos activos</a
+        >
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#multiCollapseExample2"
+          aria-expanded="false"
+          aria-controls="multiCollapseExample2"
+        >
+          Solicitudes pendientes
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target=".multi-collapse"
+          aria-expanded="false"
+          aria-controls="multiCollapseExample1 multiCollapseExample2"
+        >
+          Contraer Todo
+        </button>
+      </p>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+              <h5 id="tituloTabla" class="text-center">Alumnos activos</h5>
+              <table class="table table-dark table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Dni</th>
+                    <th scope="col">Opcion</th>
                   </tr>
-              </tbody>
-            </table>
-            
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="collapse multi-collapse" id="multiCollapseExample2">
-        <div class="card card-body">
-            <h5 id="tituloTabla" class="text-center">Alumnos NO activos</h5>
-            <table class="table table-dark table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Apellido</th>
-                  <th scope="col">Dni</th>
-                  <th scope="col">Alta</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Jorge</td>
-                  <td>Tolaba</td>
-                  <td>37.460.306</td>
-                  <td><button type="button" class="btn btn-primary">Dar Alta</button></td>
-                </tr>
-                <tr>
+                </thead>
+                <tbody>
+                  <tr>
                     <th scope="row">1</th>
                     <td>Jorge</td>
                     <td>Tolaba</td>
                     <td>37.460.306</td>
-                    <td><button type="button" class="btn btn-primary">Dar Alta</button></td>
+                    <td>
+                      <button type="button" class="btn btn-primary">
+                        Ver Alumno
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jorge</td>
+                    <td>Tolaba</td>
+                    <td>37.460.306</td>
+                    <td>
+                      <button type="button" class="btn btn-primary">
+                        Ver Alumno
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jorge</td>
+                    <td>Tolaba</td>
+                    <td>37.460.306</td>
+                    <td>
+                      <button type="button" class="btn btn-primary">
+                        Ver Alumno
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div class="card card-body">
+              <h5 id="tituloTabla" class="text-center">Alumnos NO activos</h5>
+              <table class="table table-dark table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Dni</th>
+                    <th scope="col">Alta</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Jorge</td>
+                    <td>Tolaba</td>
+                    <td>37.460.306</td>
+                    <td>
+                      <button type="button" class="btn btn-primary">
+                        Dar Alta
+                      </button>
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">1</th>
                     <td>Jorge</td>
                     <td>Tolaba</td>
                     <td>37.460.306</td>
-                    <td><button type="button" class="btn btn-primary">Dar Alta</button></td>
+                    <td>
+                      <button type="button" class="btn btn-primary">
+                        Dar Alta
+                      </button>
+                    </td>
                   </tr>
-              </tbody>
-            </table>
-            
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Jorge</td>
+                    <td>Tolaba</td>
+                    <td>37.460.306</td>
+                    <td>
+                      <button type="button" class="btn btn-primary">
+                        Dar Alta
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-</div>
-
-<div class="col-2">
-    <div class="btn-group-vertical">
-        <button type="button" class="btn btn-primary" id="boton" (click)="irAInscribirNuevoAlumno()">Inscribir nuevo alumno</button><br>
-        <button type="button" class="btn btn-primary" id="boton" (click)="irARegistrarPagoCuota()">Registrar Pago de Cuota</button> <br>
-        <button type="button" class="btn btn-primary" id="boton" (click)="irARegistrarAsistencia()">Registrar Asistencia</button><br>
-        <button type="button" class="btn btn-primary" id="boton" (click)="irAGenerarModifRutinas()">Generar/modificar rutina alumnos</button><br>
-        <button type="button" class="btn btn-primary" id="boton">Estadisticas</button><br>
-        <button type="button" class="btn btn-primary" id="boton">Administrar dietas Alumnos</button><br>
-        <button type="button" class="btn btn-primary" id="boton" (click)="irAAdministrarEntrenador()">Administrar entrenadores</button><br>
+    <div class="col-2">
+      <div class="btn-group-vertical">
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="boton"
+          (click)="irAInscribirNuevoAlumno()"
+        >
+          Inscribir nuevo alumno</button
+        ><br />
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="boton"
+          (click)="irARegistrarPagoCuota()"
+        >
+          Registrar Pago de Cuota
+        </button>
+        <br />
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="boton"
+          (click)="irARegistrarAsistencia()"
+        >
+          Registrar Asistencia</button
+        ><br />
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="boton"
+          (click)="irAGenerarModifRutinas()"
+        >
+          Generar/modificar rutina alumnos</button
+        ><br />
+        <button type="button" class="btn btn-primary" id="boton">
+          Estadisticas</button
+        ><br />
+        <button type="button" class="btn btn-primary" id="boton">
+          Administrar dietas Alumnos</button
+        ><br />
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="boton"
+          (click)="irAAdministrarEntrenador()"
+        >
+          Administrar entrenadores</button
+        ><br />
       </div>
-</div>
-
-</div>
-
+    </div>
+  </div>
 </div>

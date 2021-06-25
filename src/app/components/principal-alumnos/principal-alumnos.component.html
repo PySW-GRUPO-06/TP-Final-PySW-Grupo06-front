@@ -1,14 +1,16 @@
-<div class="card text-center">
+<div id="cuerpo">
+  
+<div *ngIf="tabla1 === true" class="card text-center">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="true" href="login">Active</a>
+          <button type="button" class="nav-link active" (click)="variacionPest1()" >rutinas</button>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <button type="button" class="nav-link" (click)="variacionPest2()">Asistencia</button>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <button type="button" class="nav-link" (click)="variacionPest3()">Cuotas</button>
         </li>
       </ul>
     </div>
@@ -17,4 +19,46 @@
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
-  </div>
+</div>
+<div *ngIf="tabla2 === true" class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <button type="button" class="nav-link" (click)="variacionPest1()" >rutinas</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link active" (click)="variacionPest2()">Asistencia</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" (click)="variacionPest3()">Cuotas</button>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<div *ngIf="tabla3 === true" class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <button type="button" class="nav-link" (click)="variacionPest1()" >rutinas</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link" (click)="variacionPest2()">Asistencia</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link active" (click)="variacionPest3()">Cuotas</button>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+
+</div>

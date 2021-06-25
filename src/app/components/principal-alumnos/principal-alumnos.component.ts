@@ -37,6 +37,11 @@ export class PrincipalAlumnosComponent implements OnInit {
 
   private token : string = ''
 
+  tabla1:boolean=true;
+  tabla2:boolean=false;
+  tabla3:boolean=false;
+  
+
   constructor(private asistenciaAlumnoService: AsistenciaService, private pagosService: CuotaService,
     private rutinaService : RutinaService, private usuarioService: UsuarioService,
     private dietaService: DietaService, private registroDietaService: RegistroDietaService) { 
@@ -176,4 +181,44 @@ export class PrincipalAlumnosComponent implements OnInit {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
   }
+
+/*   variacionPest(){
+
+    if (this.tabla1===true) {
+this.tabla2=false;
+this.tabla3=false;     
+    } else {
+      if (this.tabla2===true) {
+        this.tabla1=false;
+        this.tabla3=false;  
+      } else {
+        if (this.tabla3===true) {
+          this.tabla1=false;
+          this.tabla2=false;  
+        } 
+        
+      }
+      
+    }
+
+  } */
+
+  variacionPest1(){
+this.tabla1=true;
+this.tabla2=false;
+this.tabla3=false;
+
+  }
+  variacionPest2(){
+    this.tabla1=false;
+    this.tabla2=true;
+    this.tabla3=false;
+  }
+  variacionPest3(){
+    this.tabla1=false;
+    this.tabla2=false;
+    this.tabla3=true;
+  }
+
+
 }
