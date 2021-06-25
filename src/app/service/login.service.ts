@@ -52,7 +52,7 @@ export class LoginService {
 
   getToken(): string {
     if (sessionStorage.getItem("token") != null) {
-      return JSON.parse(sessionStorage.getItem("token")|| '{}');;
+      return sessionStorage.getItem("token") || '{}';;
     } else {
       return "";
     }

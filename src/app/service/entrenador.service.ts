@@ -30,6 +30,7 @@ export class EntrenadorService {
         'Content-Type': 'application/json',
       })
     };
+    /* console.log(httpOptions) */
     return this._http.get(this.url, httpOptions);
   }
 
