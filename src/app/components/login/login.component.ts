@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem("user", user.username);
             sessionStorage.setItem("userid", user.userid);
             sessionStorage.setItem("perfil", user.perfil);
+            sessionStorage.setItem("token", user.token);
             //redirigimos a home o a pagina que llamo
             /* this.router.navigateByUrl(this.returnUrl); */
             /* console.log('entroooooooooooooooooooo'+this.userform.userName) */
