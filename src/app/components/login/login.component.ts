@@ -34,20 +34,21 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (result) => {
           var user = result;
+          console.log(user)
           if (user.status == 1) {
             //guardamos el user en cookies en el cliente
             sessionStorage.setItem("user", user.username);
             sessionStorage.setItem("userid", user.userid);
             sessionStorage.setItem("perfil", user.perfil);
             //redirigimos a home o a pagina que llamo
-            this.router.navigateByUrl(this.returnUrl);
-            
-            console.log('entroooooooooooooooooooo'+this.userform.userName)
+            /* this.router.navigateByUrl(this.returnUrl); */
+            /* console.log('entroooooooooooooooooooo'+this.userform.userName) */
             this.irAPricipalEntrenador()
           } else {
             //usuario no encontrado muestro mensaje en la vista
             this.msglogin = "Credenciales incorrectas..";
           }
+          
         }, error => {
           alert("Error de conexion");
           console.log("error en conexion");
