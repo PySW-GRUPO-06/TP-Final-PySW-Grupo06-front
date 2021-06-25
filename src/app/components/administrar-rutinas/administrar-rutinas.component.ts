@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Dia } from 'src/app/models/dia';
 import { Ejercicio } from 'src/app/models/ejercicio';
 import { Rutina } from 'src/app/models/rutina';
 import { DiaEjercicioService } from 'src/app/service/dia-ejercicio.service';
 import { EjercicioService } from 'src/app/service/ejercicio.service';
+import { LoginService } from 'src/app/service/login.service';
 import { RutinaService } from 'src/app/service/rutina.service';
 
 @Component({
@@ -20,7 +22,17 @@ export class AdministrarRutinasComponent implements OnInit {
 
   constructor(private rutinaService:RutinaService,
               private diaService:DiaEjercicioService,
-              private ejercicioService:EjercicioService) { }
+              private ejercicioService:EjercicioService,
+              public loginService: LoginService, private router: Router) {
+                
+                if(this.loginService.userLoggedIn()){
+                  //acciones normales de componente
+                  //acciones normales de componente
+                  } else {
+                  alert("Debe validarse e ingresar su usuario y clave");
+                  this.router.navigate(['login']);
+                  }
+               }
 
   ngOnInit(): void {
   }
