@@ -27,7 +27,7 @@
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <button type="button" class="nav-link active" (click)="variacionPest1()" >rutinas</button>
+          <button type="button" class="nav-link active" (click)="variacionPest1()" >Rutina</button>
         </li>
         <li class="nav-item">
           <button type="button" class="nav-link" (click)="variacionPest2()">Asistencia</button>
@@ -38,16 +38,169 @@
       </ul>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="card text-center">
+        <div class="card-header">
+          Ultima Rutina Asignada
+        </div>
+        <div class="card-body">
+          <form class="row g-3">
+            <div class="col-md-4">
+              Nombre de Rutina <div id="cuadroInfo">Rutina Numero 1</div> 
+            </div>
+            <div class="col-md-4">
+              Exigencia <div id="cuadroInfo">Media</div> 
+            </div>
+            <div class="col-md-4">
+              Cantidad de Semanas <div id="cuadroInfo">3 semanas</div> 
+            </div>
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    Lunes
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                  <div class="accordion-body">
+                    <div class="card text-center">
+                      <div class="card-header">
+                        Ejercicios del dia
+                      </div>
+                      <div class="card-body">
+                        <form class="row g-3">
+                          <div class="col-md-6">
+                            Nombre Ejercicio <div id="cuadroInfo">Pre de Banca</div> 
+                          </div>
+                          <div class="col-md-6">
+                            Cantidad de Series <div id="cuadroInfo">4 series</div> 
+                          </div>
+                          <div class="col-md-4">
+                            Cantidad de Repeticiones <div id="cuadroInfo">12 repeticiones</div> 
+                          </div>
+                          <div class="col-md-4">
+                            Descanso entre Series <div id="cuadroInfo">45 segundos</div> 
+                          </div>
+                          <div class="col-md-4">
+                            Peso <div id="cuadroInfo">35 kg</div> 
+                          </div>
+                          <div class="col-12">
+
+                            <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
+                           </div>      
+                        </form>
+              
+                      </div>
+                      <div class="card-footer text-muted">
+                        Gym Grupo 06
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                    Miercoles
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                  <div class="accordion-body">
+                    <div class="card text-center">
+                      <div class="card-header">
+                        Ejercicios del dia
+                      </div>
+                      <div class="card-body">
+                        <form class="row g-3">
+                          <div class="col-md-6">
+                            Nombre Ejercicio <div id="cuadroInfo">Pre de Banca</div> 
+                          </div>
+                          <div class="col-md-6">
+                            Cantidad de Series <div id="cuadroInfo">4 series</div> 
+                          </div>
+                          <div class="col-md-4">
+                            Cantidad de Repeticiones <div id="cuadroInfo">12 repeticiones</div> 
+                          </div>
+                          <div class="col-md-4">
+                            Descanso entre Series <div id="cuadroInfo">45 segundos</div> 
+                          </div>
+                          <div class="col-md-4">
+                            Peso <div id="cuadroInfo">35 kg</div> 
+                          </div>
+                          <div class="col-12">
+
+                            <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
+                           </div>      
+                        </form>
+              
+                      </div>
+                      <div class="card-footer text-muted">
+                        Gym Grupo 06
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                    Viernes
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                  <div class="accordion-body">
+                    <div class="card text-center">
+                      <div class="card-header">
+                        Ejercicios del dia
+                      </div>
+                      <div class="card-body">
+                        <form class="row g-3">
+                          <div class="col-md-6">
+                            Nombre Ejercicio <div id="cuadroInfo">Pre de Banca</div> 
+                          </div>
+                          <div class="col-md-6">
+                            Cantidad de Series <div id="cuadroInfo">4 series</div> 
+                          </div>
+                          <div class="col-md-4">
+                            Cantidad de Repeticiones <div id="cuadroInfo">12 repeticiones</div> 
+                          </div>
+                          <div class="col-md-4">
+                            Descanso entre Series <div id="cuadroInfo">45 segundos</div> 
+                          </div>
+                          <div class="col-md-4">
+                            Peso <div id="cuadroInfo">35 kg</div> 
+                          </div>
+                          <div class="col-12">
+
+                            <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
+                           </div>      
+                        </form>
+              
+                      </div>
+                      <div class="card-footer text-muted">
+                        Gym Grupo 06
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </form>
+
+        </div>
+        <div class="card-footer text-muted">
+          Gym Grupo 06
+        </div>
+      </div>
     </div>
 </div>
 <div *ngIf="tabla2 === true" class="card text-center">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <button type="button" class="nav-link" (click)="variacionPest1()" >rutinas</button>
+          <button type="button" class="nav-link" (click)="variacionPest1()" >Rutina</button>
         </li>
         <li class="nav-item">
           <button type="button" class="nav-link active" (click)="variacionPest2()">Asistencia</button>
@@ -95,7 +248,7 @@
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <button type="button" class="nav-link" (click)="variacionPest1()" >rutinas</button>
+          <button type="button" class="nav-link" (click)="variacionPest1()" >Rutina</button>
         </li>
         <li class="nav-item">
           <button type="button" class="nav-link" (click)="variacionPest2()">Asistencia</button>
