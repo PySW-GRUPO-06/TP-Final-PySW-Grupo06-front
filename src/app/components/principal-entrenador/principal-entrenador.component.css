@@ -1,9 +1,9 @@
 #cuerpo{
 
-    background: url(./../../../assets/gym/imagen11.jpg) no-repeat center top;
+    background: url(./../../../assets/gym/imagen11.jpg);
     background-size: cover;
     font-family: sans-serif;
-    height: 100vh;
+    
     padding-left: 10%;
     padding-right: 10%;
   }
@@ -24,4 +24,17 @@
 
   #letraMenu{
     color: white;
+  }
+
+  #estadisticas{
+    color: white;
+    font-size: 20px;
+    
+  }
+
+  #pesita{
+    font-size: 25px;
+    background-color: rgb(6, 5, 56);
+    padding: 7px;
+    border-radius: 20px;
   }
