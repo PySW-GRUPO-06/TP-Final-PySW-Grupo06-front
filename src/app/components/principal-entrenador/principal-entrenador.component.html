@@ -1,16 +1,37 @@
 <!-- <button type="button" id="deslogin" class="btn btn-primary float-right">desloguearse</button> -->
 <div id="cuerpo">
 
- <br>
+  <nav class="navbar navbar-expand-lg navbar-light" id="barraMenu">
+    <div class="container-fluid">
+      <a id="letraMenu" class="navbar-brand" href="#">Menu Entrenador</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<!--           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
 
+        </ul>
+        <form class="d-flex">
+          <button class="btn btn-outline-danger" type="button">Cerrar Sesion <i class="fas fa-sign-out-alt"></i></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+<br>
   <div class="row">
     <div class="col-10">
       <!-- <app-header></app-header>
 <router-outlet></router-outlet> -->
 
       <p>
-        <a
-          class="btn btn-primary"
+        <a id="boton"
+          class="btn btn-secondary"
           data-bs-toggle="collapse"
           href="#multiCollapseExample1"
           role="button"
@@ -18,8 +39,8 @@
           aria-controls="multiCollapseExample1"
           >Alumnos activos</a
         >
-        <button
-          class="btn btn-primary"
+        <button id="boton"
+          class="btn btn-secondary"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#multiCollapseExample2"
@@ -28,8 +49,8 @@
         >
           Solicitudes pendientes
         </button>
-        <button
-          class="btn btn-primary"
+        <button id="boton"
+          class="btn btn-secondary"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target=".multi-collapse"
@@ -153,7 +174,7 @@
       <div class="btn-group-vertical">
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-secondary"
           id="boton"
           (click)="irAInscribirNuevoAlumno()"
         >
@@ -161,7 +182,7 @@
         ><br />
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-secondary"
           id="boton"
           (click)="irARegistrarPagoCuota()"
         >
@@ -170,7 +191,7 @@
         <br />
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-secondary"
           id="boton"
           (click)="irARegistrarAsistencia()"
         >
@@ -178,21 +199,21 @@
         ><br />
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-secondary"
           id="boton"
           (click)="irAGenerarModifRutinas()"
         >
           Generar/modificar rutina alumnos</button
         ><br />
-        <button type="button" class="btn btn-primary" id="boton">
+        <button type="button" class="btn btn-secondary" id="boton">
           Estadisticas</button
         ><br />
-        <button type="button" class="btn btn-primary" id="boton">
+        <button type="button" class="btn btn-secondary" id="boton">
           Administrar dietas Alumnos</button
         ><br />
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-secondary"
           id="boton"
           (click)="irAAdministrarEntrenador()"
         >

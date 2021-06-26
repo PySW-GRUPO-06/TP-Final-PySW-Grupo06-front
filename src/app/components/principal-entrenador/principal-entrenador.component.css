@@ -16,3 +16,12 @@
     float:left;
     background-color: aqua;
   } */
+
+  #barraMenu{
+    background-color: rgb(36, 36, 36);
+    
+  }
+
+  #letraMenu{
+    color: white;
+  }

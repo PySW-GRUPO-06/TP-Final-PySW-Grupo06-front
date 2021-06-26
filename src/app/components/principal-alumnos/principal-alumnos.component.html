@@ -1,4 +1,27 @@
 <div id="cuerpo">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Menu Alumno</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<!--           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+
+        </ul>
+        <form class="d-flex">
+          <button class="btn btn-outline-danger" type="button">Cerrar Sesion <i class="fas fa-sign-out-alt"></i></button>
+        </form>
+      </div>
+    </div>
+  </nav>
   
 <div *ngIf="tabla1 === true" class="card text-center">
     <div class="card-header">
@@ -35,9 +58,37 @@
       </ul>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">Tabla de asistencias</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Nombre y Apellido</th>
+            <th scope="col">Dni</th>
+            <th scope="col">Presentismo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">17/06/1993</th>
+            <td>Jorge Tolaba</td>
+            <td>37.460.306</td>
+            <td><i class="fas fa-user-check"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">17/06/1993</th>
+            <td>Jorge Tolaba</td>
+            <td>37.460.306</td>
+            <td><i id="iconoAsistencia" class="fas fa-user-check"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">17/06/1993</th>
+            <td>Jorge Tolaba</td>
+            <td>37.460.306</td>
+            <td><i id="iconoAsistencia" class="fas fa-user-check"></i></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 </div>
 <div *ngIf="tabla3 === true" class="card text-center">
@@ -55,9 +106,36 @@
       </ul>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">Tabla de Cuotas</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 </div>
 
