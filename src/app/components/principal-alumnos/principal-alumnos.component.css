@@ -23,3 +23,17 @@
   -webkit-border-radius: 35px 0px 35px 0px; 
   border: 2px solid #5878ca
 }
+
+#iconoPagado{
+  font-size: 25px;
+  background-color: rgb(252, 227, 0);
+  padding: 7px;
+  border-radius: 20px;
+}
+
+#iconoPresente{
+  font-size: 20px;
+  background-color: rgb(14, 187, 8);
+  padding: 7px;
+  border-radius: 20px;
+}
