@@ -8,18 +8,18 @@ import { EntrenadorService } from 'src/app/service/entrenador.service';
 })
 export class AdministrarEntrenadorComponent implements OnInit {
 
-  listaEntrenadores:Array<any> = []
-  idEntrenador:string = ''
-  numeroEntrenador:number = 0
+  listaEntrenadores: Array<any> = []
+  idEntrenador: string = ''
+  numeroEntrenador: number = 0
 
-  constructor(private entrenadorService: EntrenadorService) { 
+  constructor(private entrenadorService: EntrenadorService) {
     this.obtenerEntrenador()
   }
 
   ngOnInit(): void {
   }
 
-  obtenerEntrenador(){
+  obtenerEntrenador() {
     try {
       this.entrenadorService.obtenerEntrenadores().subscribe(
         (result) => {
@@ -32,7 +32,7 @@ export class AdministrarEntrenadorComponent implements OnInit {
     }
   }
 
-  eliminarEntrenador(){
+  eliminarEntrenador() {
     try {
       this.entrenadorService.eliminarEntrenador(this.listaEntrenadores[this.numeroEntrenador]._id).subscribe(
         (result) => {
@@ -44,5 +44,5 @@ export class AdministrarEntrenadorComponent implements OnInit {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
   }
-  
+
 }
