@@ -12,38 +12,45 @@ import { PlanService } from 'src/app/service/plan.service';
 })
 export class RegistrarCuotasComponent implements OnInit {
 
-  persona:any
+  persona: any
 
-  dni:string=''
-  modoPago:string=''
-  montoAPagar:number=0
-  fechaPago!:Date
-  mesAPagar:string=''
+  dni: number = 41750208
+  modoPago: string = 'tarjeta'
+  montoAPagar: number = 1000
+  /* fechaPago!: Date */
+  mesAPagar: string = 'enero'
 
-  private plan:any
+  private plan: any
   private cuotaGuardar!: Cuota
   private alumno: any
+  private registrar : boolean = false
 
-  constructor(private pagosService: CuotaService,private personaService: PersonaService,
-    private planService: PlanService, private alumnoService: AlumnoService) { }
+  constructor(private pagosService: CuotaService, private personaService: PersonaService,
+    private planService: PlanService, private alumnoService: AlumnoService) {
+    /* this.obtenerDatosPersona() */
+  }
 
   ngOnInit(): void {
   }
 
-  registrarCuota(){
+  realizarPago(){
+    this.registrar=true
+    this.obtenerDatosPersona()
+  }
+
+  private registrarCuota() {
     this.cuotaGuardar = new Cuota()
-    this.cuotaGuardar.modoPago=this.modoPago
-    this.cuotaGuardar.mesAPagar=this.mesAPagar
-    this.cuotaGuardar.montoAPagar=this.montoAPagar
-    this.cuotaGuardar.fechaPago=this.fechaPago
+    this.cuotaGuardar.modoPago = this.modoPago
+    this.cuotaGuardar.mesAPagar = this.mesAPagar
+    this.cuotaGuardar.montoAPagar = this.montoAPagar
+    this.cuotaGuardar.fechaPago = new Date()
 
     try {
       this.pagosService.guardarCuota(this.cuotaGuardar).subscribe(
         (result) => {
-          /* console.log(result); */
+          console.log(result);
           const resultado = result
 
-          this.obtenerPlan()
           this.guardarEnPlan(result.id)
         });
     } catch (error) {
@@ -51,62 +58,72 @@ export class RegistrarCuotasComponent implements OnInit {
     }
   }
 
-  obtenerDatosPersona(){
+  obtenerDatosPersona() {
     try {
-      this.personaService.obtenerPersonaDNI(this.dni).subscribe(
+      this.personaService.obtenerPersonaDNI(String(this.dni)).subscribe(
         (result) => {
           /* console.log(result); */
           const resultado = result
-          this.persona = result
-        });
-    } catch (error) {
-      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
-    }
+          this.persona = result[0]
 
-    try {
-      this.alumnoService.getAlumnoPorPersona(this.persona._id).subscribe(
-        (result) => {
-          /* console.log(result); */
-          const resultado = result
-          this.alumno = result
-        });
-    } catch (error) {
-      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
-    }
-  }
+          try {
+            this.alumnoService.getAlumnoPorPersona(this.persona._id).subscribe(
+              (result) => {
+                /* console.log(result); */
+                const resultado = result
+                this.alumno = result[0]
+                console.log('alumnoooooooooo')
+                console.log(this.alumno)
 
-  obtenerPlan(){
-    try {
-      this.planService.getPlan(this.alumno.planActivo._id).subscribe(
-        (result) => {
-          /* console.log(result); */
-          const resultado = result
-          this.plan = result
+                if (this.registrar){
+                  this.registrarCuota()
+                }
+              });
+          } catch (error) {
+            console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+          }
         });
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
   }
 
-  guardarEnPlan(idCuota:string){
+  private guardarEnPlan(idCuota: string) {
     try {
-      this.plan.pago.push(idCuota)
-      this.planService.putEditarPlan(this.plan).subscribe(
+      console.log('guardar en plan, obtener plan')
+      console.log(this.alumno)
+      this.planService.getPlan(this.alumno.planActivo).subscribe(
         (result) => {
-          /* console.log(result); */
+          console.log('plan')
+          console.log(result);
           const resultado = result
           this.plan = result
+
+          try {
+            this.plan.pago.push(idCuota)
+            this.planService.putEditarPlan(this.plan).subscribe(
+              (result) => {
+                console.log(result);
+                const resultado = result
+                this.plan = result
+
+                this.registrar=false
+              });
+          } catch (error) {
+            console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+          }
         });
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
-  }
-
-  comprobarDebeCuota(){
 
   }
 
-  generarComprobante(){
+  comprobarDebeCuota() {
+
+  }
+
+  generarComprobante() {
 
   }
 }
