@@ -34,4 +34,8 @@ irAAdministrarEntrenador():void{
   this.route.navigate(['administrarEntrenador']);
 }
 
+irADatosDelAlumno():void{
+  this.route.navigate(['administrarDatosDeUnAlumno']);
+}
+
 }
