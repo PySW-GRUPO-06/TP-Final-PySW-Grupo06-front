@@ -52,14 +52,14 @@ export class PersonaService {
     return this._http.post<Persona>(this.url, persona, httpOptions);
   }
 
-  public eliminarPersona(persona: Persona): Observable<any> {
+  public eliminarPersona(id:string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       })
     };
     this.toarService.success('Persona Eliminada correctamente', 'Persona')
-    return this._http.delete(this.url + persona._id, httpOptions);
+    return this._http.delete(this.url + id, httpOptions);
   }
 
   public modificarPersona(persona: Persona): Observable<any> {
