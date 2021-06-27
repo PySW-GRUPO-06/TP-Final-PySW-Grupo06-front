@@ -45,14 +45,14 @@ export class PrincipalAlumnosComponent implements OnInit {
   constructor(private asistenciaAlumnoService: AsistenciaService, private pagosService: CuotaService,
     private rutinaService : RutinaService, private usuarioService: UsuarioService,
     private dietaService: DietaService, private registroDietaService: RegistroDietaService) { 
-      this.obtenerToken()
+      /* this.obtenerToken()
       this.obtenerIDs()
       this.obtenerRutina()
       this.obtenerAsistencia()
       this.obtenerPagos()
       this.obtenerUsuario()
       this.obtenerDietaIdeal()
-      this.obtenerRegistroDieta()
+      this.obtenerRegistroDieta() */
     }
 
   ngOnInit(): void {

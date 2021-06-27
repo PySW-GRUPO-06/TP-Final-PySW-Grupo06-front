@@ -24,8 +24,13 @@ export class LoginComponent implements OnInit {
   volver() {
     this.route.navigate(['principal']);
   }
+  
   irAPricipalEntrenador() {
     this.route.navigate(['principalEntrenador']);
+  }
+
+  irAPrincipalAlumno(){
+    this.route.navigate(['principalAlumnos']);
   }
 
   login() {
@@ -41,10 +46,16 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem("userid", user.userid);
             sessionStorage.setItem("perfil", user.perfil);
             sessionStorage.setItem("token", user.token);
+            sessionStorage.setItem("rol", user.rol)
             //redirigimos a home o a pagina que llamo
             /* this.router.navigateByUrl(this.returnUrl); */
             /* console.log('entroooooooooooooooooooo'+this.userform.userName) */
-            this.irAPricipalEntrenador()
+            if(user.rol == 'entrendor'){
+              this.irAPricipalEntrenador()
+            }else{
+              this.irAPrincipalAlumno()
+            }
+            
           } else {
             //usuario no encontrado muestro mensaje en la vista
             this.msglogin = "Credenciales incorrectas..";
