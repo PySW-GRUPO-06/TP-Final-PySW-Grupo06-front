@@ -121,7 +121,7 @@ plan: Plan = new Plan();
       this.planService.postCrearPlan(this.plan).subscribe(
         
        ( result:any) => {
-         id=result.id
+         this.alumno.planActivo=result.id
          
           console.log( result)
         }
@@ -150,5 +150,8 @@ plan: Plan = new Plan();
     } catch (error) {
       
     }
+  }
+  crearUsuario(){
+    
   }
 }

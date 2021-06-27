@@ -11,35 +11,36 @@
         <form class="row g-3">
             <div class="col-md-6">
               <label for="inputNombre" class="form-label">Nombre</label>
-              <input type="texto" class="form-control" id="inputNombre">
+              <input type="texto" class="form-control" id="inputNombre" [(ngModel)]="persona.nombre">
             </div>
             <div class="col-md-6">
                 <label for="inputApellido" class="form-label">Apellido</label>
-                <input type="texto" class="form-control" id="inputApellido">
+                <input type="texto" class="form-control" id="inputApellido" [(ngModel)]="persona.apellido">
               </div>
             <div class="col-4">
               <label for="inputDni" class="form-label">DNI</label>
-              <input type="texto" class="form-control" id="inputDni">
+              <input type="texto" class="form-control" id="inputDni" [(ngModel)]="persona.dni">
             </div>
             <div class="col-4">
                 <label for="inputFechaNac" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" id="inputFechaNac">
+                <input type="date" class="form-control" id="inputFechaNac" [(ngModel)]="persona.fechaNac">
               </div>
               <div class="col-4">
                 <label for="inputCelular" class="form-label">Celular</label>
-                <input type="texto" class="form-control" id="inputCelular">
+                <input type="texto" class="form-control" id="inputCelular" [(ngModel)]="persona.celular">
               </div>
             <div class="col-4">
               <label for="inputEmail" class="form-label">Email</label>
-              <input type="email" class="form-control" id="inputEmail" placeholder="jtolababsd@gmail.com">
+              <input type="email" class="form-control" id="inputEmail" placeholder="jtolababsd@gmail.com"
+              [(ngModel)]="persona.correo">
             </div>
             <div class="col-4">
               <label for="inputDomicilio" class="form-label">Domicilio</label>
-              <input type="texto" class="form-control" id="inputDomicilio">
+              <input type="texto" class="form-control" id="inputDomicilio" [(ngModel)]="persona.domicilio">
             </div>
             <div class="col-4">
                 <label for="inputFechaInicio" class="form-label">Fecha de inicio</label>
-                <input type="date" class="form-control" id="inputFechaInicio">
+                <input type="date" class="form-control" id="inputFechaInicio" [(ngModel)]="alumno.fechaInicio">
               </div>
               <div class="col-12">
                <button type="button" class="btn btn-primary">Subir foto</button>
