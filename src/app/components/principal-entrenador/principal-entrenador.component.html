@@ -76,11 +76,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let item of pActivas">
                     <th scope="row">1</th>
-                    <td>Jorge</td>
-                    <td>Tolaba</td>
-                    <td>37.460.306</td>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.apellido}}</td>
+                    <td>{{item.dni}}</td>
                     <td>
                       <button (click)="irADatosDelAlumno()" type="button" class="btn btn-primary">
                         Ver Alumno
@@ -129,11 +129,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let item of pNActivas">
                     <th scope="row">1</th>
-                    <td>Jorge</td>
-                    <td>Tolaba</td>
-                    <td>37.460.306</td>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.apellido}}</td>
+                    <td>{{item.dni}}</td>
                     <td>
                       <button type="button" class="btn btn-primary">
                         Dar Alta
