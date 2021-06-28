@@ -13,12 +13,15 @@ import { PlanService } from 'src/app/service/plan.service';
 export class RegistrarCuotasComponent implements OnInit {
 
   persona: any
-
-  dni: number = 41750208
-  modoPago: string = 'tarjeta'
-  montoAPagar: number = 1000
+  
+  dni: number = 0
+  modoPago: string = ' '
+  montoAPagar: number = 0
   /* fechaPago!: Date */
-  mesAPagar: string = 'enero'
+  mesAPagar: string = ' '
+
+  fotoPefil='./../../../assets/gym/fotoPerfil.jpg'
+
 
   private plan: any
   private cuotaGuardar!: Cuota
@@ -65,6 +68,10 @@ export class RegistrarCuotasComponent implements OnInit {
           /* console.log(result); */
           const resultado = result
           this.persona = result[0]
+
+          if(this.persona.fotoPerfil){
+            this.fotoPefil =this.persona.fotoPerfil
+          }
 
           try {
             this.alumnoService.getAlumnoPorPersona(this.persona._id).subscribe(
