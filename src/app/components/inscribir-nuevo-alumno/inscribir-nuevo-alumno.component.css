@@ -17,6 +17,11 @@ height: 100vh; */
     background-color: rgb(46, 46, 48);
     color: white;
 }
+#cuadroUs{
+    background-color: rgb(15, 15, 15);
+    color: white;
+}
+
 
 #encabezado{
     background-color: rgb(0, 0, 0);
