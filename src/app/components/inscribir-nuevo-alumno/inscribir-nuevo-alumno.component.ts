@@ -19,7 +19,8 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class InscribirNuevoAlumnoComponent implements OnInit {
   persona: Persona = new Persona();
-   alumno: Alumno = new Alumno();
+  
+  alumno: Alumno = new Alumno();
   /*fechaInicio: Date=new Date(2002,3,21);
   registroPlan: Array<string>=[]
   planActivo: string="222222";
@@ -27,10 +28,13 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
   usuario: Usuario = new Usuario();
 
   personas: Array<Persona> = new Array<Persona>();
-  
-  cuota: Cuota = new Cuota();
-plan: Plan = new Plan();
 
+  cuota: Cuota = new Cuota();
+  plan: Plan = new Plan();
+  fotoPerfil:string = 'Sin foto aun'
+  private idPlan: string = '0'
+  private idAlumno: string = '0'
+  private idUsuario:string = '0'
 
   constructor(private alumnoService: AlumnoService, private personaService: PersonaService,
     private planService: PlanService, private cuotaService: CuotaService,
@@ -50,10 +54,30 @@ plan: Plan = new Plan();
   ngOnInit(): void {
 
   }
-  iniciar(){
-    this.persona=new Persona()
+  iniciar() {
+    this.persona = new Persona()
   }
-  agregarPersona() {
+
+  agregarPersona(){
+    this.crearUsuario()
+  }
+
+  private crearUsuario() {
+    try {
+      this.usuarioService.guardarUsuario(this.usuario).subscribe(
+        result => {
+          this.idUsuario = result.id
+          console.log("se guardo usuario")
+          console.log(result)
+          this.agregarNuevaPersona()
+        }
+      )
+    } catch (error) {
+      console.log("ERROR al guardar usuario" + error);
+    }
+  }
+
+  agregarNuevaPersona() {
     //
     /* let pers:Persona=new Persona()
     pers.apellido="sss"
@@ -66,24 +90,31 @@ plan: Plan = new Plan();
     pers.nombre="ssss"
     pers.usuario="60c81d54ed8291047c824284"
     console.log(pers) */
+    console.log('persona a agregar:')
+    console.log(this.persona)
+    this.persona.usuario=this.idUsuario
+    this.persona.fotoPerfil=this.fotoPerfil
     try {
       this.personaService.guardarPersona(this.persona).subscribe(
         result => {
           if (result.status == 1) {
             alert("la persona se agrego correctamente")
-            this.alumno.persona=result.id
+            this.alumno.persona = result.id
+            console.log(result)
+            this.agregarAlumno()
           }
-          console.log(result)
         }
       )
     } catch (error) {
       console.log("ERROR " + error + " NO SE PUDO GUARDAR DATOS")
     }
-  //  this.agregarAlumno();
+    //  this.agregarAlumno();
 
   }
-  agregarAlumno() {
-   // this.obtenerPersonaPorDNI()
+  private agregarAlumno() {
+    // this.obtenerPersonaPorDNI()
+    console.log("creando alumno")
+    console.log(this.alumno)
     try {
       this.alumnoService.postCrearAlumno(this.alumno).subscribe(
         result => {
@@ -91,79 +122,84 @@ plan: Plan = new Plan();
                       alert("la personel alumno se agrego correctamente")
                       
                     } */
+          
           console.log(result)
         }
       )
     } catch (error) {
       console.log("ERROR " + error + " NO SE PUDO GUARDAR DATOS")
     }
-
   }
- /*  obtenerPersonaPorDNI() {
+
+  private modificarAlumno() {
     try {
-      this.personaService.obtenerPersonaDNI(String (this.persona.dni)).subscribe(
-        result => {
-          this.alumno.persona = result;
-          console.log(result)
-        }
-      )
+      this.alumnoService.getAlumno(this.idAlumno).subscribe(
+        (result: any) => {
+          console.log(result);
+          const resultado = result
+          result.planActivo = this.idPlan
+          try {
+            this.alumnoService.putEditarAlumno(result).subscribe(
+              (result1) => {
+                console.log(result);
+                const resultado1 = result1
+              });
+          } catch (error) {
+            console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+          }
+        });
     } catch (error) {
-      console.log("ERROR " + error + " NO SE PUDO OBTENER DATOS")
+      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
-  } */
-  guardarPlan(){
-     var id:string="";
-   /* var plan:Plan=new Plan()
-    plan.tipo="sss"
-    plan.fechaInicioPlan="ssss"
-    plan.fechaFinDelPlan="sss"
-    plan.nivel="sss"
-    plan.objetivo="sss"
-    console.log(plan) */
+  }
+
+  /*  obtenerPersonaPorDNI() {
+     try {
+       this.personaService.obtenerPersonaDNI(String (this.persona.dni)).subscribe(
+         result => {
+           this.alumno.persona = result;
+           console.log(result)
+         }
+       )
+     } catch (error) {
+       console.log("ERROR " + error + " NO SE PUDO OBTENER DATOS")
+     }
+   } */
+  guardarPlan() {
+    var id: string = "";
+    /* var plan:Plan=new Plan()
+     plan.tipo="sss"
+     plan.fechaInicioPlan="ssss"
+     plan.fechaFinDelPlan="sss"
+     plan.nivel="sss"
+     plan.objetivo="sss"
+     console.log(plan) */
     try {
       this.planService.postCrearPlan(this.plan).subscribe(
-        
-       ( result:any) => {
-         this.alumno.planActivo=result.id
-         
-          console.log( result)
+
+        (result: any) => {
+          this.alumno.planActivo = result.id
+          this.idPlan = result.id
+          console.log(result)
+          this.modificarAlumno()
         }
-        
+
       )
     } catch (error) {
       console.log("ERROR " + error + " No se pudo guardar PLAN");
 
     }
   }
-  guardarCuota() {
-    try {
-      this.cuotaService.guardarCuota(this.cuota).subscribe(
-        result => {
-          console.log("se guardo cuota" + result)
-        }
-      )
-    } catch (error) {
-      console.log("ERROR al guardar cuota" + error);
 
-    }
-  }
-  obtenerPlanes(){
-    try {
-    
-    } catch (error) {
+  
+
+  /*   obtenerPlanes(){
+      try {
       
+      } catch (error) {
+        
+      }
     }
-  }
-  crearUsuario(){
-    try {
-      this.usuarioService.guardarUsuario(this.usuario).subscribe(
-        result=>{
-          this.persona.usuario=result.id
-          console.log("se guardo usuario"+result)
-        }
-      )
-    } catch (error) {
-      console.log("ERROR al guardar usuario" + error);
-    }
-  }
+     */
+
 }
