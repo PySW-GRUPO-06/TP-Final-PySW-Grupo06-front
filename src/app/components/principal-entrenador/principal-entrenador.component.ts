@@ -41,6 +41,9 @@ cantInscriptos:number=0;
       this.cargarPersonasActivas();
       this.cantInscriptos=this.calcularCantPInscriptas();
       console.log("cantidad de inscriptos"+this.cantInscriptos)
+      this.mostrarAlumnos()
+      this.mostrarPersonas()
+      this.mostrarUsuarios()
 
      }
 
@@ -76,11 +79,8 @@ mostrarPersonas(){
       this.personaService.obtenerPersonas().subscribe(
         result=>{
         
-          result.forEach((element:any) => {
-            let vPersona=new Persona()
-            Object.assign(vPersona,element)
-            this.personas.push(vPersona)
-          });
+          this.personas=result
+          console.log("mostrarPersonas  "+this.personas.length)
         }
       )
     } catch (error) {
@@ -93,30 +93,23 @@ mostrarPersonas(){
     try {
       this.alumnoService.getAllAlumno().subscribe(
       result=>{
-        result.forEach((element:any) => {
-          let vAlumno=new Alumno()
-          Object.assign(vAlumno,element)
-          this.alumnos.push(vAlumno)
-          console.log("se cargo Alumnos al arrrray alumnos")
+        this.alumnos=result
+          console.log("se cargo Alumnos al arrrray alumnos" + this.alumnos.length)
           
         });
-      }
-    )
+      
     } catch (error) {
       console.log("error al cargar alumnos"+error)
     }
     
-    console.log("mostrarAlumnos() ==>"+this.alumnos.length)
+    console.log("mostrarAlumnos() ==>"+ this.alumnos.length)
   }
   mostrarUsuarios(){
     this.usuarioService.obtenerUsuarios().subscribe(
       result=>{
-        result.forEach((element:any) => {
-          let vUsuario=new Usuario()
-          Object.assign(vUsuario,element)
-          this.usuarios.push(vUsuario)
-          
-        });
+        this.usuarios=result
+        console.log("mostrarUS "+this.usuarios )
+
       }
     )
     console.log("cant US"+this.usuarios.length)
@@ -139,11 +132,7 @@ mostrarPersonas(){
     let contador=0
     this.asistenciaService.getAllAsistencia().subscribe(
       result=>{
-        result.forEach((element:any) => {
-          let vAsis=new Asistencia()
-          Object.assign(vAsis,element)
-          this.asistencias.push(vAsis)
-        });
+        this.asistencias=result
       }
     )
     for (let index = 0; index < this.asistencias.length; index++) {
@@ -159,7 +148,7 @@ mostrarPersonas(){
 
   mostrarActivosYnoActivos(){
     this.mostrarAlumnos()
-    console.log("Cant Alumnos==> "+this.alumnos.length)
+    console.log(" mostrar Act y no act Cant Alumnos==> "+this.alumnos.length)
     let encontrado=false
     for (let index = 0; index < this.alumnos.length; index++) {
       let vPersona=new Persona()
@@ -202,7 +191,7 @@ mostrarPersonas(){
   }
 
   cargarPersonasActivas(){
-
+console.log("inicio de Cargar persona activas" + this.activos.length)
     for (let index = 0; index < this.activos.length; index++) {
      this.personaService.obtenerPersona(this.activos[index].persona).subscribe(
        result=>{
@@ -215,6 +204,8 @@ mostrarPersonas(){
   }
 
   cargarPersonasNoActivas(){
+    console.log("inicio de Cargar persona no activas" + this.noActivos.length)
+
     for (let index = 0; index < this.noActivos.length; index++) {
       this.personaService.obtenerPersona(this.noActivos[index].persona).subscribe(
         result=>{
