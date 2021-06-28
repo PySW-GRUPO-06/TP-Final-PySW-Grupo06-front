@@ -1,283 +1,265 @@
 <div id="cuerpo">
-<div class="row">
-<div class="col-6">
-    <div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="row">
+    <div class="col-6">
+      <div class="accordion" id="accordionPanelsStayOpenExample">
         <div *ngIf="cuadro1 === true" class="accordion-item">
           <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+              aria-controls="panelsStayOpen-collapseOne">
               Rutina
             </button>
           </h2>
-          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+            aria-labelledby="panelsStayOpen-headingOne">
             <div class="accordion-body">
-                <div class="card text-center" id="cuadro">
-                    <div class="card-header" id="encabezado">
-                      Creacion de Rutina
+              <div class="card text-center" id="cuadro">
+                <div class="card-header" id="encabezado">
+                  Creacion de Rutina
+                </div>
+                <div class="card-body">
+                  <form class="row g-3">
+                    <div class="col-md-4">
+                      <label for="inputNombreRutina" class="form-label">Nombre Rutina</label>
+                      <input type="texto" class="form-control" id="inputNombreRutina" name="rutina.nombre" [(ngModel)]="rutina.nombre">
                     </div>
-                    <div class="card-body">
-                        <form class="row g-3">
-                            <div class="col-md-4">
-                              <label for="inputNombreRutina" class="form-label">Nombre Rutina</label>
-                              <input type="texto" class="form-control" id="inputNombreRutina">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="inputExigencia" class="form-label">Exigencia</label>
-                                <input type="texto" class="form-control" id="inputExigencia">
-                              </div>
-                              <div class="col-md-4">
-                                <label for="inputSemanas" class="form-label">Cantidad de Semanas</label>
-                                <input type="texto" class="form-control" id="inputSemanas">
-                              </div>
-                
-                      <div class="col-4"></div>
-                      <div class="col-4"><button type="button" class="btn btn-primary" (click)="cambiarValoresIf()">Crear Rutina</button></div>
-                            <div class="col-4"></div>
-                          </form>
+                    <div class="col-md-4">
+                      <label for="inputExigencia" class="form-label">Exigencia</label>
+                      <input type="texto" class="form-control" id="inputExigencia" name="rutina.exigencia" [(ngModel)]="rutina.exigencia">
                     </div>
-                    <div class="card-footer text-muted" id="encabezado">
-                      Gym
+                    <div class="col-md-4">
+                      <label for="inputSemanas" class="form-label">Cantidad de Semanas</label>
+                      <input type="texto" class="form-control" id="inputSemanas" name="rutina.semanas" [(ngModel)]="rutina.semanas">
                     </div>
-                  </div>
+
+                    <div class="col-4"></div>
+                    <div class="col-4"><button type="button" class="btn btn-primary" (click)="cambiarValoresIf()">Crear
+                        Rutina</button></div>
+                    <div class="col-4"></div>
+                  </form>
+                </div>
+                <div class="card-footer text-muted" id="encabezado">
+                  Gym
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div *ngIf="cuadro2 === true" class="accordion-item">
           <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseTwo">
               Dia
             </button>
           </h2>
           <div id="panelsStayOpen-collapseTwo" class="accordion-collapse " aria-labelledby="panelsStayOpen-headingTwo">
             <div class="accordion-body">
-                <div class="card text-center" id="cuadro">
-                    <div class="card-header" id="encabezado">
-                      Dia de Rutina
+              <div class="card text-center" id="cuadro">
+                <div class="card-header" id="encabezado">
+                  Dia de Rutina
+                </div>
+                <div class="card-body">
+                  <form class="row g-3">
+                    <div class="col-md-6">
+                      <label for="inputDia" class="form-label">Dia de Rutina</label>
+                      <input type="texto" class="form-control" id="inputDia" name="dia.dia" [(ngModel)]="dia.dia">
                     </div>
-                    <div class="card-body">
-                        <form class="row g-3">
-                            <div class="col-md-6">
-                              <label for="inputDia" class="form-label">Dia de Rutina</label>
-                              <input type="texto" class="form-control" id="inputDia">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputTipoTrabajo" class="form-label">Tipo de Trabajo</label>
-                                <input type="texto" class="form-control" id="inputTipoTrabajo">
-                              </div>
-                
-                      <div class="col-4"></div>
-                      <div class="col-4">  <button type="button" class="btn btn-primary" (click)="cambiarValoresIf2()">Agregar dia</button></div>
-                            <div class="col-4"></div>
-                          </form>
+                    <div class="col-md-6">
+                      <label for="inputTipoTrabajo" class="form-label">Tipo de Trabajo</label>
+                      <input type="texto" class="form-control" id="inputTipoTrabajo" name="dia.tipoDeTrabajo" [(ngModel)]="dia.tipoDeTrabajo">
                     </div>
-                    <div class="card-footer text-muted" id="encabezado">
-                      Gym
-                    </div>
-                  </div>
+
+                    <div class="col-4"></div>
+                    <div class="col-4"> <button type="button" class="btn btn-primary"
+                        (click)="cambiarValoresIf2()">Agregar dia</button></div>
+                    <div class="col-4"></div>
+                  </form>
+                </div>
+                <div class="card-footer text-muted" id="encabezado">
+                  Gym
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div *ngIf="cuadro3 === true" class="accordion-item">
           <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-            <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            <button class="accordion-button " type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseThree">
               Ejercicios
             </button>
           </h2>
-          <div id="panelsStayOpen-collapseThree" class="accordion-collapse " aria-labelledby="panelsStayOpen-headingThree">
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse "
+            aria-labelledby="panelsStayOpen-headingThree">
             <div class="accordion-body">
-                <div class="card text-center" id="cuadro">
-                    <div class="card-header" id="encabezado">
-                      Ejercicios a realizar
+              <div class="card text-center" id="cuadro">
+                <div class="card-header" id="encabezado">
+                  Ejercicios a realizar
+                </div>
+                <div class="card-body">
+                  <form class="row g-3">
+                    <div class="col-md-6">
+                      <label for="inputNombreEjercicio" class="form-label">Nombre de ejercicio</label>
+                      <input type="texto" class="form-control" id="inputNombreEjercicio" name="ejercicio.nombre" [(ngModel)]="ejercicio.nombre">
                     </div>
-                    <div class="card-body">
-                        <form class="row g-3">
-                            <div class="col-md-6">
-                              <label for="inputNombreEjercicio" class="form-label">Nombre de ejercicio</label>
-                              <input type="texto" class="form-control" id="inputNombreEjercicio">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputSeries" class="form-label">Cantidad de Series</label>
-                                <input type="texto" class="form-control" id="inputSeries">
-                              </div>
-                              <div class="col-md-4">
-                                <label for="inputRepeticiones" class="form-label">Repeticiones</label>
-                                <input type="texto" class="form-control" id="inputRepeticiones">
-                              </div>
-                              <div class="col-md-4">
-                                <label for="inputDescanso" class="form-label">Tiempos de descanso</label>
-                                <input type="texto" class="form-control" id="inputDescanso">
-                              </div>
-                              <div class="col-md-4">
-                                <label for="inputPeso" class="form-label">Peso</label>
-                                <input type="texto" class="form-control" id="inputPeso">
-                              </div>
-                            <div class="col-md-12">
-                                <button type="button" class="btn btn-primary">insertar Imagen</button>
-                                <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
-                            </div>
+                    <div class="col-md-6">
+                      <label for="inputSeries" class="form-label">Cantidad de Series</label>
+                      <input type="texto" class="form-control" id="inputSeries" name="ejercicio.series" [(ngModel)]="ejercicio.series">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="inputRepeticiones" class="form-label">Repeticiones</label>
+                      <input type="texto" class="form-control" id="inputRepeticiones" name="ejercicio.repeticiones" [(ngModel)]="ejercicio.repeticiones">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="inputDescanso" class="form-label">Tiempos de descanso</label>
+                      <input type="texto" class="form-control" id="inputDescanso" name="ejercicio.descansoEntreSeries" [(ngModel)]="ejercicio.descansoEntreSeries">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="inputPeso" class="form-label">Peso</label>
+                      <input type="texto" class="form-control" id="inputPeso" name="ejercicio.peso" [(ngModel)]="ejercicio.peso">
+                    </div>
+                    <div class="col-md-12">
+                      <button type="button" class="btn btn-primary">insertar Imagen</button>
+                      <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
+                    </div>
 
-                      <div class="col-4"><button type="button" class="btn btn-primary" (click)="cambiarValoresIf()">Agregar Dia</button></div>
-                             <div class="col-4"><button type="button" class="btn btn-primary" (click)="cambiarValoresIf2()">Agregar ejercicio</button></div> 
-                            <div class="col-4"></div>
-                          </form>
-                    </div>
-                    <div class="card-footer text-muted" id="encabezado">
-                      Gym
-                    </div>
-                  </div>
+                    <div class="col-4"><button type="button" class="btn btn-primary"
+                        (click)="cambiarValoresIf()">Agregar Dia</button></div>
+                    <div class="col-4"><button type="button" class="btn btn-primary"
+                        (click)="cambiarValoresIf2()">Agregar ejercicio</button></div>
+                    <div class="col-4"></div>
+                  </form>
+                </div>
+                <div class="card-footer text-muted" id="encabezado">
+                  Gym
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <br>
-     <button type="button" class="btn btn-primary" (click)="cambiarValoresIf0()">GUARDAR RUTINA</button>
-     <br><br><br><br><br><br><br><br><br><br>
-</div>
-<div  class="col-6">
-<div *ngIf="cuadro1===true">
-  <h5 id="tituloTabla" class="text-center">Rutinas</h5>
-  <table class="table table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Exigencia</th>
-        <th scope="col">Cantidad de Semanas</th>
-        <th scope="col">Accion</th>
-      </tr>
-    </thead>
-    <tbody> 
-      <tr>
-        <th scope="row">1</th>
-        <td>Rutina1</td>
-        <td>Alta</td>
-        <td>3 semanas</td>
-        <td>
-          <button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
-          <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Rutina1</td>
-        <td>Alta</td>
-        <td>3 semanas</td>
-        <td>
-          <button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
-          <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Rutina1</td>
-        <td>Alta</td>
-        <td>3 semanas</td>
-        <td>
-          <button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
-          <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-  <div *ngIf="cuadro2===true">
-    <h5 id="tituloTabla" class="text-center">Dias guardados</h5>
+      <button type="button" class="btn btn-primary" (click)="cambiarValoresIf0()">GUARDAR RUTINA</button>
+      <br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <div class="col-6">
+      <div *ngIf="cuadro1===true">
+        <h5 id="tituloTabla" class="text-center">Rutinas</h5>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Exigencia</th>
+              <th scope="col">Cantidad de Semanas</th>
+              <th scope="col">Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let lrutinas of listaRutinas">
+              <th scope="row">1</th>
+              <td>{{lrutinas.nombre}}</td>
+              <td>{{lrutinas.exigencia}}</td>
+              <td>{{lrutinas.semanas}}</td>
+              <td>
+                <button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="cuadro2===true">
+        <h5 id="tituloTabla" class="text-center">Dias guardados</h5>
 
-    <table class="table table-dark table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nombre del Dia</th>
-          <th scope="col">Tipo de trabajo</th>
-        </tr>
-      </thead>
-      <tbody> 
-        <tr>
-          <th scope="row">1</th>
-          <td>Lunes</td>
-          <td>Torso</td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Lunes</td>
-          <td>Torso</td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Lunes</td>
-          <td>Torso</td>
-        </tr>
-      </tbody>
-    </table>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre del Dia</th>
+              <th scope="col">Tipo de trabajo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ldias of listaDias">
+              <th scope="row">1</th>
+              <td>{{ldias.dia}}</td>
+              <td>{{ldias.tipoDeTrabajo}}</td>
+            </tr>
+          </tbody>
+        </table>
 
-  </div>
-  <div *ngIf="cuadro3===true">
-    <h5 id="tituloTabla" class="text-center">Ejercicios guardados</h5>
-    <table class="table table-dark table-striped">
-      <thead>
-        <tr>
-          <th scope="col">DIa</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Numero de series</th>
-          <th scope="col">Repeticiones</th>
-          <th scope="col">Descansos</th>
-        </tr>
-      </thead>
-      <tbody> 
-        <tr>
-          <th scope="row">Lunes</th>
-          <td>Banca Inclinada</td>
-          <td>3</td>
-          <td>3 repeticiones</td>
-          <td>30 segundos</td>
-        </tr>
-        <tr>
-          <th scope="row">Lunes</th>
-          <td>Banca Inclinada</td>
-          <td>3</td>
-          <td>3 repeticiones</td>
-          <td>30 segundos</td>
-        </tr>
-        <tr>
-          <th scope="row">Lunes</th>
-          <td>Banca Inclinada</td>
-          <td>3</td>
-          <td>3 repeticiones</td>
-          <td>30 segundos</td>
-        </tr>
-        <tr>
-          <th scope="row">Martes</th>
-          <td>Banca Inclinada</td>
-          <td>3</td>
-          <td>3 repeticiones</td>
-          <td>30 segundos</td>
-        </tr>
-        <tr>
-          <th scope="row">Viernes</th>
-          <td>Banca Inclinada</td>
-          <td>3</td>
-          <td>3 repeticiones</td>
-          <td>30 segundos</td>
-        </tr>
-        <tr>
-          <th scope="row">Sabado</th>
-          <td>Banca Inclinada</td>
-          <td>3</td>
-          <td>3 repeticiones</td>
-          <td>30 segundos</td>
-        </tr>
-        <tr>
-          <th scope="row">Sabado</th>
-          <td>Banca Inclinada</td>
-          <td>3</td>
-          <td>3 repeticiones</td>
-          <td>30 segundos</td>
-        </tr>
-      </tbody>
-    </table>
+      </div>
+      <div *ngIf="cuadro3===true">
+        <h5 id="tituloTabla" class="text-center">Ejercicios guardados</h5>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">DIa</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Numero de series</th>
+              <th scope="col">Repeticiones</th>
+              <th scope="col">Descansos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Lunes</th>
+              <td>Banca Inclinada</td>
+              <td>3</td>
+              <td>3 repeticiones</td>
+              <td>30 segundos</td>
+            </tr>
+            <tr>
+              <th scope="row">Lunes</th>
+              <td>Banca Inclinada</td>
+              <td>3</td>
+              <td>3 repeticiones</td>
+              <td>30 segundos</td>
+            </tr>
+            <tr>
+              <th scope="row">Lunes</th>
+              <td>Banca Inclinada</td>
+              <td>3</td>
+              <td>3 repeticiones</td>
+              <td>30 segundos</td>
+            </tr>
+            <tr>
+              <th scope="row">Martes</th>
+              <td>Banca Inclinada</td>
+              <td>3</td>
+              <td>3 repeticiones</td>
+              <td>30 segundos</td>
+            </tr>
+            <tr>
+              <th scope="row">Viernes</th>
+              <td>Banca Inclinada</td>
+              <td>3</td>
+              <td>3 repeticiones</td>
+              <td>30 segundos</td>
+            </tr>
+            <tr>
+              <th scope="row">Sabado</th>
+              <td>Banca Inclinada</td>
+              <td>3</td>
+              <td>3 repeticiones</td>
+              <td>30 segundos</td>
+            </tr>
+            <tr>
+              <th scope="row">Sabado</th>
+              <td>Banca Inclinada</td>
+              <td>3</td>
+              <td>3 repeticiones</td>
+              <td>30 segundos</td>
+            </tr>
+          </tbody>
+        </table>
 
 
 
-    
+
         <!--   <div class="accordion accordion-flush" id="accordionFlushExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingOne">
@@ -427,13 +409,11 @@
       </div>
     </div>
   </div> -->
-</div>
+      </div>
 
-</div>
+    </div>
 
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</div>
-
-
