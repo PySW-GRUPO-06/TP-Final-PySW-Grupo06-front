@@ -44,14 +44,14 @@ export class UsuarioService {
     return this._http.post<Usuario>(this.url, usuario, httpOptions);
   }
 
-  public eliminarUsuario(usuario: Usuario): Observable<any> {
+  public eliminarUsuario(id: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       })
     };
     this.toarService.success('Usuario Eliminada correctamente', 'Usuario')
-    return this._http.delete(this.url + usuario._id, httpOptions);
+    return this._http.delete(this.url + id, httpOptions);
   }
 
   public modificarUsuario(usuario: Usuario): Observable<any> {

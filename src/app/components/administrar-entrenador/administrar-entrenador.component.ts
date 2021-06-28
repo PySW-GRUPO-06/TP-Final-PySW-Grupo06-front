@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntrenadorService } from 'src/app/service/entrenador.service';
 import { PersonaService } from 'src/app/service/persona.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
   selector: 'app-administrar-entrenador',
@@ -11,9 +12,11 @@ export class AdministrarEntrenadorComponent implements OnInit {
 
   listaEntrenadores: Array<any> = []
   listaIdEntrenador: Array<string> = []
+  listaIdUsuario: Array<string>=[]
   idEntrenador: string = ''
 
-  constructor(private entrenadorService: EntrenadorService, private personaService: PersonaService) {
+  constructor(private entrenadorService: EntrenadorService, private personaService: PersonaService,
+    private usuarioService : UsuarioService) {
     this.obtenerEntrenador()
   }
 
@@ -22,6 +25,9 @@ export class AdministrarEntrenadorComponent implements OnInit {
 
   obtenerEntrenador() {
     try {
+      this.listaEntrenadores=[]
+      this.listaIdEntrenador=[]
+      this.listaIdUsuario=[]
       this.entrenadorService.obtenerEntrenadores().subscribe(
         (result) => {
           console.log(result);
@@ -32,10 +38,10 @@ export class AdministrarEntrenadorComponent implements OnInit {
               console.log(element.persona)
               this.personaService.obtenerPersona(element.persona).subscribe(
                 (result1) => {
-                  /* console.log(result1);
-                  console.log(element._id) */
+                  console.log(result1);
+                  console.log(element._id)
                   this.listaEntrenadores.push(result1)
-
+                  this.listaIdUsuario.push(result1.usuario._id)
                   /* console.log(this.listaEntrenadores[0]._id) */
                 });
             } catch (error) {
@@ -60,6 +66,18 @@ export class AdministrarEntrenadorComponent implements OnInit {
               (result1) => {
                 console.log(result);
                 const resultado1 = result1
+
+                try {
+                  this.usuarioService.eliminarUsuario(this.listaIdUsuario[numeroEntrenador]).subscribe(
+                    (result2) => {
+                      console.log(result);
+                      const resultado1 = result2
+                      this.obtenerEntrenador()
+                    });
+                } catch (error) {
+                  console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+                }
+
               });
           } catch (error) {
             console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
