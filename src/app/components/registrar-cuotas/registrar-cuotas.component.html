@@ -6,10 +6,10 @@
 <label for="inputMonto" class="form-label" id="textoBuscar">Ingrese dni del Alumno para realizar la busqueda</label>
 </div>
 <div class="col-4">
-        <input type="texto" class="form-control" id="inputMonto" placeholder="37460306">
+        <input type="texto" class="form-control" id="inputMonto" placeholder="37460306" [(ngModel)]="dni">
     </div>
     <div class="col-4">
-        <button type="button" class="btn btn-primary">Buscar</button>
+        <button type="button" class="btn btn-primary" (click)='obtenerDatosPersona()' >Buscar</button>
     </div>
     </div>
 <br><br>
@@ -17,14 +17,14 @@
 <div class="card mb-3" style="max-width: 100%;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-fluid rounded-start" alt="...">
+        <img src=" {{fotoPefil}}" class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">Alumno</h5>
-          <p class="card-text">Nombre: (nombre del alumno)</p>
-          <p class="card-text">Apellido: (apellido del alumno)</p>
-          <p class="card-text"><small class="text-muted">DNI:(dni alumno)</small></p>
+          <p class="card-text">Nombre: {{persona.nombre}}</p>
+          <p class="card-text">Apellido: {{persona.apellido}}</p>
+          <p class="card-text"><small class="text-muted">DNI: {{persona.dni}}</small></p>
         </div>
       </div>
     </div>
@@ -39,25 +39,25 @@
         <form class="row g-3">
           <div class="col-md-6">
             <label for="inputState" class="form-label">Modo de pago</label>
-            <select id="inputState" class="form-select">
+            <select id="inputState" class="form-select" name="modoPago" [(ngModel)]="modoPago">
               <option selected></option>
-              <option>Tarjeta</option>
-              <option>Efectivo</option>
-              <option>Transferencia</option>
+              <option >Tarjeta</option>
+              <option >Efectivo</option>
+              <option >Transferencia</option>
             </select>
           </div>
             <div class="col-md-6">
                 <label for="inputMonto" class="form-label">Monto a pagar</label>
-                <input type="texto" class="form-control" id="inputMonto">
+                <input type="texto" class="form-control" id="inputMonto" name="montoAPagar" [(ngModel)]="montoAPagar">
               </div>
 
             <div class="col-6">
                 <label for="inputFechaPago" class="form-label">Fecha de Pago</label>
-                <input type="date" class="form-control" id="inputFechaPago">
+                <input type="date" class="form-control" id="inputFechaPago" [(ngModel)]="montoAPagar">
               </div>
               <div class="col-md-6">
                 <label for="inputMesAPagar" class="form-label">Mes a pagar</label>
-                <select id="inputMesAPagar" class="form-select">
+                <select id="inputMesAPagar" class="form-select" name="mesAPagar" [(ngModel)]="mesAPagar">
                   <option selected></option>
                   <option>Enero</option>
                   <option>Febrero</option>
@@ -75,7 +75,7 @@
               </div>
 
             <div class="col-12">
-              <button type="submit" class="btn btn-primary">Guardar Cuota</button>
+              <button type="submit" class="btn btn-primary" (click)='realizarPago()'>Guardar Cuota</button>
             </div>
           </form>
 
