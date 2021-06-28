@@ -26,42 +26,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let entrenador of listaEntrenadores">
       <th scope="row">1</th>
-      <td>Jorge</td>
-      <td>Tolaba</td>
-      <td>37.460.306</td>
-      <td>Activo</td>
+      <td>{{entrenador.nombre}}</td>
+      <td>{{entrenador.apellido}}</td>
+      <td>{{entrenador.dni}}</td>
+      <td>  </td>
       <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
         <button type="button" class="btn btn-primary"><i class="fas fa-thumbs-up"></i> Alta</button>
         <button type="button" class="btn btn-danger"><i class="fas fa-thumbs-down"></i> Baja</button>
         <button type="button" class="btn btn-success"><i class="fas fa-trash-alt"></i></button>
       </div></td>
     </tr>
-    <tr>
-        <th scope="row">1</th>
-        <td>Jorge</td>
-        <td>Tolaba</td>
-        <td>37.460.306</td>
-        <td>Inactivo</td>
-        <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
-          <button type="button" class="btn btn-primary"><i class="fas fa-thumbs-up"></i> Alta</button>
-          <button type="button" class="btn btn-danger"><i class="fas fa-thumbs-down"></i> Baja</button>
-          <button type="button" class="btn btn-success"><i class="fas fa-trash-alt"></i></button>
-        </div></td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Jorge</td>
-        <td>Tolaba</td>
-        <td>37.460.306</td>
-        <td>Activo</td>
-        <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
-          <button type="button" class="btn btn-primary"><i class="fas fa-thumbs-up"></i> Alta</button>
-          <button type="button" class="btn btn-danger"><i class="fas fa-thumbs-down"></i> Baja</button>
-          <button type="button" class="btn btn-success"><i class="fas fa-trash-alt"></i></button>
-        </div></td>
-      </tr>
   </tbody>
 </table>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

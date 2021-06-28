@@ -25,11 +25,12 @@ export class AdministrarEntrenadorComponent implements OnInit {
     try {
       this.entrenadorService.obtenerEntrenadores().subscribe(
         (result) => {
-          /* console.log(result); */
+          console.log(result);
           const resultado = result
           result.forEach((element: { _id: string; persona: string}) => {
             try {
               this.listaIdEntrenador.push(element._id)
+              console.log(element.persona)
               this.personaService.obtenerPersona(element.persona).subscribe(
                 (result1) => {
                   /* console.log(result1);

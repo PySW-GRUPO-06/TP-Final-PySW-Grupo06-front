@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
             //redirigimos a home o a pagina que llamo
             /* this.router.navigateByUrl(this.returnUrl); */
             /* console.log('entroooooooooooooooooooo'+this.userform.userName) */
-            if(user.rol == 'entrendor'){
+            if(user.rol == 'entrenador'){
               this.irAPricipalEntrenador()
             }else{
               this.irAPrincipalAlumno()
