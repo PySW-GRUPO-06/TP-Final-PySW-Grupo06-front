@@ -15,74 +15,187 @@ import { RutinaService } from 'src/app/service/rutina.service';
 })
 export class AdministrarRutinasComponent implements OnInit {
 
-  rutina:Rutina=new Rutina();
-  dia:Dia=new Dia();
-  ejercicio:Ejercicio=new Ejercicio;
-  rutinas:Array<Rutina>=new Array<Rutina>();
+  rutina: Rutina = new Rutina();
+  dia: Dia = new Dia();
+  ejercicio: Ejercicio = new Ejercicio;
 
-  constructor(private rutinaService:RutinaService,
-              private diaService:DiaEjercicioService,
-              private ejercicioService:EjercicioService,
-              public loginService: LoginService, private router: Router) {
-                
-                if(this.loginService.userLoggedIn()){
-                  //acciones normales de componente
-                  //acciones normales de componente
-                  } else {
-                  alert("Debe validarse e ingresar su usuario y clave");
-                  this.router.navigate(['login']);
-                  }
-               }
+  listaRutinas: Array<Rutina> = new Array<Rutina>();
+  listaDias: Array<Dia> = new Array<Dia>();
+  listaEjercicios: Array<Ejercicio> = new Array<Ejercicio>();
+
+  private idRutina = '0'
+  private idDia = '0'
+  private idEjercicio = '0'
+  private modificarEjercicioB: boolean = false
+
+  constructor(private rutinaService: RutinaService,
+    private diaService: DiaEjercicioService,
+    private ejercicioService: EjercicioService,
+    public loginService: LoginService, private router: Router) {
+
+    if (this.loginService.userLoggedIn()) {
+      this.mostrarListaRutinas()
+    } else {
+      alert("Debe validarse e ingresar su usuario y clave");
+      this.router.navigate(['login']);
+    }
+  }
 
   ngOnInit(): void {
   }
-crearRutina(){
-  try {
-    this.rutinaService.guardarRutina(this.rutina).subscribe(
-      result=>{
-        console.log("se guardo rutina"+result);
-      }
-    )
-  } catch (error) {
-    console.log(error);
+  crearRutina() {
+    try {
+      this.rutinaService.guardarRutina(this.rutina).subscribe(
+        (result: any) => {
+          console.log("se guardo rutina");
+          console.log(result)
+          this.idRutina = result.id
+        }
+      )
+    } catch (error) {
+      console.log(error);
+    }
   }
-}
-agregarDia(){
-  try {
-    this.diaService.postDiaEjercicio(this.dia).subscribe(
-      result=>{
-        console.log(""+result);
-      }
-    )
-  } catch (error) {
-    console.log(""+error);
+
+  private obtenerRutina() {
+    try {
+      this.rutinaService.obtenerRutina(this.idRutina).subscribe(
+        (result: any) => {
+          console.log(result)
+          this.rutina = result
+          this.modificarRutina()
+        }
+      )
+    } catch (error) {
+      console.log("" + error);
+    }
   }
-}
-agregarEjercicio(){
-  try {
-    this.ejercicioService.guardarEjercicio(this.ejercicio).subscribe(
-      result=>{
-        console.log(""+result);
-        
-      }
-    )
-  } catch (error) {
-    console.log(""+error);
+
+  private modificarRutina() {
+    this.rutina.dias.push(this.dia)
+    try {
+      this.rutinaService.modificarRutina(this.rutina).subscribe(
+        (result: any) => {
+          console.log(result)
+        }
+      )
+    } catch (error) {
+      console.log("" + error);
+    }
   }
-}
-mostrarRutinas(){
-  try {
-    this.rutinaService.obtenerRutinas().subscribe(
-      result=>{
-        result.forEach((element:any) => {
-          let vRutina=new Rutina();
-          Object.assign(vRutina,element);
-          this.rutinas.push(vRutina);
-        });
-      }
-    )
-  } catch (error) {
-    console.log(""+error);
+
+  private obtenerDia() {
+    try {
+      this.diaService.getDiaEjercicio(this.idDia).subscribe(
+        (result: any) => {
+          console.log("se guardo el dia")
+          console.log(result);
+          this.dia = result
+
+          if (this.modificarEjercicioB) {
+            this.modificarDia()
+          } else {
+            this.obtenerRutina()
+          }
+        }
+      )
+    } catch (error) {
+      console.log("" + error);
+    }
   }
-}
+
+  private modificarDia() {
+    this.dia.ejercicios.push(this.ejercicio)
+
+    try {
+      this.diaService.putEditarDiaEjercicio(this.dia).subscribe(
+        (result: any) => {
+          console.log(" ")
+          console.log(result);
+        }
+      )
+    } catch (error) {
+      console.log("" + error);
+    }
+  }
+  agregarDia() {
+
+    this.modificarEjercicioB = false
+
+    try {
+      this.diaService.postDiaEjercicio(this.dia).subscribe(
+        (result: any) => {
+          console.log("se guardo el dia")
+          console.log(result);
+          this.idDia = result.id
+          this.obtenerDia()
+        }
+      )
+    } catch (error) {
+      console.log("" + error);
+    }
+  }
+  agregarEjercicio() {
+
+    this.modificarEjercicioB = true
+
+    try {
+      this.ejercicioService.guardarEjercicio(this.ejercicio).subscribe(
+        (result: any) => {
+          console.log("se guardo el ejercicio")
+          console.log(result);
+          this.idEjercicio = result.id
+          this.obtenerDia()
+        }
+      )
+    } catch (error) {
+      console.log("" + error);
+    }
+  }
+
+
+  mostrarListaRutinas() {
+    try {
+      this.rutinaService.obtenerRutinas().subscribe(
+        (result: any) => {
+          result.forEach((element: any[]) => {
+            this.listaRutinas = element;
+            console.log(this.listaRutinas)
+          });
+        }
+      )
+    } catch (error) {
+      console.log("" + error);
+    }
+  }
+
+  mostrarListaDias() {
+    try {
+      this.rutinaService.obtenerRutina(this.idRutina).subscribe(
+        (result: any) => {
+          result.forEach((element: any) => {
+            this.listaDias = element.dias;
+            console.log(this.listaDias)
+          });
+        }
+      )
+    } catch (error) {
+      console.log("" + error);
+    }
+  }
+
+  mostrarListaEjercicios() {
+    try {
+      this.diaService.getDiaEjercicio(this.idDia).subscribe(
+        (result: any) => {
+          result.forEach((element: any) => {
+            this.listaEjercicios = element.ejercicios;
+            console.log(this.listaEjercicios)
+          });
+        }
+      )
+    } catch (error) {
+      console.log("" + error);
+    }
+  }
 }
