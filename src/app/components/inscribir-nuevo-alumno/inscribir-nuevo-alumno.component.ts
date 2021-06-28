@@ -11,6 +11,8 @@ import { LoginService } from 'src/app/service/login.service';
 import { PersonaService } from 'src/app/service/persona.service';
 import { PlanService } from 'src/app/service/plan.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { Entrenador } from 'src/app/models/entrenador';
+import { EntrenadorService } from 'src/app/service/entrenador.service';
 
 @Component({
   selector: 'app-inscribir-nuevo-alumno',
@@ -21,10 +23,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
   persona: Persona = new Persona();
 
   alumno: Alumno = new Alumno();
-  /*fechaInicio: Date=new Date(2002,3,21);
-  registroPlan: Array<string>=[]
-  planActivo: string="222222";
-  asistencia: Array<string>=[] */
+  entrenador: Entrenador = new Entrenador();
   usuario: Usuario = new Usuario();
 
   personas: Array<Persona> = new Array<Persona>();
@@ -36,7 +35,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
   private idAlumno: string = '0'
   private idUsuario: string = '0'
 
-  constructor(private alumnoService: AlumnoService, private personaService: PersonaService,
+  constructor(private alumnoService: AlumnoService, private entrenadorService: EntrenadorService, private personaService: PersonaService,
     private planService: PlanService, private cuotaService: CuotaService,
     public loginService: LoginService, private router: Router,
     private usuarioService: UsuarioService) {
@@ -99,9 +98,16 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
         result => {
           if (result.status == 1) {
             alert("la persona se agrego correctamente")
-            this.alumno.persona = result.id
-            console.log(result)
-            this.agregarAlumno()
+            if (this.usuario.rol == 'entrenador') {
+              this.entrenador.persona = result.id
+              console.log(result)
+              this.agregarEntrenador()
+            } else {
+              this.alumno.persona = result.id
+              console.log(result)
+              this.agregarAlumno()
+            }
+
           }
         }
       )
@@ -111,18 +117,38 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     //  this.agregarAlumno();
 
   }
+
+  private agregarEntrenador() {
+    console.log("creando entrenador")
+    console.log(this.entrenador)
+
+    try {
+      this.entrenadorService.guardarEntrenador(this.entrenador).subscribe(
+        (result: any) => {
+          /*           if (result.status ==1) {
+                      alert("la personel alumno se agrego correctamente")
+                      
+                    } */
+          console.log(result)
+        }
+      )
+    } catch (error) {
+      console.log("ERROR " + error + " NO SE PUDO GUARDAR DATOS")
+    }
+  }
+
   private agregarAlumno() {
     // this.obtenerPersonaPorDNI()
     console.log("creando alumno")
     console.log(this.alumno)
     try {
       this.alumnoService.postCrearAlumno(this.alumno).subscribe(
-        (result:any) => {
+        (result: any) => {
           /*           if (result.status ==1) {
                       alert("la personel alumno se agrego correctamente")
                       
                     } */
-                    this.idAlumno=result.id
+          this.idAlumno = result.id
           console.log(result)
         }
       )

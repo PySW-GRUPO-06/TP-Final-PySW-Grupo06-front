@@ -12,7 +12,6 @@ export class AdministrarEntrenadorComponent implements OnInit {
   listaEntrenadores: Array<any> = []
   listaIdEntrenador: Array<string> = []
   idEntrenador: string = ''
-  numeroEntrenador: number = 0
 
   constructor(private entrenadorService: EntrenadorService, private personaService: PersonaService) {
     this.obtenerEntrenador()
@@ -49,17 +48,17 @@ export class AdministrarEntrenadorComponent implements OnInit {
     }
   }
 
-  eliminarEntrenador() {
+  eliminarEntrenador(numeroEntrenador:number) {
     try {
-      this.entrenadorService.eliminarEntrenador(this.listaIdEntrenador[this.numeroEntrenador]).subscribe(
+      this.entrenadorService.eliminarEntrenador(this.listaIdEntrenador[numeroEntrenador]).subscribe(
         (result) => {
-          /* console.log(result); */
+          console.log(result);
           const resultado = result
 
           try {
-            this.personaService.eliminarPersona(this.listaEntrenadores[this.numeroEntrenador]._id).subscribe(
+            this.personaService.eliminarPersona(this.listaEntrenadores[numeroEntrenador]._id).subscribe(
               (result1) => {
-                /* console.log(result); */
+                console.log(result);
                 const resultado1 = result1
               });
           } catch (error) {
