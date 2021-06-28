@@ -16,7 +16,7 @@ export class UsuarioService {
     this.url = "http://localhost:3000/api/usuario/"
   }
 
-  public obtenerUsuario(id: string): Observable<any> {
+  public obtenerUsuario(id: String): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
