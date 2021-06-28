@@ -28,6 +28,10 @@ export class AdministrarRutinasComponent implements OnInit {
   private idEjercicio = '0'
   private modificarEjercicioB: boolean = false
 
+  cuadro1:boolean=true;
+  cuadro2:boolean=false;
+  cuadro3:boolean=false;
+
   constructor(private rutinaService: RutinaService,
     private diaService: DiaEjercicioService,
     private ejercicioService: EjercicioService,
@@ -198,4 +202,24 @@ export class AdministrarRutinasComponent implements OnInit {
       console.log("" + error);
     }
   }
+
+  cambiarValoresIf0(){
+
+    this.cuadro1=true;
+    this.cuadro2=false;
+    this.cuadro3=false;
+  }
+
+  cambiarValoresIf(){
+
+    this.cuadro1=false;
+    this.cuadro2=true;
+    this.cuadro3=false;
+  }
+  cambiarValoresIf2(){
+    this.cuadro1=false;
+    this.cuadro2=false;
+    this.cuadro3=true;
+  }
+
 }
