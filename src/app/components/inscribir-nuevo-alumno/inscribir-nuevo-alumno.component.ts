@@ -19,7 +19,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class InscribirNuevoAlumnoComponent implements OnInit {
   persona: Persona = new Persona();
-  
+
   alumno: Alumno = new Alumno();
   /*fechaInicio: Date=new Date(2002,3,21);
   registroPlan: Array<string>=[]
@@ -31,10 +31,10 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
 
   cuota: Cuota = new Cuota();
   plan: Plan = new Plan();
-  fotoPerfil:string = 'Sin foto aun'
+  fotoPerfil: string = 'Sin foto aun'
   private idPlan: string = '0'
   private idAlumno: string = '0'
-  private idUsuario:string = '0'
+  private idUsuario: string = '0'
 
   constructor(private alumnoService: AlumnoService, private personaService: PersonaService,
     private planService: PlanService, private cuotaService: CuotaService,
@@ -58,7 +58,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     this.persona = new Persona()
   }
 
-  agregarPersona(){
+  agregarPersona() {
     this.crearUsuario()
   }
 
@@ -92,8 +92,8 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     console.log(pers) */
     console.log('persona a agregar:')
     console.log(this.persona)
-    this.persona.usuario=this.idUsuario
-    this.persona.fotoPerfil=this.fotoPerfil
+    this.persona.usuario = this.idUsuario
+    this.persona.fotoPerfil = this.fotoPerfil
     try {
       this.personaService.guardarPersona(this.persona).subscribe(
         result => {
@@ -117,17 +117,43 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     console.log(this.alumno)
     try {
       this.alumnoService.postCrearAlumno(this.alumno).subscribe(
-        result => {
+        (result:any) => {
           /*           if (result.status ==1) {
                       alert("la personel alumno se agrego correctamente")
                       
                     } */
-          
+                    this.idAlumno=result.id
           console.log(result)
         }
       )
     } catch (error) {
       console.log("ERROR " + error + " NO SE PUDO GUARDAR DATOS")
+    }
+  }
+
+  guardarPlan() {
+    var id: string = "";
+    /* var plan:Plan=new Plan()
+     plan.tipo="sss"
+     plan.fechaInicioPlan="ssss"
+     plan.fechaFinDelPlan="sss"
+     plan.nivel="sss"
+     plan.objetivo="sss"
+     console.log(plan) */
+    try {
+      this.planService.postCrearPlan(this.plan).subscribe(
+
+        (result: any) => {
+          this.alumno.planActivo = result.id
+          this.idPlan = result.id
+          console.log(result)
+          this.modificarAlumno()
+        }
+
+      )
+    } catch (error) {
+      console.log("ERROR " + error + " No se pudo guardar PLAN");
+
     }
   }
 
@@ -165,33 +191,9 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
        console.log("ERROR " + error + " NO SE PUDO OBTENER DATOS")
      }
    } */
-  guardarPlan() {
-    var id: string = "";
-    /* var plan:Plan=new Plan()
-     plan.tipo="sss"
-     plan.fechaInicioPlan="ssss"
-     plan.fechaFinDelPlan="sss"
-     plan.nivel="sss"
-     plan.objetivo="sss"
-     console.log(plan) */
-    try {
-      this.planService.postCrearPlan(this.plan).subscribe(
 
-        (result: any) => {
-          this.alumno.planActivo = result.id
-          this.idPlan = result.id
-          console.log(result)
-          this.modificarAlumno()
-        }
 
-      )
-    } catch (error) {
-      console.log("ERROR " + error + " No se pudo guardar PLAN");
 
-    }
-  }
-
-  
 
   /*   obtenerPlanes(){
       try {
