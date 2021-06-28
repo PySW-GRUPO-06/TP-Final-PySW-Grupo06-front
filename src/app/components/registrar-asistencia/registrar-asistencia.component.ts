@@ -17,6 +17,9 @@ export class RegistrarAsistenciaComponent implements OnInit {
   persona: any
   alumno!: Alumno
   asistencia!: Asistencia
+  fechaDeHoy:Date=new Date()
+
+  fotoPefil='./../../../assets/gym/fotoPerfil.jpg'
 
   constructor(private asistenciaService: AsistenciaService, private personaService: PersonaService,
     private alumnoService: AlumnoService) {
@@ -35,7 +38,8 @@ export class RegistrarAsistenciaComponent implements OnInit {
           console.log('obtener datos persona')
           console.log(result);
           const resultado = result
-          this.persona = result
+          this.persona = result[0]
+          this.fotoPefil=this.persona.fotoPerfil
         });
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
@@ -45,7 +49,7 @@ export class RegistrarAsistenciaComponent implements OnInit {
   guardarAsistencia() {
 
     this.asistencia = new Asistencia()
-    this.asistencia.dia = new Date()
+    this.asistencia.dia = this.fechaDeHoy
     this.asistencia.tipoAsistencia = this.tipoDeAsistencia
     console.log('a guardar asistencia')
     console.log(this.asistencia)
@@ -66,7 +70,7 @@ export class RegistrarAsistenciaComponent implements OnInit {
 
   private guardarAsistenciaAlumno(idAsistencia: string) {
     try {
-      this.alumnoService.getAlumnoPorPersona(this.persona[0]._id).subscribe(
+      this.alumnoService.getAlumnoPorPersona(this.persona._id).subscribe(
         (result) => {
           console.log('obtener alumno por persona')
           console.log(result);

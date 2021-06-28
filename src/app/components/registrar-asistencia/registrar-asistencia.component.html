@@ -5,10 +5,10 @@
 <label for="inputMonto" class="form-label" id="textoBuscar">Ingrese dni del Alumno para realizar la busqueda</label>
 </div>
 <div class="col-4">
-        <input type="texto" class="form-control" id="inputMonto" placeholder="37460306">
+        <input type="texto" class="form-control" id="inputMonto" placeholder="37460306" [(ngModel)]="dni">
     </div>
     <div class="col-4">
-        <button type="button" class="btn btn-primary">Buscar</button>
+        <button type="button" class="btn btn-primary" (click)='obtenerDatosPersona()' >Buscar</button>
     </div>
     </div>
 <br><br>
@@ -16,16 +16,16 @@
 <div class="card mb-3" style="max-width: 100%;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-fluid rounded-start" alt="...">
+        <img src="{{fotoPefil}}" class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">Alumno</h5>
-          <p class="card-text">Fecha de hoy: (fecha actual)</p>
-          <p class="card-text">Nombre: (nombre del alumno)</p>
-          <p class="card-text">Apellido: (apellido del alumno)</p>
-          <p class="card-text"><small class="text-muted">DNI:(dni alumno)</small></p>
-          <button type="button" class="btn btn-primary">PRESENTE</button>
+          <p class="card-text">Fecha de hoy: {{fechaDeHoy}}</p>
+          <p class="card-text">Nombre: {{persona.nombre}}</p>
+          <p class="card-text">Apellido: {{persona.apellido}}</p>
+          <p class="card-text"><small class="text-muted">DNI: {{persona.dni}}</small></p>
+          <button type="button" class="btn btn-primary" (click)='guardarAsistencia()'>PRESENTE</button>
         </div>
       </div>
     </div>
