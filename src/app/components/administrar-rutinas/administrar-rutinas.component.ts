@@ -51,9 +51,14 @@ export class AdministrarRutinasComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   crearRutina() {
+    var nuevaRutina:Rutina= new Rutina()
+    nuevaRutina.exigencia=this.rutina.exigencia
+    nuevaRutina.nombre=this.rutina.nombre
+    nuevaRutina.semanas=this.rutina.semanas
     try {
-      this.rutinaService.guardarRutina(this.rutina).subscribe(
+      this.rutinaService.guardarRutina(nuevaRutina).subscribe(
         (result: any) => {
           console.log("se guardo rutina");
           console.log(result)
