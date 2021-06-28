@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Alumno } from 'src/app/models/alumno';
 import { Cuota } from 'src/app/models/cuota';
+import { Usuario } from 'src/app/models/usuario';
 import { Persona } from 'src/app/models/persona';
 import { Plan } from 'src/app/models/plan';
 import { AlumnoService } from 'src/app/service/alumno.service';
@@ -9,6 +10,7 @@ import { CuotaService } from 'src/app/service/cuota.service';
 import { LoginService } from 'src/app/service/login.service';
 import { PersonaService } from 'src/app/service/persona.service';
 import { PlanService } from 'src/app/service/plan.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
   selector: 'app-inscribir-nuevo-alumno',
@@ -22,6 +24,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
   registroPlan: Array<string>=[]
   planActivo: string="222222";
   asistencia: Array<string>=[] */
+  usuario: Usuario = new Usuario();
 
   personas: Array<Persona> = new Array<Persona>();
   
@@ -31,7 +34,8 @@ plan: Plan = new Plan();
 
   constructor(private alumnoService: AlumnoService, private personaService: PersonaService,
     private planService: PlanService, private cuotaService: CuotaService,
-    public loginService: LoginService, private router: Router) {
+    public loginService: LoginService, private router: Router,
+    private usuarioService: UsuarioService) {
 
     if (this.loginService.userLoggedIn()) {
       //acciones normales de componente
@@ -67,6 +71,7 @@ plan: Plan = new Plan();
         result => {
           if (result.status == 1) {
             alert("la persona se agrego correctamente")
+            this.alumno.persona=result.id
           }
           console.log(result)
         }
@@ -78,10 +83,8 @@ plan: Plan = new Plan();
 
   }
   agregarAlumno() {
-    this.obtenerPersonaPorDNI()
+   // this.obtenerPersonaPorDNI()
     try {
-      this.alumno.persona = this.persona._id
-
       this.alumnoService.postCrearAlumno(this.alumno).subscribe(
         result => {
           /*           if (result.status ==1) {
@@ -96,7 +99,7 @@ plan: Plan = new Plan();
     }
 
   }
-  obtenerPersonaPorDNI() {
+ /*  obtenerPersonaPorDNI() {
     try {
       this.personaService.obtenerPersonaDNI(String (this.persona.dni)).subscribe(
         result => {
@@ -107,7 +110,7 @@ plan: Plan = new Plan();
     } catch (error) {
       console.log("ERROR " + error + " NO SE PUDO OBTENER DATOS")
     }
-  }
+  } */
   guardarPlan(){
      var id:string="";
    /* var plan:Plan=new Plan()
@@ -152,6 +155,15 @@ plan: Plan = new Plan();
     }
   }
   crearUsuario(){
-    
+    try {
+      this.usuarioService.guardarUsuario(this.usuario).subscribe(
+        result=>{
+          this.persona.usuario=result.id
+          console.log("se guardo usuario"+result)
+        }
+      )
+    } catch (error) {
+      console.log("ERROR al guardar usuario" + error);
+    }
   }
 }
