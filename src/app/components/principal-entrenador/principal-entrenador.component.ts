@@ -51,7 +51,7 @@ cantInscriptos:number=0;
   }
 
   irAInscribirNuevoAlumno():void{
-    this.route.navigate(['inscribirNuevoAlumno']);
+    this.route.navigate(['inscribirNuevoAlumno/',0]);
  }
 
  irARegistrarPagoCuota():void{

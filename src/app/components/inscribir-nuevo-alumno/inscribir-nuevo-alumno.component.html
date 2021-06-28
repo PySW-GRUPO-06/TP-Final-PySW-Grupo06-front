@@ -1,7 +1,10 @@
 <div id="cuerpo">
   <div class="col-12">
-     <button (click)="volverAPrincipal()" style="float: right;" class="btn btn-outline-danger" type="button"><i style="font-size: 28px;" class="fas fa-times-circle"></i></button>
+     <button *ngIf="cuadritoUsuario===true" (click)="volverAPrincipal()" style="float: right;" class="btn btn-outline-danger" type="button"><i style="font-size: 28px;" class="fas fa-times-circle"></i></button>
   </div>
+  <div class="col-12">
+    <button *ngIf="cuadritoUsuario===false" (click)="volverALogin()" style="float: right;" class="btn btn-outline-danger" type="button"><i style="font-size: 28px;" class="fas fa-times-circle"></i></button>
+ </div>
   <br>
   <br>
   <!-- Datos Personales-->
@@ -71,6 +74,8 @@
                 <input type="password" class="form-control" id="inputContra" name="usuario.password"
                   [(ngModel)]="usuario.password">
               </div>
+              
+              <div *ngIf="cuadritoUsuario===true">
               <div class="col-md-12">
                 <label for="inputRol" class="form-label">Rol</label>
                 <select id="inputRol" class="form-select" name="usuario.rol" [(ngModel)]="usuario.rol">
@@ -95,6 +100,8 @@
                 </label>
               </div>
             </div>
+
+          </div>
             <div class="card-footer text-muted">
               GYM Grupo 06
             </div>
@@ -102,7 +109,8 @@
         </div>
         <div class="col-4"></div>
         <div class="col-2">
-          <button type="submit" class="btn btn-primary" (click)="agregarPersona()">Guardar Datos</button>
+          <button *ngIf="cuadritoUsuario===true" type="submit" class="btn btn-primary" (click)="agregarPersona()">Guardar Datos</button>
+          <button *ngIf="cuadritoUsuario===false" type="submit" class="btn btn-primary" (click)="irALogin()">Registrarse!</button>
         </div>
 <!--         <div class="col-2">
           <button type="submit" class="btn btn-primary" (click)="crearUsuario()">Generar usuario</button>
@@ -115,8 +123,6 @@
       Gym
     </div>
   </div>
-
-  <h5>Usuario Rol: {{usuario.rol}} </h5>
 
   <br>
   <!--  -->

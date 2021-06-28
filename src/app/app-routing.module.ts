@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'principal', component: PrincipalComponent },
   { path: 'login', component: LoginComponent },
   { path: 'principalEntrenador', component: PrincipalEntrenadorComponent },
-  { path: 'inscribirNuevoAlumno', component: InscribirNuevoAlumnoComponent },
+  { path: 'inscribirNuevoAlumno/:id', component: InscribirNuevoAlumnoComponent },
   { path: 'registrarCuotas', component: RegistrarCuotasComponent },
   { path: 'registrarAsistencia', component: RegistrarAsistenciaComponent },
   { path: 'header', component: HeaderComponent },
@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'administrarDatosDeUnAlumno', component: AdministrarDatosDeUnAlumnoComponent },
   { path: 'administrarEtrenador', component: AdministrarEntrenadorComponent },
   { path: '**', pathMatch:'full',redirectTo:'principal' }
-  
+ /*  { path: 'punto3b/:id', component: Punto3bComponent }, */
 ];
 
 @NgModule({

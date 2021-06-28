@@ -68,4 +68,11 @@ export class LoginComponent implements OnInit {
         });
 
   }
+  irAIngresarDatos(){
+    this.route.navigate(['inscribirNuevoAlumno/',1]);
+  }
+/*   irAltaPasaje(){
+    this.route.navigate(['punto3b/',0]);
+  } */
+
 }

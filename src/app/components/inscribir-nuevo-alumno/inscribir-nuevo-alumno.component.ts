@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Alumno } from 'src/app/models/alumno';
 import { Cuota } from 'src/app/models/cuota';
 import { Usuario } from 'src/app/models/usuario';
@@ -37,11 +37,13 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
 
   cuadroPlan:boolean=false;
   cuadroDatosPers:boolean=true;
+  cuadritoUsuario:boolean=true;
 
   constructor(private alumnoService: AlumnoService, private entrenadorService: EntrenadorService, private personaService: PersonaService,
     private planService: PlanService, private cuotaService: CuotaService,
     public loginService: LoginService, private router: Router,
-    private usuarioService: UsuarioService) {
+    private usuarioService: UsuarioService,
+    private activatedRoute:ActivatedRoute) {
 
     if (this.loginService.userLoggedIn()) {
       //acciones normales de componente
@@ -53,9 +55,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     this.iniciar
   }
 
-  ngOnInit(): void {
 
-  }
   iniciar() {
     this.persona = new Persona()
   }
@@ -244,4 +244,49 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     volverAPrincipal(){
       this.router.navigate(['principalEntrenador']);
     }
+    irALogin(){
+      this.crearUsuario();
+      this.router.navigate(['login']);
+    }
+
+    volverALogin(){
+      this.router.navigate(['login']);
+    }
+
+    
+    ngOnInit(): void {
+      this.activatedRoute.params.subscribe(
+        params => {
+          if (params.id == "0" ){
+            this.cuadritoUsuario=true;
+
+          }else
+          {
+            this.cuadritoUsuario=false;
+
+      
+          }
+        }
+      )
+    }
+/*     ngOnInit(): void {
+      this.activatedRoute.params.subscribe(
+        params => {
+          if (params.id == "0" ){
+            this.accion="new";
+            this.iniciarPasaje();
+            this.cargarPersonas();
+
+          }else
+          {
+            this.accion="update";
+            this.iniciarPasaje();
+            this.cargarPersonas();
+            this.cargarPasaje(params.id);
+      
+          }
+        }
+      )
+    } */
+
 }
