@@ -19,10 +19,15 @@ export class RegistrarAsistenciaComponent implements OnInit {
   asistencia!: Asistencia
   fechaDeHoy:Date=new Date()
 
-  fotoPefil='./../../../assets/gym/fotoPerfil.jpg'
+  fotoPefil='./../../../assets/gym/fotoPerfil.jpg';
+
+  botonPresente:boolean=true;
+  botonNuevoAlumno:boolean=false;
+  busquedaPrevia:boolean=false;
 
   constructor(private asistenciaService: AsistenciaService, private personaService: PersonaService,
     private alumnoService: AlumnoService) {
+      
     /* this.obtenerDatosPersona()
     this.guardarAsistencia() */
 
@@ -44,6 +49,7 @@ export class RegistrarAsistenciaComponent implements OnInit {
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
+    this.busquedaPrevia=true;
   }
 
   guardarAsistencia() {
@@ -66,6 +72,8 @@ export class RegistrarAsistenciaComponent implements OnInit {
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
+    this.botonPresente=false;
+    this.botonNuevoAlumno=true;
   }
 
   private guardarAsistenciaAlumno(idAsistencia: string) {
@@ -98,5 +106,12 @@ export class RegistrarAsistenciaComponent implements OnInit {
     }
 
 
+  }
+
+  nuevoAlumno(){
+    this.botonPresente=true;
+    this.botonNuevoAlumno=false;
+    this.busquedaPrevia=false;
+    
   }
 }

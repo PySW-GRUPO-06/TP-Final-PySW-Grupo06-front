@@ -23,3 +23,14 @@
     color: white;
     font-size:25px
 }
+
+.botonNoPresionado{
+    background-color: rgb(17, 119, 202);
+}
+
+.botonPresionado{
+    background-color: rgb(25, 128, 34);
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
