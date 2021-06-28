@@ -35,6 +35,9 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
   private idAlumno: string = '0'
   private idUsuario: string = '0'
 
+  cuadroPlan:boolean=false;
+  cuadroDatosPers:boolean=true;
+
   constructor(private alumnoService: AlumnoService, private entrenadorService: EntrenadorService, private personaService: PersonaService,
     private planService: PlanService, private cuotaService: CuotaService,
     public loginService: LoginService, private router: Router,
@@ -59,6 +62,13 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
 
   agregarPersona() {
     this.crearUsuario()
+    this.cuadroPlan=true;
+    this.cuadroDatosPers=false;
+
+    if (this.usuario.rol==="Entrenador") {
+      this.router.navigate(['principalEntrenador']);
+    } 
+
   }
 
   private crearUsuario() {
@@ -205,6 +215,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     }
   }
 
+  
   /*  obtenerPersonaPorDNI() {
      try {
        this.personaService.obtenerPersonaDNI(String (this.persona.dni)).subscribe(
@@ -230,4 +241,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     }
      */
 
+    volverAPrincipal(){
+      this.router.navigate(['principalEntrenador']);
+    }
 }

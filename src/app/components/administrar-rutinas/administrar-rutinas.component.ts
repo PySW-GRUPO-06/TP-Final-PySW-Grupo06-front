@@ -255,5 +255,9 @@ export class AdministrarRutinasComponent implements OnInit {
     this.cuadro3 = true;
   }
 
+  volverAPrincipal(){
+    this.router.navigate(['principalEntrenador']);
+  }
+
 
 }

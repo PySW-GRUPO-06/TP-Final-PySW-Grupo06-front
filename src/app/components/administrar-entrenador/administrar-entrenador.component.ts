@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EntrenadorService } from 'src/app/service/entrenador.service';
 import { PersonaService } from 'src/app/service/persona.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
@@ -16,7 +17,8 @@ export class AdministrarEntrenadorComponent implements OnInit {
   idEntrenador: string = ''
 
   constructor(private entrenadorService: EntrenadorService, private personaService: PersonaService,
-    private usuarioService : UsuarioService) {
+    private usuarioService : UsuarioService,
+    private route:Router) {
     this.obtenerEntrenador()
   }
 
@@ -88,4 +90,7 @@ export class AdministrarEntrenadorComponent implements OnInit {
     }
   }
 
+  volverAPrincipal(){
+    this.route.navigate(['principalEntrenador']);
+  }
 }

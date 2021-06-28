@@ -1,8 +1,11 @@
 <div id="cuerpo">
-
+  <div class="col-12">
+     <button (click)="volverAPrincipal()" style="float: right;" class="btn btn-outline-danger" type="button"><i style="font-size: 28px;" class="fas fa-times-circle"></i></button>
+  </div>
   <br>
   <br>
-  <div class="card text-center" id="cuadro">
+  <!-- Datos Personales-->
+  <div *ngIf="cuadroDatosPers === true" class="card text-center" id="cuadro">
     <div class="card-header" id="encabezado">
       Datos personales del Alumno
     </div>
@@ -73,7 +76,7 @@
                 <select id="inputRol" class="form-select" name="usuario.rol" [(ngModel)]="usuario.rol">
                   <option selected></option>
                   <option value="Alumno">Alumno</option>
-                  <option value="entrenador">Entrenador</option>
+                  <option value="Entrenador">Entrenador</option>
                 </select>
               </div>
               <br>
@@ -93,13 +96,13 @@
               </div>
             </div>
             <div class="card-footer text-muted">
-              2 days ago
+              GYM Grupo 06
             </div>
           </div>
         </div>
         <div class="col-4"></div>
         <div class="col-2">
-          <button type="submit" class="btn btn-primary" (click)=" agregarPersona()">Guardar Datos</button>
+          <button type="submit" class="btn btn-primary" (click)="agregarPersona()">Guardar Datos</button>
         </div>
 <!--         <div class="col-2">
           <button type="submit" class="btn btn-primary" (click)="crearUsuario()">Generar usuario</button>
@@ -112,9 +115,13 @@
       Gym
     </div>
   </div>
+
+  <h5>Usuario Rol: {{usuario.rol}} </h5>
+
   <br>
+  <!--  -->
   <!-- PLAN-->
-  <div class="card text-center" id="cuadro">
+  <div *ngIf="cuadroPlan === true && usuario.rol==='Alumno'" class="card text-center" id="cuadro">
     <div class="card-header" id="encabezado">
       Plan del Alumno
     </div>
@@ -230,7 +237,7 @@
   </div> -->
   <br>
 
-  <h5 id="tituloTabla" class="text-center">Rutina asignada</h5>
+<!--   <h5 id="tituloTabla" class="text-center">Rutina asignada</h5>
   <div class="accordion" id="accordionPanelsStayOpenExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -418,12 +425,9 @@
         <td>@twitter</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
 
   <br><br>
-
   <br><br>
-
-
 
 </div>
