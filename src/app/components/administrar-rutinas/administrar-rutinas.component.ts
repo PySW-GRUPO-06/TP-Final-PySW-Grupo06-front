@@ -27,7 +27,8 @@ export class AdministrarRutinasComponent implements OnInit {
   private idDia = '2'
   private idEjercicio = '3'
   private modificarEjercicioB: boolean = false
-  private entrarIngresarDia:boolean=false
+  private entrarIngresarDia: boolean = false
+
   cuadro1: boolean = true;
   cuadro2: boolean = false;
   cuadro3: boolean = false;
@@ -41,7 +42,7 @@ export class AdministrarRutinasComponent implements OnInit {
       this.listaRutinas = []
       this.listaDias = []
       this.listaEjercicios = []
-      this.ejercicio.img='Sin imagen'
+      this.ejercicio.img = 'Sin imagen'
       this.mostrarListaRutinas()
     } else {
       alert("Debe validarse e ingresar su usuario y clave");
@@ -86,7 +87,7 @@ export class AdministrarRutinasComponent implements OnInit {
       this.rutinaService.modificarRutina(this.rutina).subscribe(
         (result: any) => {
           console.log(result)
-          if(this.modificarEjercicioB == false){
+          if (this.modificarEjercicioB == false) {
             this.mostrarListaEjercicios()
           }
         }
@@ -98,14 +99,14 @@ export class AdministrarRutinasComponent implements OnInit {
 
   private obtenerDia() {
     try {
-      console.log("se obtiene el dia "+ this.idDia)
+      console.log("se obtiene el dia " + this.idDia)
       console.log(this.modificarEjercicioB)
       this.diaService.getDiaEjercicio(this.idDia).subscribe(
-        (result : any) => {
+        (result: any) => {
           console.log("resltado de obtener dia:")
           console.log(result);
           this.dia = result
-          
+          console.log('obtener dia, modificar ejercicio B: ' + this.modificarEjercicioB)
           if (this.modificarEjercicioB) {
             this.modificarDia()
           } else {
@@ -119,15 +120,16 @@ export class AdministrarRutinasComponent implements OnInit {
   }
 
   private modificarDia() {
-    this.dia.ejercicios.push(this.ejercicio._id)
+    this.dia.ejercicios.push(this.idEjercicio)
 
-    console.log("editar dia para ejercicio ")
+    console.log("editar dia para ejercicio, con ejercicio:  " + this.idEjercicio)
     console.log(this.dia)
     try {
       this.diaService.putEditarDiaEjercicio(this.dia).subscribe(
-        (result: any) => {
-          
+        result => {
+
           console.log(result);
+          this.mostrarListaEjercicios()
         }
       )
     } catch (error) {
@@ -137,7 +139,7 @@ export class AdministrarRutinasComponent implements OnInit {
   agregarDia() {
 
     this.modificarEjercicioB = false
-
+    this.entrarIngresarDia = false
     try {
       console.log("se guardo el dia")
       console.log(this.dia)
@@ -210,12 +212,10 @@ export class AdministrarRutinasComponent implements OnInit {
     try {
       this.diaService.getDiaEjercicio(this.idDia).subscribe(
         (result) => {
-          console.log(result)
-          result.ejercicios.forEach((element: any) => {
-            console.log(element)
-            this.listaEjercicios = element;
-            console.log(this.listaEjercicios)
-          });
+          console.log('-------- ')
+          console.log(result.ejercicios)
+          this.listaEjercicios = result.ejercicios;
+          console.log(this.listaEjercicios)
         }
       )
     } catch (error) {
@@ -231,18 +231,29 @@ export class AdministrarRutinasComponent implements OnInit {
   }
 
   cambiarValoresIf() {
-    this.crearRutina()
-    this.mostrarListaRutinas()
-    this.entrarIngresarDia=true
+
+    console.log('cambiar valores IF: ' + this.entrarIngresarDia)
+    if (this.entrarIngresarDia) {
+      this.mostrarListaDias()
+    } else {
+      this.entrarIngresarDia = true
+      this.crearRutina()
+      this.mostrarListaRutinas()
+    }
+    this.entrarIngresarDia = true
     this.cuadro1 = false;
     this.cuadro2 = true;
     this.cuadro3 = false;
+
+
   }
   cambiarValoresIf2() {
-    if(this.entrarIngresarDia){
+    if (this.entrarIngresarDia) {
+      console.log('agrefar dia en cambiar valores if2')
       this.agregarDia()
-    }else{
-      this.mostrarListaEjercicios()
+    } else {
+      console.log('mostrar lista de ejercicios en cambiar valores if2')
+      this.agregarEjercicio()
     }
     this.cuadro1 = false;
     this.cuadro2 = false;

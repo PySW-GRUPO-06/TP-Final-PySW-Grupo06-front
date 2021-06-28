@@ -205,54 +205,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">Lunes</th>
-              <td>Banca Inclinada</td>
-              <td>3</td>
-              <td>3 repeticiones</td>
-              <td>30 segundos</td>
-            </tr>
-            <tr>
-              <th scope="row">Lunes</th>
-              <td>Banca Inclinada</td>
-              <td>3</td>
-              <td>3 repeticiones</td>
-              <td>30 segundos</td>
-            </tr>
-            <tr>
-              <th scope="row">Lunes</th>
-              <td>Banca Inclinada</td>
-              <td>3</td>
-              <td>3 repeticiones</td>
-              <td>30 segundos</td>
-            </tr>
-            <tr>
-              <th scope="row">Martes</th>
-              <td>Banca Inclinada</td>
-              <td>3</td>
-              <td>3 repeticiones</td>
-              <td>30 segundos</td>
-            </tr>
-            <tr>
-              <th scope="row">Viernes</th>
-              <td>Banca Inclinada</td>
-              <td>3</td>
-              <td>3 repeticiones</td>
-              <td>30 segundos</td>
-            </tr>
-            <tr>
-              <th scope="row">Sabado</th>
-              <td>Banca Inclinada</td>
-              <td>3</td>
-              <td>3 repeticiones</td>
-              <td>30 segundos</td>
-            </tr>
-            <tr>
-              <th scope="row">Sabado</th>
-              <td>Banca Inclinada</td>
-              <td>3</td>
-              <td>3 repeticiones</td>
-              <td>30 segundos</td>
+            <tr *ngFor="let lejercicios of listaEjercicios">
+              <th scope="row">{{lejercicios.nombre}}</th>
+              <td>{{lejercicios.peso}}</td>
+              <td>{{lejercicios.series}}</td>
+              <td>{{lejercicios.repeticiones}}</td>
+              <td>{{lejercicios.descansoEntreSeries}}</td>
             </tr>
           </tbody>
         </table>
