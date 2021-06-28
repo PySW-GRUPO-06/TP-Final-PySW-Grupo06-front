@@ -1,4 +1,6 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cuota } from 'src/app/models/cuota';
 import { AlumnoService } from 'src/app/service/alumno.service';
 import { CuotaService } from 'src/app/service/cuota.service';
@@ -28,8 +30,11 @@ export class RegistrarCuotasComponent implements OnInit {
   private alumno: any
   private registrar : boolean = false
 
+  ativarCuadro:boolean=false;
+
   constructor(private pagosService: CuotaService, private personaService: PersonaService,
-    private planService: PlanService, private alumnoService: AlumnoService) {
+    private planService: PlanService, private alumnoService: AlumnoService,
+    private route:Router) {
     /* this.obtenerDatosPersona() */
   }
 
@@ -38,7 +43,9 @@ export class RegistrarCuotasComponent implements OnInit {
 
   realizarPago(){
     this.registrar=true
-    this.obtenerDatosPersona()
+    this.obtenerDatosPersona();
+    this.ativarCuadro=false;
+    this.dni=0;
   }
 
   private registrarCuota() {
@@ -93,6 +100,7 @@ export class RegistrarCuotasComponent implements OnInit {
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
+    this.ativarCuadro=true;
   }
 
   private guardarEnPlan(idCuota: string) {
@@ -132,5 +140,9 @@ export class RegistrarCuotasComponent implements OnInit {
 
   generarComprobante() {
 
+  }
+
+  volverAPrincipal(){
+    this.route.navigate(['principalEntrenador']);
   }
 }

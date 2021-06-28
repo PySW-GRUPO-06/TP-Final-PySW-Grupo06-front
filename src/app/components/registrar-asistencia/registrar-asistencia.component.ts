@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Alumno } from 'src/app/models/alumno';
 import { Asistencia } from 'src/app/models/asistencia';
 import { AlumnoService } from 'src/app/service/alumno.service';
@@ -26,7 +27,8 @@ export class RegistrarAsistenciaComponent implements OnInit {
   busquedaPrevia:boolean=false;
 
   constructor(private asistenciaService: AsistenciaService, private personaService: PersonaService,
-    private alumnoService: AlumnoService) {
+    private alumnoService: AlumnoService,
+    private route:Router) {
       
     /* this.obtenerDatosPersona()
     this.guardarAsistencia() */
@@ -113,5 +115,9 @@ export class RegistrarAsistenciaComponent implements OnInit {
     this.botonNuevoAlumno=false;
     this.busquedaPrevia=false;
     
+  }
+
+  volverAPrincipal(){
+    this.route.navigate(['principalEntrenador']);
   }
 }
