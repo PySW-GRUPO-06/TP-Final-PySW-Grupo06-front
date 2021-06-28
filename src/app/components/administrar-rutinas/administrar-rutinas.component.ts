@@ -142,15 +142,23 @@ export class AdministrarRutinasComponent implements OnInit {
   agregarDia() {
 
     this.modificarEjercicioB = false
+    var nuevoDia:Dia = new Dia()
+    nuevoDia.dia=this.dia.dia
+    nuevoDia.tipoDeTrabajo=this.dia.tipoDeTrabajo
+    console.log('nuevoDia:')
+    console.log(nuevoDia)
     try {
       console.log("se guardo el dia")
-      console.log(this.dia)
-      this.diaService.postDiaEjercicio(this.dia).subscribe(
+      console.log(nuevoDia)
+      this.diaService.postDiaEjercicio(nuevoDia).subscribe(
         (result: any) => {
           console.log("se guardo el dia, con respuesta: ")
           console.log(result);
           this.idDia = result.id
           this.obtenerDia()
+          console.log("nuevo diaaa: ")
+          this.dia= new Dia()
+          console.log(this.dia)
         }
       )
     } catch (error) {
@@ -194,6 +202,7 @@ export class AdministrarRutinasComponent implements OnInit {
   }
 
   mostrarListaDias() {
+    console.log("MOSTRAR LISTA DE DIAS")
     try {
       this.rutinaService.obtenerRutina(this.idRutina).subscribe(
         (result: any) => {
