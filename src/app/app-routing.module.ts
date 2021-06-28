@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'administrarEntrenador', component: AdministrarEntrenadorComponent },
   { path: 'principalAlumnos', component: PrincipalAlumnosComponent },
   { path: 'administrarDatosDeUnAlumno', component: AdministrarDatosDeUnAlumnoComponent },
+  { path: 'administrarEtrenador', component: AdministrarEntrenadorComponent },
   { path: '**', pathMatch:'full',redirectTo:'principal' }
   
 ];
