@@ -33,6 +33,15 @@ export class PersonaService {
     return this._http.get(this.url + 'dni/'+dni, httpOptions);
   }
 
+  public obtenerPersonaUsuario(idUsuario: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    };
+    return this._http.get(this.url + 'usuario/'+idUsuario, httpOptions);
+  }
+
   public obtenerPersonas(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
