@@ -22,7 +22,7 @@ export class RegistrarCuotasComponent implements OnInit {
   /* fechaPago!: Date */
   mesAPagar: string = ' '
 
-  fotoPefil='./../../../assets/gym/fotoPerfil.jpg'
+  fotoPefil:any='./../../../assets/gym/fotoPerfil.jpg'
 
 
   private plan: any
