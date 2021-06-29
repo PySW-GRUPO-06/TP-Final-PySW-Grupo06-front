@@ -14,31 +14,31 @@
           <form class="row g-3">
               <div class="col-md-6">
                 <label for="inputNombre" class="form-label">Nombre</label>
-                <input type="texto" class="form-control" id="inputNombre">
+                <input type="texto" class="form-control" id="inputNombre" name="persona.nombre" [(ngModel)]="persona.nombre">
               </div>
               <div class="col-md-6">
                   <label for="inputApellido" class="form-label">Apellido</label>
-                  <input type="texto" class="form-control" id="inputApellido">
+                  <input type="texto" class="form-control" id="inputApellido" name="persona.apellido" [(ngModel)]="persona.apellido">
                 </div>
               <div class="col-4">
                 <label for="inputDni" class="form-label">DNI</label>
-                <input type="texto" class="form-control" id="inputDni">
+                <input type="texto" class="form-control" id="inputDni" name="persona.dni" [(ngModel)]="persona.dni">
               </div>
               <div class="col-4">
                   <label for="inputFechaNac" class="form-label">Fecha de Nacimiento</label>
-                  <input type="date" class="form-control" id="inputFechaNac">
+                  <input type="texto" class="form-control" id="inputFechaNac" name="persona.fechaNac" [(ngModel)]="persona.fechaNac">
                 </div>
                 <div class="col-4">
                   <label for="inputCelular" class="form-label">Celular</label>
-                  <input type="texto" class="form-control" id="inputCelular">
+                  <input type="texto" class="form-control" id="inputCelular" name="persona.celular" [(ngModel)]="persona.celular">
                 </div>
               <div class="col-4">
                 <label for="inputEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="jtolababsd@gmail.com">
+                <input type="email" class="form-control" id="inputEmail" placeholder="jtolababsd@gmail.com" name="persona.correo" [(ngModel)]="persona.correo">
               </div>
               <div class="col-4">
                 <label for="inputDomicilio" class="form-label">Domicilio</label>
-                <input type="texto" class="form-control" id="inputDomicilio">
+                <input type="texto" class="form-control" id="inputDomicilio" name="persona.domicilio" [(ngModel)]="persona.domicilio">
               </div>
               <div class="col-4">
                   <label for="inputFechaInicio" class="form-label">Fecha de inicio</label>
@@ -75,24 +75,24 @@
           <form class="row g-3">
             <div class="col-md-6">
               <label for="inputState" class="form-label">Elija un plan</label>
-              <select id="inputState" class="form-select">
-                <option selected></option>
+              <select id="inputState" class="form-select" name="plan.tipo"  [(ngModel)]="plan.tipo">
+                <option selected [ngValue]="plan.tipo"></option>
                 <option>Pase Libre (todos los dias)</option>
                 <option>Full (5 dias)</option>
                 <option>Basico (3 dias)</option>
               </select>
             </div>
             <div class="col-6">
-              <label for="inputFechaInicioPlan" class="form-label">Fecha de inicio Plan</label>
-              <input type="date" class="form-control" id="inputFechaInicioPlan">
+              <label for="inputFechaInicioPlan" class="form-label" >Fecha de inicio Plan</label>
+              <input type="text" class="form-control" id="inputFechaInicioPlan" name="plan.fechaInicioPlan" [(ngModel)]="plan.fechaInicioPlan">
             </div>
             <div class="col-6">
-              <label for="inputFechaFinPlan" class="form-label">Fecha de Fin Plan</label>
-              <input type="date" class="form-control" id="inputFechaFinPlan">
+              <label for="inputFechaFinPlan" class="form-label" >Fecha de Fin Plan</label>
+              <input type="text" class="form-control" id="inputFechaFinPlan" name="plan.fechaFinDelPlan" [(ngModel)]="plan.fechaFinDelPlan">
             </div>
             <div class="col-md-6">
-              <label for="inputNivel" class="form-label">Nivel</label>
-              <select id="inputNivel" class="form-select">
+              <label for="inputNivel" class="form-label" >Nivel</label>
+              <select id="inputNivel" class="form-select" name="plan.nivel" [(ngModel)]="plan.nivel">
                 <option selected></option>
                 <option>Principiante</option>
                 <option>Medio</option>
@@ -101,7 +101,7 @@
             </div>
             <div class="col-md-6">
               <label for="inputObjetivo" class="form-label">Objetivo</label>
-              <select id="inputObjetivo" class="form-select">
+              <select id="inputObjetivo" class="form-select" name="plan.objetivo" [(ngModel)]="plan.objetivo">
                 <option selected></option>
                 <option>Bajar de peso</option>
                 <option>Tonificacion muscular</option>
@@ -144,11 +144,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr >
-          <th scope="row">Enero</th>
-          <td>5/5/5</td>
-          <td>tarjeta</td>
-          <td>1500$</td>
+        <tr *ngFor="let lcuotas of cuotas">
+          <th scope="row">{{lcuotas.mesAPagar}}</th>
+          <td>{{lcuotas.fechaPago}}</td>
+          <td>{{lcuotas.modoPago}}</td>
+          <td>{{lcuotas.montoAPagar}}</td>
           <td><i id="iconoPagado" class="fas fa-hand-holding-usd"></i></td>
         </tr>
       </tbody>
