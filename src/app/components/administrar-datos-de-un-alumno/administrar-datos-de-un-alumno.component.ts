@@ -22,4 +22,8 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  volverAPrincipal(){
+    this.router.navigate(['principalEntrenador']);
+  }
+
 }
