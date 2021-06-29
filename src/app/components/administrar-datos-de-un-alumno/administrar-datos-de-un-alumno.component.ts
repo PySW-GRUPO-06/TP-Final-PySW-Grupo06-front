@@ -39,6 +39,8 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
   asistencia: Array<any> = []
   cuotas: Array<any> = []
   rutina: any
+  listaRutinas: Array<any> = []
+  idNuevaRutinaElejida: string = ''
   plan: any
   usuario: any
   dieta: any
@@ -73,16 +75,14 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
   }
   obtenerIDs() {
     this.obtenerPersonaUsuario()
-
-
+    this.obtenerListaRutinas()
   }
 
   private obtenerPersonaUsuario() {
     try {
-      this.idPersona = '60d933a91c425aefe36b2acb'
-      console.log(this.idPersona)
-      this.idPersona = sessionStorage.getItem("idPersona") || ''
-      this.personaService.obtenerPersona(this.idPersona).subscribe(
+      this.idUsuario ='60d933a91c425aefe36b2aca'
+      /* this.idUsuario = sessionStorage.getItem("userBuscado") || '' */
+      this.personaService.obtenerPersonaUsuario(this.idUsuario).subscribe(
         (result) => {
           console.log("obtener persona")
           /* console.log(result); */
@@ -119,6 +119,7 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
 
   private obtenerAsistencia() {
     try {
+      this.asistencia= []
       console.log("obtener asistencia ")
       this.alumno.asistencia.forEach((element: any) => {
         this.asistenciaAlumnoService.getAsistencia(element._id).subscribe(
@@ -173,6 +174,7 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
 
   private obtenerPagos() {
     try {
+      this.cuotas=[]
       console.log("obtener pagos")
       this.plan.pago.forEach((element: string) => {
         this.pagosService.obtenerCuota(element).subscribe(
@@ -211,8 +213,6 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
 
   private obtenerRutina() {
     try {
-
-
       this.rutinaService.obtenerRutina(this.plan.rutina).subscribe(
         result => {
           console.log("id de rutina actual: " + this.plan.rutina)
@@ -221,9 +221,42 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
           this.rutina = result
           console.log("obtener rutina")
           console.log(this.rutina)
-
+          
           this.obtenerPagos()
           this.obtenerDias()
+        });
+    } catch (error) {
+      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+    }
+  }
+
+  private obtenerListaRutinas() {
+    try {
+      this.rutinaService.obtenerRutinas().subscribe(
+        result => {
+          /* console.log(result); */
+          const resultado = result
+          this.listaRutinas = result
+          console.log("obtener lista de rutinas")
+          console.log(this.listaRutinas)
+        });
+    } catch (error) {
+      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+    }
+  }
+
+  modificarRutina(){
+    try {
+
+      this.plan.rutina=this.idNuevaRutinaElejida
+      console.log("plaaan")
+      console.log(this.plan)
+
+      this.planService.putEditarPlan(this.plan).subscribe(
+        result => {
+          console.log(result);
+          const resultado = result
+          this.obtenerIDs()
         });
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
