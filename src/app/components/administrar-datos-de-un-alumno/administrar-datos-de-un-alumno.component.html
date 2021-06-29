@@ -206,7 +206,7 @@
       <tbody>
         <tr *ngFor="let lcuotas of cuotas">
           <th scope="row">{{lcuotas.mesAPagar}}</th>
-          <td>{{lcuotas.fechaPago}}</td>
+          <td>{{lcuotas.fechaPago  | date:'dd/mm/yy'}}</td>
           <td>{{lcuotas.modoPago}}</td>
           <td>{{lcuotas.montoAPagar}}</td>
           <td><i id="iconoPagado" class="fas fa-hand-holding-usd"></i></td>
