@@ -210,6 +210,7 @@ export class AdministrarRutinasComponent implements OnInit {
 
   mostrarListaRutinas() {
     try {
+      this.listaRutinas = []
       this.rutinaService.obtenerRutinas().subscribe(
         (result: any) => {
           this.listaRutinas = result;
