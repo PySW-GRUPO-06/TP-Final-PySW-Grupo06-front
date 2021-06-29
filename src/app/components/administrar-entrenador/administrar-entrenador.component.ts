@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/models/usuario';
 import { EntrenadorService } from 'src/app/service/entrenador.service';
 import { PersonaService } from 'src/app/service/persona.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
@@ -12,6 +13,8 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 export class AdministrarEntrenadorComponent implements OnInit {
 
   listaEntrenadores: Array<any> = []
+  listaUsuarios: Array<any> = []
+
   listaIdEntrenador: Array<string> = []
   listaIdUsuario: Array<string>=[]
   idEntrenador: string = ''
@@ -45,11 +48,57 @@ export class AdministrarEntrenadorComponent implements OnInit {
                   this.listaEntrenadores.push(result1)
                   this.listaIdUsuario.push(result1.usuario._id)
                   /* console.log(this.listaEntrenadores[0]._id) */
+                  this.obtenerUsuario(result1.usuario._id)
                 });
             } catch (error) {
               console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
             }
           });
+        });
+    } catch (error) {
+      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+    }
+  }
+
+  obtenerUsuario(id:string){
+    try {
+      this.usuarioService.obtenerUsuario(id).subscribe(
+        (result2) => {
+          console.log(result2);
+          const resultado2 = result2
+          this.listaUsuarios.push(result2)
+        });
+    } catch (error) {
+      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+    }
+  }
+
+  desactivarUsuario(posicionUsuario:number){
+    try {
+      console.log("desactivar usuario")
+      this.listaUsuarios[posicionUsuario].activo="false";
+      this.usuarioService.modificarUsuario(this.listaUsuarios[posicionUsuario]).subscribe(
+        (result2) => {
+          console.log(this.listaUsuarios[posicionUsuario])
+          console.log(result2);
+          const resultado2 = result2
+          this.obtenerEntrenador()
+        });
+    } catch (error) {
+      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+    }
+  }
+
+  activarUsuario(posicionUsuario:number){
+    try {
+      console.log("activar usuario")
+      this.listaUsuarios[posicionUsuario].activo="true";
+      this.usuarioService.modificarUsuario(this.listaUsuarios[posicionUsuario]).subscribe(
+        (result2) => {
+          console.log(this.listaUsuarios[posicionUsuario])
+          console.log(result2);
+          const resultado2 = result2
+          this.obtenerEntrenador()
         });
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")

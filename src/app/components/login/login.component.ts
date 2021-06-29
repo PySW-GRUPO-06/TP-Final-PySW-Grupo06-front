@@ -46,14 +46,20 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem("userid", user.userid);
             sessionStorage.setItem("perfil", user.perfil);
             sessionStorage.setItem("token", user.token);
-            sessionStorage.setItem("rol", user.rol)
+            sessionStorage.setItem("rol", user.rol);
+            sessionStorage.setItem("activo", user.activo);
             //redirigimos a home o a pagina que llamo
             /* this.router.navigateByUrl(this.returnUrl); */
             /* console.log('entroooooooooooooooooooo'+this.userform.userName) */
-            if(user.rol == 'entrenador'){
-              this.irAPricipalEntrenador()
+            console.log(user.activo)
+            if(user.activo){
+              if(user.rol == 'entrenador'){
+                this.irAPricipalEntrenador()
+              }else{
+                this.irAPrincipalAlumno()
+              }
             }else{
-              this.irAPrincipalAlumno()
+              console.log("No se pudo ingresar porque no es usuario activo")
             }
             
           } else {
