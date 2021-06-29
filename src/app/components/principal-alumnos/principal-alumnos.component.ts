@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegistroDieta } from 'src/app/models/registro-dieta';
 import { Usuario } from 'src/app/models/usuario';
 import { AlumnoService } from 'src/app/service/alumno.service';
@@ -6,6 +7,7 @@ import { AsistenciaService } from 'src/app/service/asistencia.service';
 import { CuotaService } from 'src/app/service/cuota.service';
 import { DiaEjercicioService } from 'src/app/service/dia-ejercicio.service';
 import { DietaService } from 'src/app/service/dieta.service';
+import { LoginService } from 'src/app/service/login.service';
 import { PersonaService } from 'src/app/service/persona.service';
 import { PlanService } from 'src/app/service/plan.service';
 import { RegistroDietaService } from 'src/app/service/registro-dieta.service';
@@ -54,11 +56,11 @@ export class PrincipalAlumnosComponent implements OnInit {
 
 
 
-  constructor(private asistenciaAlumnoService: AsistenciaService, private pagosService: CuotaService,
+  constructor(private route:Router, private activatedRoute:ActivatedRoute,private asistenciaAlumnoService: AsistenciaService, private pagosService: CuotaService,
     private rutinaService: RutinaService, private usuarioService: UsuarioService,
     private dietaService: DietaService, private registroDietaService: RegistroDietaService,
     private personaService: PersonaService, private alumnoService: AlumnoService, private planService: PlanService,
-    private diaService: DiaEjercicioService) {
+    private diaService: DiaEjercicioService,private loginService: LoginService) {
     this.obtenerToken()
     this.obtenerIDs()
     /* this.idDiasElegido = '60da75080ca683314a71e061' */
@@ -76,6 +78,11 @@ export class PrincipalAlumnosComponent implements OnInit {
 
 
   }
+
+  cerrarSecion(){
+    this.loginService.logout();
+    this.route.navigate(['principal']);
+}
 
   private obtenerPersonaUsuario() {
     try {

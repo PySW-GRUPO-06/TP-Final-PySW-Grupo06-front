@@ -30,6 +30,9 @@ export class LoginService {
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("perfil");
     sessionStorage.removeItem("userid");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("rol");
+    sessionStorage.removeItem("activo");
 
     this.userLogged();
     this.userLoggedIn();//borro el token almacenado mediante el storage

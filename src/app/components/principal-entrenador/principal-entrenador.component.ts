@@ -8,6 +8,7 @@ import { Persona } from 'src/app/models/persona';
 import { Usuario } from 'src/app/models/usuario';
 import { AlumnoService } from 'src/app/service/alumno.service';
 import { AsistenciaService } from 'src/app/service/asistencia.service';
+import { LoginService } from 'src/app/service/login.service';
 import { PersonaService } from 'src/app/service/persona.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
@@ -34,7 +35,7 @@ cantInscriptos:number=0;
   constructor(private route:Router,
     private activatedRoute:ActivatedRoute, private personaService:PersonaService,
     private alumnoService:AlumnoService,private usuarioService:UsuarioService,
-    private asistenciaService:AsistenciaService) {
+    private asistenciaService:AsistenciaService,private loginService: LoginService) {
       
       this.mostrarActivosYnoActivos();
       this.cargarPersonasNoActivas();
@@ -72,6 +73,11 @@ irAAdministrarEntrenador():void{
 
 irADatosDelAlumno():void{
   this.route.navigate(['administrarDatosDeUnAlumno']);
+}
+
+cerrarSecion(){
+    this.loginService.logout();
+    this.route.navigate(['principal']);
 }
 
 mostrarPersonas(){
