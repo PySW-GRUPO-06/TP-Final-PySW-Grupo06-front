@@ -204,6 +204,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th scope="col"></th>
             <th scope="col">Fecha</th>
             <th scope="col">Tipo</th>
             <th scope="col">Presentismo</th>
@@ -211,7 +212,8 @@
         </thead>
         <tbody>
           <tr *ngFor="let lasistencias of asistencia">
-            <th scope="row">{{lasistencias.dia}}</th>
+            <th scope="row">{{asistencia.indexOf(lasistencias)+1}}</th>
+            <th scope="row">{{lasistencias.dia | date:'dd/mm/yy'}}</th>
             <td>{{lasistencias.tipoAsistencia}}</td>
             <td><i id="iconoPresente" class="fas fa-user-check"></i></td>
           </tr>

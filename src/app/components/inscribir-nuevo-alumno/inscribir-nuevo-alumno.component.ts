@@ -107,7 +107,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
       this.personaService.guardarPersona(this.persona).subscribe(
         result => {
           if (result.status == 1) {
-            alert("la persona se agrego correctamente")
+           
             if (this.usuario.rol == 'entrenador') {
               this.entrenador.persona = result.id
               console.log(result)
