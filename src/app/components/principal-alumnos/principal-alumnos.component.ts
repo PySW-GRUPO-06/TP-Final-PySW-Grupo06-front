@@ -21,16 +21,17 @@ export class PrincipalAlumnosComponent implements OnInit {
 
   asistencia: Array<any> = []
   cuotas: Array<any> = []
-  rutina: Array<any> = []
+  rutina: any
   plan: any
   usuario: any
   dieta: any
   registroDieta: Array<any> = []
   persona: any
   alumno: any;
-  dias: Array<any> = []
   diasPorRutina: Array<any> = []
-  
+  idDiasElegido!: string
+  ejercicios: Array<any> = []
+
   fotoRegistroDieta: string = ''
   alturaRegistroDieta: number = 0
   pesoRegistroDieta: number = 0
@@ -49,7 +50,7 @@ export class PrincipalAlumnosComponent implements OnInit {
   tabla1: boolean = true;
   tabla2: boolean = false;
   tabla3: boolean = false;
- 
+
 
 
 
@@ -57,15 +58,11 @@ export class PrincipalAlumnosComponent implements OnInit {
     private rutinaService: RutinaService, private usuarioService: UsuarioService,
     private dietaService: DietaService, private registroDietaService: RegistroDietaService,
     private personaService: PersonaService, private alumnoService: AlumnoService, private planService: PlanService,
-    private diaService:DiaEjercicioService) {
+    private diaService: DiaEjercicioService) {
     this.obtenerToken()
     this.obtenerIDs()
-    /* this.obtenerRutina()
-    this.obtenerAsistencia()
-    this.obtenerPagos()
-    this.obtenerUsuario()
-    this.obtenerDietaIdeal()
-    this.obtenerRegistroDieta() */
+    this.idDiasElegido = '60da75080ca683314a71e061'
+    this.obtenerEjercicios()
   }
 
   ngOnInit(): void {
@@ -84,13 +81,14 @@ export class PrincipalAlumnosComponent implements OnInit {
   private obtenerPersonaUsuario() {
     try {
       this.idUsuario = sessionStorage.getItem("userid") || ''
-      console.log("obtener persona")
       this.personaService.obtenerPersonaUsuario(this.idUsuario).subscribe(
         (result) => {
-          console.log(result);
+          console.log("obtener persona")
+          /* console.log(result); */
           const resultado = result
           this.persona = result[0]
           this.usuario = result[0].usuario
+          console.log(this.persona)
           this.obtenerAlumnoPorPersona()
         });
     } catch (error) {
@@ -100,13 +98,15 @@ export class PrincipalAlumnosComponent implements OnInit {
 
   private obtenerAlumnoPorPersona() {
     try {
-      console.log("obtener alumno")
+
       this.alumnoService.getAlumnoPorPersona(this.persona._id).subscribe(
         (result) => {
-          console.log(result);
+          console.log("obtener alumno")
+          /* console.log(result); */
           const resultado = result
           this.alumno = result[0]
           this.idPlan = this.alumno.planActivo
+          console.log(this.alumno)
 
           this.obtenerPlan()
 
@@ -134,36 +134,37 @@ export class PrincipalAlumnosComponent implements OnInit {
     }
   }
 
-  private obtenerEjercicios(){
+  private obtenerEjercicios() {
     try {
-      console.log("obtener ejercicios")
-      this.plan.pago.forEach((element: string) => {
-        this.pagosService.obtenerCuota(element).subscribe(
+
+      if (this.idDiasElegido) {
+        this.diaService.getDiaEjercicio(this.idDiasElegido).subscribe(
           (result) => {
-            /* console.log(result); */
+            /* console.log("obtener ejerciciosssssssssssss")
+            console.log(result); */
             const resultado = result
-            this.cuotas.push(result)
+            this.ejercicios = result.ejercicios
+
+            console.log("obtener ejercicios")
+            console.log(this.ejercicios)
           });
-        console.log(this.cuotas)
-        this.obtenerAsistencia()
-      });
+      }
+
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
   }
 
-  private obtenerDias(){
+  private obtenerDias() {
     try {
       console.log("obtener dias")
-      this.diasPorRutina=[]
-      this.rutina.forEach((rutin: any) => {
-        this.dias=[]
-        console.log("id de rutina actual: " + rutin._id)
-        this.dias=rutin.dias
-        this.diasPorRutina.push(this.dias)
-      });
+      this.diasPorRutina = []
+      /* console.log(this.rutina.dias) */
+
+      this.diasPorRutina = this.rutina.dias
+
       console.log(this.diasPorRutina)
-      this.obtenerEjercicios()
+
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
@@ -189,10 +190,10 @@ export class PrincipalAlumnosComponent implements OnInit {
 
   private obtenerPlan() {
     try {
-      console.log("obtener plan")
-      console.log("id de plan actual: " + this.idPlan)
+
       this.planService.getPlan(this.idPlan).subscribe(
         result => {
+          console.log("obtener plan")
           /* console.log(result); */
           const resultado = result
           this.plan = result
@@ -206,19 +207,20 @@ export class PrincipalAlumnosComponent implements OnInit {
 
   private obtenerRutina() {
     try {
-      console.log("obtener rutina")
-      this.plan.rutina.forEach((element: string) => {
-        console.log("id de rutina actual: " + element)
-        this.rutinaService.obtenerRutina(element).subscribe(
+
+
+        this.rutinaService.obtenerRutina(this.plan.rutina).subscribe(
           result => {
+            console.log("id de rutina actual: " + this.plan.rutina)
             /* console.log(result); */
             const resultado = result
-            this.rutina.push(result)
+            this.rutina = result
+            console.log("obtener rutina")
+            console.log(this.rutina)
+
+            this.obtenerPagos()
+            this.obtenerDias()
           });
-      });
-      console.log(this.rutina)
-      this.obtenerPagos()
-      this.obtenerDias()
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
