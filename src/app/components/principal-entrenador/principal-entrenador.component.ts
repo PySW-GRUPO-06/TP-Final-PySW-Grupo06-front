@@ -33,6 +33,10 @@ export class PrincipalEntrenadorComponent implements OnInit {
   cantInscriptos: number = 0;
   cantSolicitudes: number = 0;
   cantAsistencia:number=0;
+
+  usuariosActivos: Array<Usuario> = []
+  usuariosNoActivos: Array<Usuario> = []
+
   constructor(private route: Router,
     private activatedRoute: ActivatedRoute, private personaService: PersonaService,
     private alumnoService: AlumnoService, private usuarioService: UsuarioService,
@@ -75,7 +79,13 @@ export class PrincipalEntrenadorComponent implements OnInit {
     this.route.navigate(['administrarEntrenador']);
   }
 
-  irADatosDelAlumno(): void {
+  irADatosDelAlumnoActivos(posicion:number): void {
+    sessionStorage.setItem("userBuscado", String(this.usuariosActivos[posicion]._id));
+    this.route.navigate(['administrarDatosDeUnAlumno']);
+  }
+
+  irADatosDelAlumnoNoActivos(posicion:number): void {
+    sessionStorage.setItem("userBuscado", String(this.usuariosNoActivos[posicion]._id));
     this.route.navigate(['administrarDatosDeUnAlumno']);
   }
 
@@ -194,7 +204,7 @@ export class PrincipalEntrenadorComponent implements OnInit {
                       }
                     ) */
                     this.cargarPersonasActivas(this.alumnos[index])
-
+                    this.obtenerUsuariosActivos(usId)
 
                   } else {
                     this.noActivos.push(this.alumnos[index])
@@ -205,6 +215,7 @@ export class PrincipalEntrenadorComponent implements OnInit {
                       }
                     ) */
                     this.cargarPersonasNoActivas(this.alumnos[index])
+                    this.obtenerUsuariosNoActivos(usId)
                   }
 
                   encontrado = false
@@ -232,6 +243,24 @@ export class PrincipalEntrenadorComponent implements OnInit {
     }
     // this.cargarPersonasActivas()
     //this.cargarPersonasNoActivas()
+  }
+
+  private obtenerUsuariosActivos(usuario:string){
+    this.usuarioService.obtenerUsuario(usuario).subscribe(
+      result => {
+        this.usuariosActivos.push(result)
+        console.log("usuarios activossssssss")
+        console.log(result)
+      });
+  }
+
+  private obtenerUsuariosNoActivos(usuario:string){
+    this.usuarioService.obtenerUsuario(usuario).subscribe(
+      result => {
+        this.usuariosNoActivos.push(result)
+        console.log("usuarios NO activossssssss")
+        console.log(result)
+      });
   }
 
   private cargarPersonasActivas(alumno: Alumno) {

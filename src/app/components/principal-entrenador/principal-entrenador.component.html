@@ -82,7 +82,7 @@
                     <td>{{item.apellido}}</td>
                     <td>{{item.dni}}</td>
                     <td>
-                      <button (click)="irADatosDelAlumno()" type="button" class="btn btn-primary">
+                      <button (click)="irADatosDelAlumnoActivos(pActivas.indexOf(item))" type="button" class="btn btn-primary">
                         Ver Alumno
                       </button>
                     </td>
@@ -115,7 +115,7 @@
                     <td>{{item.apellido}}</td>
                     <td>{{item.dni}}</td>
                     <td>
-                      <button type="button" class="btn btn-primary">
+                      <button type="button" class="btn btn-primary" (click)="irADatosDelAlumnoNoActivos(pNActivas.indexOf(item))">
                         Dar Alta
                       </button>
                     </td>

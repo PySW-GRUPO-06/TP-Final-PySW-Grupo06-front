@@ -80,8 +80,8 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
 
   private obtenerPersonaUsuario() {
     try {
-      this.idUsuario ='60d933a91c425aefe36b2aca'
-      /* this.idUsuario = sessionStorage.getItem("userBuscado") || '' */
+      /* this.idUsuario ='60d933a91c425aefe36b2aca' */
+      this.idUsuario = sessionStorage.getItem("userBuscado") || ''
       this.personaService.obtenerPersonaUsuario(this.idUsuario).subscribe(
         (result) => {
           console.log("obtener persona")
