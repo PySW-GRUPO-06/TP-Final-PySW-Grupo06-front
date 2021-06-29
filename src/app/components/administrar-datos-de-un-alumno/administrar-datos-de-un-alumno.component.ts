@@ -61,6 +61,7 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
 
   private idUsuario: string = ''
   private idPlan: string = ''
+  private idPersona: string = ''
   private idRutina: string = ''
   private token: string = ''
 
@@ -78,8 +79,10 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
 
   private obtenerPersonaUsuario() {
     try {
-      this.idUsuario = sessionStorage.getItem("userid") || ''
-      this.personaService.obtenerPersonaUsuario(this.idUsuario).subscribe(
+      this.idPersona = '60d933a91c425aefe36b2acb'
+      console.log(this.idPersona)
+      this.idPersona = sessionStorage.getItem("idPersona") || ''
+      this.personaService.obtenerPersona(this.idPersona).subscribe(
         (result) => {
           console.log("obtener persona")
           /* console.log(result); */
@@ -174,9 +177,12 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
       this.plan.pago.forEach((element: string) => {
         this.pagosService.obtenerCuota(element).subscribe(
           (result) => {
-            /* console.log(result); */
-            const resultado = result
-            this.cuotas.push(result)
+            if (result) {
+              console.log("pagos")
+              console.log(result);
+              const resultado = result
+              this.cuotas.push(result)
+            }
           });
         console.log(this.cuotas)
         this.obtenerAsistencia()

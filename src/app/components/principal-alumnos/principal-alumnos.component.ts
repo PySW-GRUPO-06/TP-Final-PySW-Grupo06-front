@@ -56,11 +56,11 @@ export class PrincipalAlumnosComponent implements OnInit {
 
 
 
-  constructor(private route:Router, private activatedRoute:ActivatedRoute,private asistenciaAlumnoService: AsistenciaService, private pagosService: CuotaService,
+  constructor(private route: Router, private activatedRoute: ActivatedRoute, private asistenciaAlumnoService: AsistenciaService, private pagosService: CuotaService,
     private rutinaService: RutinaService, private usuarioService: UsuarioService,
     private dietaService: DietaService, private registroDietaService: RegistroDietaService,
     private personaService: PersonaService, private alumnoService: AlumnoService, private planService: PlanService,
-    private diaService: DiaEjercicioService,private loginService: LoginService) {
+    private diaService: DiaEjercicioService, private loginService: LoginService) {
     this.obtenerToken()
     this.obtenerIDs()
     /* this.idDiasElegido = '60da75080ca683314a71e061' */
@@ -79,10 +79,10 @@ export class PrincipalAlumnosComponent implements OnInit {
 
   }
 
-  cerrarSecion(){
+  cerrarSecion() {
     this.loginService.logout();
     this.route.navigate(['principal']);
-}
+  }
 
   private obtenerPersonaUsuario() {
     try {
@@ -140,9 +140,9 @@ export class PrincipalAlumnosComponent implements OnInit {
     }
   }
 
-  obtenerEjercicios(idElejido:string) {
+  obtenerEjercicios(idElejido: string) {
     try {
-      this.idDiasElegido=idElejido
+      this.idDiasElegido = idElejido
       if (this.idDiasElegido) {
         this.diaService.getDiaEjercicio(this.idDiasElegido).subscribe(
           (result) => {
@@ -182,9 +182,12 @@ export class PrincipalAlumnosComponent implements OnInit {
       this.plan.pago.forEach((element: string) => {
         this.pagosService.obtenerCuota(element).subscribe(
           (result) => {
-            /* console.log(result); */
-            const resultado = result
-            this.cuotas.push(result)
+            if (result) {
+              console.log("pagos")
+              console.log(result);
+              const resultado = result
+              this.cuotas.push(result)
+            }
           });
         console.log(this.cuotas)
         this.obtenerAsistencia()
@@ -215,18 +218,18 @@ export class PrincipalAlumnosComponent implements OnInit {
     try {
 
 
-        this.rutinaService.obtenerRutina(this.plan.rutina).subscribe(
-          result => {
-            console.log("id de rutina actual: " + this.plan.rutina)
-            /* console.log(result); */
-            const resultado = result
-            this.rutina = result
-            console.log("obtener rutina")
-            console.log(this.rutina)
+      this.rutinaService.obtenerRutina(this.plan.rutina).subscribe(
+        result => {
+          console.log("id de rutina actual: " + this.plan.rutina)
+          /* console.log(result); */
+          const resultado = result
+          this.rutina = result
+          console.log("obtener rutina")
+          console.log(this.rutina)
 
-            this.obtenerPagos()
-            this.obtenerDias()
-          });
+          this.obtenerPagos()
+          this.obtenerDias()
+        });
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }

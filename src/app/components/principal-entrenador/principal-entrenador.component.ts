@@ -77,9 +77,8 @@ irADatosDelAlumno():void{
 
 cerrarSecion(){
     this.loginService.logout();
-    this.route.navigate(['principal']);
+    this.route.navigate(['registrarCuotas']);
 }
-
 mostrarPersonas(){
     try {
       this.personaService.obtenerPersonas().subscribe(
