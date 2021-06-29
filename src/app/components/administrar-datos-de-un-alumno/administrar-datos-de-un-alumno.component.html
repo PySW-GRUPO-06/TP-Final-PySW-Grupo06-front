@@ -44,11 +44,64 @@
                   <label for="inputFechaInicio" class="form-label">Fecha de inicio</label>
                   <input type="date" class="form-control" id="inputFechaInicio">
                 </div>
-                <div class="col-12">
+                <div class="col-8">
                  <button type="button" class="btn btn-primary">Subir foto</button>
                  <br><br>
                  <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
                 </div>
+                <div class="col-4">
+                  <div class="card text-center" id="cuadroUs">
+                    <div class="card-header" style="background-color: black; font-size: 20px;">
+                      Generar Usuario <i class="fas fa-user"></i>
+                    </div>
+                    <div class="card-body">
+                      <div class="col-12">
+                        <label for="inputUsuario" class="form-label">Usuario</label>
+                        <input type="texto" class="form-control" id="inputUsuario" name="usuario.userName"
+                          [(ngModel)]="usuario.userName">
+                      </div>
+                      <div class="col-12">
+                        <label for="inputContra" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="inputContra" name="usuario.password"
+                          [(ngModel)]="usuario.password">
+                      </div>
+                      
+                      <div >
+                      <div class="col-md-12">
+                        <label for="inputRol" class="form-label">Rol</label>
+                        <select id="inputRol" class="form-select" name="usuario.rol" [(ngModel)]="usuario.rol">
+                          <option selected></option>
+                          <option value="Alumno">Alumno</option>
+                          <option value="entrenador">Entrenador</option>
+                        </select>
+                      </div>
+                      <br>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="usuario.activo" id="activo" checked
+                          [(ngModel)]="usuario.activo" value="true">
+                        <label class="form-check-label" for="activo">
+                          Activo
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="usuario.activo" id="inactivo"
+                          [(ngModel)]="usuario.activo" value="false">
+                        <label class="form-check-label" for="inactivo">
+                          Inactivo
+                        </label>
+                      </div>
+                    </div>
+        
+                  </div>
+                    <div class="card-footer text-muted">
+                      GYM Grupo 06
+                    </div>
+                  </div>
+                </div>
+                
+
+
+
         <div class="col-4"></div>
               <div class="col-2">
                 <button type="submit" class="btn btn-primary">Guardar Datos</button>
@@ -277,6 +330,30 @@
           </div>
     </div>
   </div>
+<br>
+
+<div class="card-body">
+  <h5 id="tituloTabla" class="text-center">Tabla de asistencia</h5>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Presentismo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lasistencias of asistencia">
+        <th scope="row">{{asistencia.indexOf(lasistencias)+1}}</th>
+        <th scope="row">{{lasistencias.dia | date:'dd/mm/yy'}}</th>
+        <td>{{lasistencias.tipoAsistencia}}</td>
+        <td><i id="iconoPresente" class="fas fa-user-check"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <br>
   <div class="col-12" style="text-align: center;">
     <button (click)="volverAPrincipal()" style="font-size: 19px;" type="button" class="btn btn-primary">FINALIZAR</button>
