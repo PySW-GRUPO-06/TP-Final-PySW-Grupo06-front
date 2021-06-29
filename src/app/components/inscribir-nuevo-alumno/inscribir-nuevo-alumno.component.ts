@@ -191,6 +191,8 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
       console.log("ERROR " + error + " No se pudo guardar PLAN");
 
     }
+    this.router.navigate(['administrarDatosDeUnAlumno']);
+
   }
 
   private modificarAlumno() {

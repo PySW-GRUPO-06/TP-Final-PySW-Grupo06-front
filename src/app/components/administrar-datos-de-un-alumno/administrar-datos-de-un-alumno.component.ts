@@ -285,5 +285,4 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
     }
   }
 
-
 }
