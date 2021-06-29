@@ -1,190 +1,197 @@
-
 <div id="cuerpo">
 
   <div class="col-12">
-    <button (click)="volverAPrincipal()" style="float: right;" class="btn btn-outline-danger" type="button"><i style="font-size: 28px;" class="fas fa-times-circle"></i></button>
- </div>
-    <br>
-    <br>
+    <button (click)="volverAPrincipal()" style="float: right;" class="btn btn-outline-danger" type="button"><i
+        style="font-size: 28px;" class="fas fa-times-circle"></i></button>
+  </div>
+  <br>
+  <br>
   <div class="card text-center" id="cuadro">
-      <div class="card-header" id="encabezado">
-        Datos personales del Alumno
-      </div>
-      <div class="card-body">
-          <form class="row g-3">
-              <div class="col-md-6">
-                <label for="inputNombre" class="form-label">Nombre</label>
-                <input type="texto" class="form-control" id="inputNombre" name="persona.nombre" [(ngModel)]="persona.nombre">
+    <div class="card-header" id="encabezado">
+      Datos personales del Alumno
+    </div>
+    <div class="card-body">
+      <form class="row g-3">
+        <div class="col-md-6">
+          <label for="inputNombre" class="form-label">Nombre</label>
+          <input type="texto" class="form-control" id="inputNombre" name="persona.nombre" [(ngModel)]="persona.nombre">
+        </div>
+        <div class="col-md-6">
+          <label for="inputApellido" class="form-label">Apellido</label>
+          <input type="texto" class="form-control" id="inputApellido" name="persona.apellido"
+            [(ngModel)]="persona.apellido">
+        </div>
+        <div class="col-4">
+          <label for="inputDni" class="form-label">DNI</label>
+          <input type="texto" class="form-control" id="inputDni" name="persona.dni" [(ngModel)]="persona.dni">
+        </div>
+        <div class="col-4">
+          <label for="inputFechaNac" class="form-label">Fecha de Nacimiento</label>
+          <input type="texto" class="form-control" id="inputFechaNac" name="persona.fechaNac"
+            [(ngModel)]="persona.fechaNac">
+        </div>
+        <div class="col-4">
+          <label for="inputCelular" class="form-label">Celular</label>
+          <input type="texto" class="form-control" id="inputCelular" name="persona.celular"
+            [(ngModel)]="persona.celular">
+        </div>
+        <div class="col-4">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="jtolababsd@gmail.com"
+            name="persona.correo" [(ngModel)]="persona.correo">
+        </div>
+        <div class="col-4">
+          <label for="inputDomicilio" class="form-label">Domicilio</label>
+          <input type="texto" class="form-control" id="inputDomicilio" name="persona.domicilio"
+            [(ngModel)]="persona.domicilio">
+        </div>
+        <div class="col-4">
+          <label for="inputFechaInicio" class="form-label">Fecha de inicio</label>
+          <input type="date" class="form-control" id="inputFechaInicio">
+        </div>
+        <div class="col-8">
+          <button type="button" class="btn btn-primary">Subir foto</button>
+          <br><br>
+          <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
+        </div>
+        <div class="col-4">
+          <div class="card text-center" id="cuadroUs">
+            <div class="card-header" style="background-color: black; font-size: 20px;">
+              Generar Usuario <i class="fas fa-user"></i>
+            </div>
+            <div class="card-body">
+              <div class="col-12">
+                <label for="inputUsuario" class="form-label">Usuario</label>
+                <input type="texto" class="form-control" id="inputUsuario" name="usuario.userName"
+                  [(ngModel)]="usuario.userName">
               </div>
-              <div class="col-md-6">
-                  <label for="inputApellido" class="form-label">Apellido</label>
-                  <input type="texto" class="form-control" id="inputApellido" name="persona.apellido" [(ngModel)]="persona.apellido">
-                </div>
-              <div class="col-4">
-                <label for="inputDni" class="form-label">DNI</label>
-                <input type="texto" class="form-control" id="inputDni" name="persona.dni" [(ngModel)]="persona.dni">
+              <div class="col-12">
+                <label for="inputContra" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="inputContra" name="usuario.password"
+                  [(ngModel)]="usuario.password">
               </div>
-              <div class="col-4">
-                  <label for="inputFechaNac" class="form-label">Fecha de Nacimiento</label>
-                  <input type="texto" class="form-control" id="inputFechaNac" name="persona.fechaNac" [(ngModel)]="persona.fechaNac">
+
+              <div>
+                <div class="col-md-12">
+                  <label for="inputRol" class="form-label">Rol</label>
+                  <select id="inputRol" class="form-select" name="usuario.rol" [(ngModel)]="usuario.rol">
+                    <option selected></option>
+                    <option value="Alumno">Alumno</option>
+                    <option value="entrenador">Entrenador</option>
+                  </select>
                 </div>
-                <div class="col-4">
-                  <label for="inputCelular" class="form-label">Celular</label>
-                  <input type="texto" class="form-control" id="inputCelular" name="persona.celular" [(ngModel)]="persona.celular">
+                <br>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="usuario.activo" id="activo" checked
+                    [(ngModel)]="usuario.activo" value="usuario.activo">
+                  <label class="form-check-label" for="activo">
+                    Activo
+                  </label>
                 </div>
-              <div class="col-4">
-                <label for="inputEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="jtolababsd@gmail.com" name="persona.correo" [(ngModel)]="persona.correo">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="usuario.activo" id="inactivo"
+                    [(ngModel)]="usuario.activo" value="false">
+                  <label class="form-check-label" for="inactivo">
+                    Inactivo
+                  </label>
+                </div>
               </div>
-              <div class="col-4">
-                <label for="inputDomicilio" class="form-label">Domicilio</label>
-                <input type="texto" class="form-control" id="inputDomicilio" name="persona.domicilio" [(ngModel)]="persona.domicilio">
-              </div>
-              <div class="col-4">
-                  <label for="inputFechaInicio" class="form-label">Fecha de inicio</label>
-                  <input type="date" class="form-control" id="inputFechaInicio">
-                </div>
-                <div class="col-8">
-                 <button type="button" class="btn btn-primary">Subir foto</button>
-                 <br><br>
-                 <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
-                </div>
-                <div class="col-4">
-                  <div class="card text-center" id="cuadroUs">
-                    <div class="card-header" style="background-color: black; font-size: 20px;">
-                      Generar Usuario <i class="fas fa-user"></i>
-                    </div>
-                    <div class="card-body">
-                      <div class="col-12">
-                        <label for="inputUsuario" class="form-label">Usuario</label>
-                        <input type="texto" class="form-control" id="inputUsuario" name="usuario.userName"
-                          [(ngModel)]="usuario.userName">
-                      </div>
-                      <div class="col-12">
-                        <label for="inputContra" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="inputContra" name="usuario.password"
-                          [(ngModel)]="usuario.password">
-                      </div>
-                      
-                      <div >
-                      <div class="col-md-12">
-                        <label for="inputRol" class="form-label">Rol</label>
-                        <select id="inputRol" class="form-select" name="usuario.rol" [(ngModel)]="usuario.rol">
-                          <option selected></option>
-                          <option value="Alumno">Alumno</option>
-                          <option value="entrenador">Entrenador</option>
-                        </select>
-                      </div>
-                      <br>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="usuario.activo" id="activo" checked
-                          [(ngModel)]="usuario.activo" value="true">
-                        <label class="form-check-label" for="activo">
-                          Activo
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="usuario.activo" id="inactivo"
-                          [(ngModel)]="usuario.activo" value="false">
-                        <label class="form-check-label" for="inactivo">
-                          Inactivo
-                        </label>
-                      </div>
-                    </div>
-        
-                  </div>
-                    <div class="card-footer text-muted">
-                      GYM Grupo 06
-                    </div>
-                  </div>
-                </div>
-                
+
+            </div>
+            <div class="card-footer text-muted">
+              GYM Grupo 06
+            </div>
+          </div>
+        </div>
+
 
 
 
         <div class="col-4"></div>
-              <div class="col-2">
-                <button type="submit" class="btn btn-primary">Guardar Datos</button>
-              </div>
-              <div class="col-2">
-                <button type="submit" class="btn btn-primary">Generar usuario</button>
-              </div>
-              <div class="col-4"> 
-                  <button type="submit" class="btn btn-primary">Limpiar campos</button>
-                </div>
-            
-            </form>
-      </div>
-      <div class="card-footer text-muted" id="encabezado">
-        Gym
-      </div>
-    </div>
-    <br>
-    <div class="card text-center" id="cuadro">
-      <div class="card-header" id="encabezado">
-        Plan del Alumno
-      </div>
-      <div class="card-body">
-          <form class="row g-3">
-            <div class="col-md-6">
-              <label for="inputState" class="form-label">Elija un plan</label>
-              <select id="inputState" class="form-select" name="plan.tipo"  [(ngModel)]="plan.tipo">
-                <option selected></option>
-                <option>Pase Libre (todos los dias)</option>
-                <option>Full (5 dias)</option>
-                <option>Basico (3 dias)</option>
-              </select>
-            </div>
-            <div class="col-6">
-              <label for="inputFechaInicioPlan" class="form-label" >Fecha de inicio Plan</label>
-              <input type="text" class="form-control" id="inputFechaInicioPlan" name="plan.fechaInicioPlan" [(ngModel)]="plan.fechaInicioPlan">
-            </div>
-            <div class="col-6">
-              <label for="inputFechaFinPlan" class="form-label" >Fecha de Fin Plan</label>
-              <input type="text" class="form-control" id="inputFechaFinPlan" name="plan.fechaFinDelPlan" [(ngModel)]="plan.fechaFinDelPlan">
-            </div>
-            <div class="col-md-6">
-              <label for="inputNivel" class="form-label" >Nivel</label>
-              <select id="inputNivel" class="form-select" name="plan.nivel" [(ngModel)]="plan.nivel">
-                <option selected></option>
-                <option>Principiante</option>
-                <option>Medio</option>
-                <option>Avanzado</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="inputObjetivo" class="form-label">Objetivo</label>
-              <select id="inputObjetivo" class="form-select" name="plan.objetivo" [(ngModel)]="plan.objetivo">
-                <option selected></option>
-                <option>Bajar de peso</option>
-                <option>Tonificacion muscular</option>
-                <option>Ganar masa muscular</option>
-              </select>
-            </div>
-            <div class="col-md-6"></div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-primary" (click)="modificarDatosPersonales()">Modificar Datos Personales</button>
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-primary" (click)="modificarUsuario()">Modificar Usuario</button>
+        </div>
+        <div class="col-4">
+          <button type="submit" class="btn btn-primary">Limpiar campos</button>
+        </div>
 
-            <div class="col-4"></div>
-              <div class="col-4">
-                <button type="button" class="btn btn-primary">Guardar Plan</button>
-              </div>
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary">Limpiar campos</button>
-            </div>
-       
-                
-            
-            
-            </form>
-      </div>
-      <div class="card-footer text-muted" id="encabezado">
-        Gym
-      </div>
+      </form>
     </div>
-  
-  
+    <div class="card-footer text-muted" id="encabezado">
+      Gym
+    </div>
+  </div>
   <br>
-  
-  <div  class="card-body">
+  <div class="card text-center" id="cuadro">
+    <div class="card-header" id="encabezado">
+      Plan del Alumno
+    </div>
+    <div class="card-body">
+      <form class="row g-3">
+        <div class="col-md-6">
+          <label for="inputState" class="form-label">Elija un plan</label>
+          <select id="inputState" class="form-select" name="plan.tipo" [(ngModel)]="plan.tipo">
+            <option selected></option>
+            <option>Pase Libre (todos los dias)</option>
+            <option>Full (5 dias)</option>
+            <option>Basico (3 dias)</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label for="inputFechaInicioPlan" class="form-label">Fecha de inicio Plan</label>
+          <input type="text" class="form-control" id="inputFechaInicioPlan" name="plan.fechaInicioPlan"
+            [(ngModel)]="plan.fechaInicioPlan">
+        </div>
+        <div class="col-6">
+          <label for="inputFechaFinPlan" class="form-label">Fecha de Fin Plan</label>
+          <input type="text" class="form-control" id="inputFechaFinPlan" name="plan.fechaFinDelPlan"
+            [(ngModel)]="plan.fechaFinDelPlan">
+        </div>
+        <div class="col-md-6">
+          <label for="inputNivel" class="form-label">Nivel</label>
+          <select id="inputNivel" class="form-select" name="plan.nivel" [(ngModel)]="plan.nivel">
+            <option selected></option>
+            <option>Principiante</option>
+            <option>Medio</option>
+            <option>Avanzado</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputObjetivo" class="form-label">Objetivo</label>
+          <select id="inputObjetivo" class="form-select" name="plan.objetivo" [(ngModel)]="plan.objetivo">
+            <option selected></option>
+            <option>Bajar de peso</option>
+            <option>Tonificacion muscular</option>
+            <option>Ganar masa muscular</option>
+          </select>
+        </div>
+        <div class="col-md-6"></div>
+
+        <div class="col-4"></div>
+        <div class="col-4">
+          <button type="button" class="btn btn-primary" (click)="modificarRutina()">Modificar Plan</button>
+        </div>
+        <div class="col-4">
+          <button type="submit" class="btn btn-primary">Limpiar campos</button>
+        </div>
+
+
+
+
+      </form>
+    </div>
+    <div class="card-footer text-muted" id="encabezado">
+      Gym
+    </div>
+  </div>
+
+
+  <br>
+
+  <div class="card-body">
     <h5 id="tituloTabla" class="text-center">Pagos realizados</h5>
     <table class="table table-dark table-striped">
       <thead>
@@ -208,7 +215,7 @@
     </table>
   </div>
   <br>
-  
+
   <h5 id="tituloTabla" class="text-center">Rutina asignada</h5>
   <div class="card text-center">
     <div class="card-header">
@@ -225,18 +232,19 @@
         <div class="col-md-4">
           Cantidad de Semanas <div id="cuadroInfo">{{rutina.semanas}} semanas</div>
         </div>
-        <div class="card text-center" >
+        <div class="card text-center">
           <div class="card-header">
             Dias de la Semana
           </div>
           <div class="card-header" style="background-color: white;">
-            <button *ngFor="let ldiasPorRutina of diasPorRutina" (click)="obtenerEjercicios(ldiasPorRutina._id)" type="button" class="btn btn-outline-primary">
+            <button *ngFor="let ldiasPorRutina of diasPorRutina" (click)="obtenerEjercicios(ldiasPorRutina._id)"
+              type="button" class="btn btn-outline-primary">
               {{ldiasPorRutina.dia}}
             </button>
           </div>
           <div class="card-body">
-  
-  
+
+
             <div class="card text-center">
               <div class="card-header">
                 Ejercicios del dia
@@ -259,28 +267,28 @@
                     Peso <div id="cuadroInfo">{{lejercicios.peso}}</div>
                   </div>
                   <div class="col-12">
-  
+
                     <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
                   </div>
                 </form>
               </div>
             </div>
-  
-  
+
+
           </div>
-  
+
         </div>
-  
+
       </form>
-  
+
     </div>
     <div class="card-footer text-muted">
       Gym Grupo 06
     </div>
   </div>
-  
-  
-<!--   <h5 id="tituloTabla" class="text-center">Dieta asignada</h5>
+
+
+  <!--   <h5 id="tituloTabla" class="text-center">Dieta asignada</h5>
   <table class="table table-dark table-striped">
     <thead>
       <tr>
@@ -319,53 +327,54 @@
           <h5 style="font-size: 18px;float: right;">Seleccione la rutina que desea asignar: </h5>
         </div>
         <div class="col-3">
-          <select style="float: left;" class="form-select" aria-label="Default select example" [(ngModel)]="idNuevaRutinaElejida" name="idNuevaRutinaElejida">
-            <option  *ngFor="let listRutina of listaRutinas" [ngValue]="listRutina._id">{{listRutina.nombre}}</option>
+          <select style="float: left;" class="form-select" aria-label="Default select example"
+            [(ngModel)]="idNuevaRutinaElejida" name="idNuevaRutinaElejida">
+            <option *ngFor="let listRutina of listaRutinas" [ngValue]="listRutina._id">{{listRutina.nombre}}</option>
           </select>
         </div>
-        <div  class="col-4">
-          <button style="float: right;" type="button" class="btn btn-dark" (click)="modificarRutina()">Asignar Nueva Rutina</button>
+        <div class="col-4">
+          <button style="float: right;" type="button" class="btn btn-dark" (click)="modificarRutina()">Asignar Nueva
+            Rutina</button>
         </div>
 
-          </div>
+      </div>
     </div>
   </div>
-<br>
+  <br>
 
-<div class="card-body">
-  <h5 id="tituloTabla" class="text-center">Tabla de asistencia</h5>
-  <table class="table table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Fecha</th>
-        <th scope="col">Tipo</th>
-        <th scope="col">Presentismo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let lasistencias of asistencia">
-        <th scope="row">{{asistencia.indexOf(lasistencias)+1}}</th>
-        <th scope="row">{{lasistencias.dia | date:'dd/mm/yy'}}</th>
-        <td>{{lasistencias.tipoAsistencia}}</td>
-        <td><i id="iconoPresente" class="fas fa-user-check"></i></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="card-body">
+    <h5 id="tituloTabla" class="text-center">Tabla de asistencia</h5>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Presentismo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let lasistencias of asistencia">
+          <th scope="row">{{asistencia.indexOf(lasistencias)+1}}</th>
+          <th scope="row">{{lasistencias.dia | date:'dd/mm/yy'}}</th>
+          <td>{{lasistencias.tipoAsistencia}}</td>
+          <td><i id="iconoPresente" class="fas fa-user-check"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<br>
+  <br>
   <div class="col-12" style="text-align: center;">
-    <button (click)="volverAPrincipal()" style="font-size: 19px;" type="button" class="btn btn-primary">FINALIZAR</button>
+    <button (click)="volverAPrincipal()" style="font-size: 19px;" type="button"
+      class="btn btn-primary">FINALIZAR</button>
   </div>
-  
 
-  
-  
+
+
+
 
   <br><br>
   <br><br>
 
-  </div>
-  
-  
+</div>

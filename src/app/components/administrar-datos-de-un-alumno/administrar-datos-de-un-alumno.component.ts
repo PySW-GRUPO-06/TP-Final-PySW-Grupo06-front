@@ -272,9 +272,35 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
     try {
       this.usuarioService.modificarUsuario(usuarioModificar).subscribe(
         (result) => {
-          /* console.log(result); */
+          console.log(result);
           const resultado = result
-          this.usuario = result
+          this.obtenerIDs()
+        });
+    } catch (error) {
+      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+    }
+  }
+
+  modificarDatosPersonales(){
+    try {
+      this.personaService.modificarPersona(this.persona).subscribe(
+        (result) => {
+          console.log(result);
+          const resultado = result
+          this.obtenerIDs()
+        });
+    } catch (error) {
+      console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
+    }
+  }
+
+  modificarPlan(){
+    try {
+      this.planService.putEditarPlan(this.plan).subscribe(
+        (result) => {
+          console.log(result);
+          const resultado = result
+          this.obtenerIDs()
         });
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
