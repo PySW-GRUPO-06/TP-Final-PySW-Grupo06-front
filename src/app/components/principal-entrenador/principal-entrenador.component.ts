@@ -91,7 +91,7 @@ export class PrincipalEntrenadorComponent implements OnInit {
 
   cerrarSecion() {
     this.loginService.logout();
-    this.route.navigate(['registrarCuotas']);
+    this.route.navigate(['principal']);
   }
   mostrarPersonas() {
     try {

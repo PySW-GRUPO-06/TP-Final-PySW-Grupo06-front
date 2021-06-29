@@ -35,15 +35,15 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
   private idAlumno: string = '0'
   private idUsuario: string = '0'
 
-  cuadroPlan:boolean=false;
-  cuadroDatosPers:boolean=true;
-  cuadritoUsuario:boolean=true;
+  cuadroPlan: boolean = false;
+  cuadroDatosPers: boolean = true;
+  cuadritoUsuario: boolean = true;
 
   constructor(private alumnoService: AlumnoService, private entrenadorService: EntrenadorService, private personaService: PersonaService,
     private planService: PlanService, private cuotaService: CuotaService,
     public loginService: LoginService, private router: Router,
     private usuarioService: UsuarioService,
-    private activatedRoute:ActivatedRoute) {
+    private activatedRoute: ActivatedRoute) {
 
     if (this.loginService.userLoggedIn()) {
       //acciones normales de componente
@@ -58,7 +58,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
   onFileChanges(files: any) {
     /* console.log("File has changed:", files); */
     this.fotoPerfil = files[0].base64;
-    this.persona.fotoPerfil= this.fotoPerfil
+    this.persona.fotoPerfil = this.fotoPerfil
   }
 
   iniciar() {
@@ -67,12 +67,12 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
 
   agregarPersona() {
     this.crearUsuario()
-    this.cuadroPlan=true;
-    this.cuadroDatosPers=false;
+    this.cuadroPlan = true;
+    this.cuadroDatosPers = false;
 
-    if (this.usuario.rol==="entrenador") {
+    if (this.usuario.rol === "entrenador") {
       this.router.navigate(['principalEntrenador']);
-    } 
+    }
 
   }
 
@@ -84,6 +84,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
           console.log("se guardo usuario")
           console.log(result)
           this.agregarNuevaPersona()
+          sessionStorage.setItem("userBuscado", String(result.id));
         }
       )
     } catch (error) {
@@ -112,7 +113,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
       this.personaService.guardarPersona(this.persona).subscribe(
         result => {
           if (result.status == 1) {
-           
+
             if (this.usuario.rol == 'entrenador') {
               this.entrenador.persona = result.id
               console.log(result)
@@ -189,6 +190,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
           this.idPlan = result.id
           console.log(result)
           this.modificarAlumno()
+
         }
 
       )
@@ -196,7 +198,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
       console.log("ERROR " + error + " No se pudo guardar PLAN");
 
     }
-    this.router.navigate(['administrarDatosDeUnAlumno']);
+
 
   }
 
@@ -212,6 +214,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
               (result1) => {
                 console.log(result);
                 const resultado1 = result1
+                this.router.navigate(['administrarDatosDeUnAlumno']);
               });
           } catch (error) {
             console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
@@ -222,7 +225,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     }
   }
 
-  
+
   /*  obtenerPersonaPorDNI() {
      try {
        this.personaService.obtenerPersonaDNI(String (this.persona.dni)).subscribe(
@@ -248,52 +251,51 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     }
      */
 
-    volverAPrincipal(){
-      this.router.navigate(['principalEntrenador']);
-    }
-    irALogin(){
-      this.crearUsuario();
-      this.router.navigate(['login']);
-    }
+  volverAPrincipal() {
+    this.router.navigate(['principalEntrenador']);
+  }
+  irALogin() {
+    this.crearUsuario();
+    this.router.navigate(['login']);
+  }
 
-    volverALogin(){
-      this.router.navigate(['login']);
-    }
+  volverALogin() {
+    this.router.navigate(['login']);
+  }
 
-    
-    ngOnInit(): void {
-      this.activatedRoute.params.subscribe(
-        params => {
-          if (params.id == "0" ){
-            this.cuadritoUsuario=true;
 
-          }else
-          {
-            this.cuadritoUsuario=false;
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(
+      params => {
+        if (params.id == "0") {
+          this.cuadritoUsuario = true;
 
-      
-          }
+        } else {
+          this.cuadritoUsuario = false;
+
+
         }
-      )
-    }
-/*     ngOnInit(): void {
-      this.activatedRoute.params.subscribe(
-        params => {
-          if (params.id == "0" ){
-            this.accion="new";
-            this.iniciarPasaje();
-            this.cargarPersonas();
-
-          }else
-          {
-            this.accion="update";
-            this.iniciarPasaje();
-            this.cargarPersonas();
-            this.cargarPasaje(params.id);
-      
+      }
+    )
+  }
+  /*     ngOnInit(): void {
+        this.activatedRoute.params.subscribe(
+          params => {
+            if (params.id == "0" ){
+              this.accion="new";
+              this.iniciarPasaje();
+              this.cargarPersonas();
+  
+            }else
+            {
+              this.accion="update";
+              this.iniciarPasaje();
+              this.cargarPersonas();
+              this.cargarPasaje(params.id);
+        
+            }
           }
-        }
-      )
-    } */
+        )
+      } */
 
 }

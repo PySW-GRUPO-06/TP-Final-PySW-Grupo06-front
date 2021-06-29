@@ -82,16 +82,20 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
     try {
       /* this.idUsuario ='60d933a91c425aefe36b2aca' */
       this.idUsuario = sessionStorage.getItem("userBuscado") || ''
-      this.personaService.obtenerPersonaUsuario(this.idUsuario).subscribe(
-        (result) => {
-          console.log("obtener persona")
-          /* console.log(result); */
-          const resultado = result
-          this.persona = result[0]
-          this.usuario = result[0].usuario
-          console.log(this.persona)
-          this.obtenerAlumnoPorPersona()
-        });
+
+      if (this.idUsuario) {
+        this.personaService.obtenerPersonaUsuario(this.idUsuario).subscribe(
+          (result) => {
+            console.log("obtener persona")
+            /* console.log(result); */
+            const resultado = result
+            this.persona = result[0]
+            this.usuario = result[0].usuario
+            console.log(this.persona)
+            this.obtenerAlumnoPorPersona()
+          });
+      }
+
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
@@ -119,7 +123,7 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
 
   private obtenerAsistencia() {
     try {
-      this.asistencia= []
+      this.asistencia = []
       console.log("obtener asistencia ")
       this.alumno.asistencia.forEach((element: any) => {
         this.asistenciaAlumnoService.getAsistencia(element._id).subscribe(
@@ -174,7 +178,7 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
 
   private obtenerPagos() {
     try {
-      this.cuotas=[]
+      this.cuotas = []
       console.log("obtener pagos")
       this.plan.pago.forEach((element: string) => {
         this.pagosService.obtenerCuota(element).subscribe(
@@ -197,15 +201,20 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
   private obtenerPlan() {
     try {
 
-      this.planService.getPlan(this.idPlan).subscribe(
-        result => {
-          console.log("obtener plan")
-          /* console.log(result); */
-          const resultado = result
-          this.plan = result
-          console.log(this.plan)
-          this.obtenerRutina()
-        });
+      if (this.idPlan) {
+        this.planService.getPlan(this.idPlan).subscribe(
+          result => {
+            console.log("obtener plan")
+            /* console.log(result); */
+            const resultado = result
+            this.plan = result
+            if (this.plan) {
+              console.log(this.plan)
+              this.obtenerRutina()
+            }
+          });
+      }
+
     } catch (error) {
       console.error("ERROR " + error + ", NO SE PUDO OBTENER DATOS CORRECTAMENTE")
     }
@@ -221,7 +230,7 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
           this.rutina = result
           console.log("obtener rutina")
           console.log(this.rutina)
-          
+
           this.obtenerPagos()
           this.obtenerDias()
         });
@@ -245,10 +254,10 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
     }
   }
 
-  modificarRutina(){
+  modificarRutina() {
     try {
 
-      this.plan.rutina=this.idNuevaRutinaElejida
+      this.plan.rutina = this.idNuevaRutinaElejida
       console.log("plaaan")
       console.log(this.plan)
 
@@ -281,7 +290,7 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
     }
   }
 
-  modificarDatosPersonales(){
+  modificarDatosPersonales() {
     try {
       this.personaService.modificarPersona(this.persona).subscribe(
         (result) => {
@@ -294,7 +303,7 @@ export class AdministrarDatosDeUnAlumnoComponent implements OnInit {
     }
   }
 
-  modificarPlan(){
+  modificarPlan() {
     try {
       this.planService.putEditarPlan(this.plan).subscribe(
         (result) => {
