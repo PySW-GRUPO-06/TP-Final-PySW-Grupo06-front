@@ -61,8 +61,7 @@ export class PrincipalAlumnosComponent implements OnInit {
     private diaService: DiaEjercicioService) {
     this.obtenerToken()
     this.obtenerIDs()
-    this.idDiasElegido = '60da75080ca683314a71e061'
-    this.obtenerEjercicios()
+    /* this.idDiasElegido = '60da75080ca683314a71e061' */
   }
 
   ngOnInit(): void {
@@ -134,9 +133,9 @@ export class PrincipalAlumnosComponent implements OnInit {
     }
   }
 
-  private obtenerEjercicios() {
+  obtenerEjercicios(idElejido:string) {
     try {
-
+      this.idDiasElegido=idElejido
       if (this.idDiasElegido) {
         this.diaService.getDiaEjercicio(this.idDiasElegido).subscribe(
           (result) => {

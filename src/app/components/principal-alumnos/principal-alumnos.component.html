@@ -3,12 +3,13 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Menu Alumno</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-<!--           <li class="nav-item">
+          <!--           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
@@ -17,17 +18,18 @@
 
         </ul>
         <form class="d-flex">
-          <button class="btn btn-outline-danger" type="button">Cerrar Sesion <i class="fas fa-sign-out-alt"></i></button>
+          <button class="btn btn-outline-danger" type="button">Cerrar Sesion <i
+              class="fas fa-sign-out-alt"></i></button>
         </form>
       </div>
     </div>
   </nav>
-  
-<div *ngIf="tabla1 === true" class="card text-center">
+
+  <div *ngIf="tabla1 === true" class="card text-center">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <button type="button" class="nav-link active" (click)="variacionPest1()" >Rutina</button>
+          <button type="button" class="nav-link active" (click)="variacionPest1()">Rutina</button>
         </li>
         <li class="nav-item">
           <button type="button" class="nav-link" (click)="variacionPest2()">Asistencia</button>
@@ -45,142 +47,59 @@
         <div class="card-body">
           <form class="row g-3">
             <div class="col-md-4">
-              Nombre de Rutina <div id="cuadroInfo">Rutina Numero 1</div> 
+              Nombre de Rutina <div id="cuadroInfo">{{rutina.nombre}}</div>
             </div>
             <div class="col-md-4">
-              Exigencia <div id="cuadroInfo">Media</div> 
+              Exigencia <div id="cuadroInfo">{{rutina.exigencia}}</div>
             </div>
             <div class="col-md-4">
-              Cantidad de Semanas <div id="cuadroInfo">3 semanas</div> 
+              Cantidad de Semanas <div id="cuadroInfo">{{rutina.semanas}}</div>
             </div>
-            <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion" id="accordionPanelsStayOpenExample" *ngFor="let ldiasPorRutina of diasPorRutina">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                    Lunes
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                    aria-controls="panelsStayOpen-collapseOne" (click)="obtenerEjercicios(ldiasPorRutina._id)">
+                    {{ldiasPorRutina.dia}}
                   </button>
                 </h2>
-                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                  aria-labelledby="panelsStayOpen-headingOne">
                   <div class="accordion-body">
                     <div class="card text-center">
                       <div class="card-header">
                         Ejercicios del dia
                       </div>
-                      <div class="card-body">
+                      <div class="card-body" *ngFor="let lejercicios of ejercicios">
                         <form class="row g-3">
                           <div class="col-md-6">
-                            Nombre Ejercicio <div id="cuadroInfo">Pre de Banca</div> 
+                            Nombre Ejercicio <div id="cuadroInfo">{{lejercicios.nombre}}</div>
                           </div>
                           <div class="col-md-6">
-                            Cantidad de Series <div id="cuadroInfo">4 series</div> 
+                            Cantidad de Series <div id="cuadroInfo">{{lejercicios.series}}</div>
                           </div>
                           <div class="col-md-4">
-                            Cantidad de Repeticiones <div id="cuadroInfo">12 repeticiones</div> 
+                            Cantidad de Repeticiones <div id="cuadroInfo">{{lejercicios.repeticiones}}</div>
                           </div>
                           <div class="col-md-4">
-                            Descanso entre Series <div id="cuadroInfo">45 segundos</div> 
+                            Descanso entre Series <div id="cuadroInfo">{{lejercicios.series}}</div>
                           </div>
                           <div class="col-md-4">
-                            Peso <div id="cuadroInfo">35 kg</div> 
+                            Peso <div id="cuadroInfo">{{lejercicios.peso}}</div>
                           </div>
                           <div class="col-12">
 
                             <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
-                           </div>      
+                          </div>
                         </form>
-              
+
                       </div>
                       <div class="card-footer text-muted">
                         Gym Grupo 06
                       </div>
                     </div>
 
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                    Miercoles
-                  </button>
-                </h2>
-                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                  <div class="accordion-body">
-                    <div class="card text-center">
-                      <div class="card-header">
-                        Ejercicios del dia
-                      </div>
-                      <div class="card-body">
-                        <form class="row g-3">
-                          <div class="col-md-6">
-                            Nombre Ejercicio <div id="cuadroInfo">Pre de Banca</div> 
-                          </div>
-                          <div class="col-md-6">
-                            Cantidad de Series <div id="cuadroInfo">4 series</div> 
-                          </div>
-                          <div class="col-md-4">
-                            Cantidad de Repeticiones <div id="cuadroInfo">12 repeticiones</div> 
-                          </div>
-                          <div class="col-md-4">
-                            Descanso entre Series <div id="cuadroInfo">45 segundos</div> 
-                          </div>
-                          <div class="col-md-4">
-                            Peso <div id="cuadroInfo">35 kg</div> 
-                          </div>
-                          <div class="col-12">
-
-                            <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
-                           </div>      
-                        </form>
-              
-                      </div>
-                      <div class="card-footer text-muted">
-                        Gym Grupo 06
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                    Viernes
-                  </button>
-                </h2>
-                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                  <div class="accordion-body">
-                    <div class="card text-center">
-                      <div class="card-header">
-                        Ejercicios del dia
-                      </div>
-                      <div class="card-body">
-                        <form class="row g-3">
-                          <div class="col-md-6">
-                            Nombre Ejercicio <div id="cuadroInfo">Pre de Banca</div> 
-                          </div>
-                          <div class="col-md-6">
-                            Cantidad de Series <div id="cuadroInfo">4 series</div> 
-                          </div>
-                          <div class="col-md-4">
-                            Cantidad de Repeticiones <div id="cuadroInfo">12 repeticiones</div> 
-                          </div>
-                          <div class="col-md-4">
-                            Descanso entre Series <div id="cuadroInfo">45 segundos</div> 
-                          </div>
-                          <div class="col-md-4">
-                            Peso <div id="cuadroInfo">35 kg</div> 
-                          </div>
-                          <div class="col-12">
-
-                            <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
-                           </div>      
-                        </form>
-              
-                      </div>
-                      <div class="card-footer text-muted">
-                        Gym Grupo 06
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -195,12 +114,12 @@
         </div>
       </div>
     </div>
-</div>
-<div *ngIf="tabla2 === true" class="card text-center">
+  </div>
+  <div *ngIf="tabla2 === true" class="card text-center">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <button type="button" class="nav-link" (click)="variacionPest1()" >Rutina</button>
+          <button type="button" class="nav-link" (click)="variacionPest1()">Rutina</button>
         </li>
         <li class="nav-item">
           <button type="button" class="nav-link active" (click)="variacionPest2()">Asistencia</button>
@@ -216,39 +135,25 @@
         <thead>
           <tr>
             <th scope="col">Fecha</th>
-            <th scope="col">Nombre y Apellido</th>
-            <th scope="col">Dni</th>
+            <th scope="col">Tipo</th>
             <th scope="col">Presentismo</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">17/06/1993</th>
-            <td>Jorge Tolaba</td>
-            <td>37.460.306</td>
-            <td><i id="iconoPresente" class="fas fa-user-check"></i></td>
-          </tr>
-          <tr>
-            <th scope="row">17/06/1993</th>
-            <td>Jorge Tolaba</td>
-            <td>37.460.306</td>
-            <td><i id="iconoPresente" class="fas fa-user-check"></i></td>
-          </tr>
-          <tr>
-            <th scope="row">17/06/1993</th>
-            <td>Jorge Tolaba</td>
-            <td>37.460.306</td>
+          <tr *ngFor="let lasistencias of asistencia">
+            <th scope="row">{{lasistencias.dia}}</th>
+            <td>{{lasistencias.tipoAsistencia}}</td>
             <td><i id="iconoPresente" class="fas fa-user-check"></i></td>
           </tr>
         </tbody>
       </table>
     </div>
-</div>
-<div *ngIf="tabla3 === true" class="card text-center">
+  </div>
+  <div *ngIf="tabla3 === true" class="card text-center">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <button type="button" class="nav-link" (click)="variacionPest1()" >Rutina</button>
+          <button type="button" class="nav-link" (click)="variacionPest1()">Rutina</button>
         </li>
         <li class="nav-item">
           <button type="button" class="nav-link" (click)="variacionPest2()">Asistencia</button>
@@ -264,33 +169,23 @@
         <thead>
           <tr>
             <th scope="col">Mes</th>
+            <th scope="col">Fecha de pago</th>
             <th scope="col">Modo de pago</th>
             <th scope="col">Monto</th>
             <th scope="col">Pagado</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Enero</th>
-            <td>Transferencia</td>
-            <td>$ 1.500 </td>
-            <td><i id="iconoPagado" class="fas fa-hand-holding-usd"></i></td>
-          </tr>
-          <tr>
-            <th scope="row">Febrero</th>
-            <td>Transferencia</td>
-            <td>$ 1.500 </td>
-            <td><i id="iconoPagado" class="fas fa-hand-holding-usd"></i></td>
-          </tr>
-          <tr>
-            <th scope="row">Marzo</th>
-            <td>Transferencia</td>
-            <td>$ 1.500 </td>
+          <tr *ngFor="let lcuotas of cuotas">
+            <th scope="row">{{lcuotas.mesAPagar}}</th>
+            <td>{{lcuotas.fechaPago}}</td>
+            <td>{{lcuotas.modoPago}}</td>
+            <td>{{lcuotas.montoAPagar}}</td>
             <td><i id="iconoPagado" class="fas fa-hand-holding-usd"></i></td>
           </tr>
         </tbody>
       </table>
     </div>
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
