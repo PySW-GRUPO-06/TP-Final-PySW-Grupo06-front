@@ -39,7 +39,7 @@
         </li>
       </ul>
     </div>
-    <div class="card-body">
+<!--     <div class="card-body">
       <div class="card text-center">
         <div class="card-header">
           Ultima Rutina Asignada
@@ -55,10 +55,10 @@
             <div class="col-md-4">
               Cantidad de Semanas <div id="cuadroInfo">{{rutina.semanas}}</div>
             </div>
-            <div class="accordion" id="accordionPanelsStayOpenExample" *ngFor="let ldiasPorRutina of diasPorRutina">
+            <div class="accordion" id="accordionPanelsStayOpenExample" >
               <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  <button *ngFor="let ldiasPorRutina of diasPorRutina" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                     aria-controls="panelsStayOpen-collapseOne" (click)="obtenerEjercicios(ldiasPorRutina._id)">
                     {{ldiasPorRutina.dia}}
@@ -113,7 +113,77 @@
           Gym Grupo 06
         </div>
       </div>
+    </div> -->
+    <div class="card text-center">
+      <div class="card-header">
+        Ultima Rutina Asignada
+      </div>
+      <div class="card-body">
+        <form class="row g-3">
+          <div class="col-md-4">
+            Nombre de Rutina <div id="cuadroInfo">{{rutina.nombre}}</div>
+          </div>
+          <div class="col-md-4">
+            Exigencia <div id="cuadroInfo">{{rutina.exigencia}}</div>
+          </div>
+          <div class="col-md-4">
+            Cantidad de Semanas <div id="cuadroInfo">{{rutina.semanas}} semanas</div>
+          </div>
+          <div class="card text-center" >
+            <div class="card-header">
+              Dias de la Semana
+            </div>
+            <div class="card-header" style="background-color: white;">
+              <button *ngFor="let ldiasPorRutina of diasPorRutina" (click)="obtenerEjercicios(ldiasPorRutina._id)" type="button" class="btn btn-outline-primary">
+                {{ldiasPorRutina.dia}}
+              </button>
+            </div>
+            <div class="card-body">
+    
+    
+              <div class="card text-center">
+                <div class="card-header">
+                  Ejercicios del dia
+                </div>
+                <div class="card-body" *ngFor="let lejercicios of ejercicios">
+                  <form class="row g-3">
+                    <div class="col-md-6">
+                      Nombre Ejercicio <div id="cuadroInfo">{{lejercicios.nombre}}</div>
+                    </div>
+                    <div class="col-md-6">
+                      Cantidad de Series <div id="cuadroInfo">{{lejercicios.series}} series</div>
+                    </div>
+                    <div class="col-md-4">
+                      Cantidad de Repeticiones <div id="cuadroInfo">{{lejercicios.repeticiones}} repeticiones</div>
+                    </div>
+                    <div class="col-md-4">
+                      Descanso entre Series <div id="cuadroInfo">{{lejercicios.series}} segundos</div>
+                    </div>
+                    <div class="col-md-4">
+                      Peso <div id="cuadroInfo">{{lejercicios.peso}}</div>
+                    </div>
+                    <div class="col-12">
+    
+                      <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
+                    </div>
+                  </form>
+                </div>
+              </div>
+    
+    
+            </div>
+    
+          </div>
+    
+        </form>
+    
+      </div>
+      <div class="card-footer text-muted">
+        Gym Grupo 06
+      </div>
     </div>
+  
+  
   </div>
   <div *ngIf="tabla2 === true" class="card text-center">
     <div class="card-header">
@@ -189,3 +259,9 @@
   </div>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
+
+
+
+
+
+

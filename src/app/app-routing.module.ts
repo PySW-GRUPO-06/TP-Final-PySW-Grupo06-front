@@ -11,6 +11,7 @@ import { RegistrarCuotasComponent } from './components/registrar-cuotas/registra
 import { AdministrarEntrenadorComponent } from './components/administrar-entrenador/administrar-entrenador.component';
 import { PrincipalAlumnosComponent } from './components/principal-alumnos/principal-alumnos.component';
 import { AdministrarDatosDeUnAlumnoComponent } from './components/administrar-datos-de-un-alumno/administrar-datos-de-un-alumno.component';
+import { PlanComponent } from './components/plan/plan.component';
 
 const routes: Routes = [
   { path: 'principal', component: PrincipalComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'principalAlumnos', component: PrincipalAlumnosComponent },
   { path: 'administrarDatosDeUnAlumno', component: AdministrarDatosDeUnAlumnoComponent },
   { path: 'administrarEtrenador', component: AdministrarEntrenadorComponent },
+  { path: 'plan', component: PlanComponent },
   { path: '**', pathMatch:'full',redirectTo:'principal' }
  /*  { path: 'punto3b/:id', component: Punto3bComponent }, */
 ];
