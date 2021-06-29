@@ -65,7 +65,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     this.cuadroPlan=true;
     this.cuadroDatosPers=false;
 
-    if (this.usuario.rol==="Entrenador") {
+    if (this.usuario.rol==="entrenador") {
       this.router.navigate(['principalEntrenador']);
     } 
 
