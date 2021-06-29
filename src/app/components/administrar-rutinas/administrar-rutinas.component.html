@@ -149,8 +149,10 @@
                       <input type="texto" class="form-control" id="inputPeso" name="ejercicio.peso" [(ngModel)]="ejercicio.peso">
                     </div>
                     <div class="col-md-12">
-                      <button type="button" class="btn btn-primary">insertar Imagen</button>
-                      <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
+                      <input type="file" alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)" accept="image
+                      /x-png,image/gif,image/jpeg" />
+                        <br><br>
+                        <img [src]="foto" class="img-thumbnail" alt="" width="300px">
                     </div>
 
                     <div class="col-4">

@@ -30,7 +30,7 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
 
   cuota: Cuota = new Cuota();
   plan: Plan = new Plan();
-  fotoPerfil: string = 'Sin foto aun'
+  fotoPerfil: string = './../../../assets/gym/fotoPerfil.jpg'
   private idPlan: string = '0'
   private idAlumno: string = '0'
   private idUsuario: string = '0'
@@ -55,6 +55,11 @@ export class InscribirNuevoAlumnoComponent implements OnInit {
     this.iniciar
   }
 
+  onFileChanges(files: any) {
+    /* console.log("File has changed:", files); */
+    this.fotoPerfil = files[0].base64;
+    this.persona.fotoPerfil= this.fotoPerfil
+  }
 
   iniciar() {
     this.persona = new Persona()

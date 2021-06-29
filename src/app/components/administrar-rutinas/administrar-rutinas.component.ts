@@ -18,6 +18,7 @@ export class AdministrarRutinasComponent implements OnInit {
   rutina: Rutina = new Rutina();
   dia: Dia = new Dia();
   ejercicio: Ejercicio = new Ejercicio;
+  foto:string='./../../../assets/gym/fotoPerfil.jpg'
 
   listaRutinas!: Array<Rutina>;
   listaDias!: Array<Dia>;
@@ -56,6 +57,12 @@ export class AdministrarRutinasComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  onFileChanges(files: any) {
+    /* console.log("File has changed:", files); */
+    this.foto = files[0].base64;
+    this.ejercicio.img= this.foto
+  }
+
   crearRutina() {
     var nuevaRutina:Rutina= new Rutina()
     nuevaRutina.exigencia=this.rutina.exigencia
