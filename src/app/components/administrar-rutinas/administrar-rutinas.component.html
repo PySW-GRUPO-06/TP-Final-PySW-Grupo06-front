@@ -197,7 +197,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let lrutinas of listaRutinas">
-              <th scope="row">1</th>
+              <th scope="row">{{listaRutinas.indexOf(lrutinas)+1}}</th>
               <td>{{lrutinas.nombre}}</td>
               <td>{{lrutinas.exigencia}}</td>
               <td>{{lrutinas.semanas}}</td>
@@ -223,7 +223,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let ldias of listaDias">
-              <th scope="row">1</th>
+              <th scope="row">{{listaDias.indexOf(ldias)+1}}</th>
               <td>{{ldias.dia}}</td>
               <td>{{ldias.tipoDeTrabajo}}</td>
               <td>
@@ -240,6 +240,7 @@
         <table class="table table-dark table-striped">
           <thead>
             <tr>
+              <th scope="col">#</th>
               <th scope="col">Nombre</th>
               <th scope="col">Peso</th>
               <th scope="col">Numero de series</th>
@@ -250,7 +251,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let lejercicios of listaEjercicios">
-              <th scope="row">{{lejercicios.nombre}}</th>
+              <th scope="row">{{listaEjercicios.indexOf(lejercicios)+1}}</th>
+              <th >{{lejercicios.nombre}}</th>
               <td>{{lejercicios.peso}}</td>
               <td>{{lejercicios.series}}</td>
               <td>{{lejercicios.repeticiones}}</td>
