@@ -127,64 +127,30 @@
   
   
   <br>
-    <div class="card text-center" id="cuadro">
-      <div class="card-header" id="encabezado">
-        Pago de cuota del alumno
-      </div>
-      <div class="card-body">
-          <form class="row g-3">
-            <div class="col-md-6">
-              <label for="inputState" class="form-label">Modo de pago</label>
-              <select id="inputState" class="form-select">
-                <option selected></option>
-                <option>Tarjeta</option>
-                <option>Efectivo</option>
-                <option>Transferencia</option>
-              </select>
-            </div>
-              <div class="col-md-6">
-                  <label for="inputMonto" class="form-label">Monto a pagar</label>
-                  <input type="texto" class="form-control" id="inputMonto">
-                </div>
   
-              <div class="col-6">
-                  <label for="inputFechaPago" class="form-label">Fecha de Pago</label>
-                  <input type="date" class="form-control" id="inputFechaPago">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputMesAPagar" class="form-label">Mes a pagar</label>
-                  <select id="inputMesAPagar" class="form-select">
-                    <option selected></option>
-                    <option>Enero</option>
-                    <option>Febrero</option>
-                    <option>Marzo</option>
-                    <option>Abril</option>
-                    <option>Mayo</option>
-                    <option>Junio</option>
-                    <option>Julio</option>
-                    <option>Agosto</option>
-                    <option>Septiembre</option>
-                    <option>Octubre</option>
-                    <option>Noviembre</option>
-                    <option>Diciembre</option>
-                  </select>
-                </div>
-
-                <div class="col-4">  </div>
-  
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary">Guardar Cuota</button>
-              </div>
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary">Limpiar campos</button>
-              </div>
-            </form>
-  
-      </div>
-      <div class="card-footer text-muted" id="encabezado">
-        Gym
-      </div>
-    </div>
+  <div  class="card-body">
+    <h5 id="tituloTabla" class="text-center">Pagos realizados</h5>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Mes</th>
+          <th scope="col">Fecha de pago</th>
+          <th scope="col">Modo de pago</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Pagado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <th scope="row">Enero</th>
+          <td>5/5/5</td>
+          <td>tarjeta</td>
+          <td>1500$</td>
+          <td><i id="iconoPagado" class="fas fa-hand-holding-usd"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <br>
   
   <h5 id="tituloTabla" class="text-center">Rutina asignada</h5>
@@ -339,7 +305,7 @@
   </div>
   
   
-  <h5 id="tituloTabla" class="text-center">Dieta asignada</h5>
+<!--   <h5 id="tituloTabla" class="text-center">Dieta asignada</h5>
   <table class="table table-dark table-striped">
     <thead>
       <tr>
@@ -368,20 +334,38 @@
         <td>@twitter</td>
       </tr>
     </tbody>
-  </table>
-  
+  </table> -->
   <br><br>
+  <div class="card">
+    <h5 style="background-color: black; color: white;" class="card-header">Cambio de Rutina</h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-5">
+          <h5 style="font-size: 18px;float: right;">Seleccione la rutina que desea asignar: </h5>
+        </div>
+        <div class="col-3">
+          <select style="float: left;" class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div  class="col-4">
+          <button style="float: right;" type="button" class="btn btn-dark">Asignar Nueva Rutina</button>
+        </div>
+
+          </div>
+    </div>
+  </div>
   
-  <!-- <tr *ngFor="let item of mf.data">
-    <td>{{item.titulo}}</td>
-    <td>{{item.noticia}}</td>
-    <td>{{item.img}}</td>
-    <td>{{item.vigente}}</td>
-    <td> -->
+
+  
+  
+
   <br><br>
-  
-  
-  
+  <br><br>
+
   </div>
   
   
