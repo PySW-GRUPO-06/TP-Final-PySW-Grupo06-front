@@ -17,8 +17,11 @@
             aria-labelledby="panelsStayOpen-headingOne">
             <div class="accordion-body">
               <div class="card text-center" id="cuadro">
-                <div class="card-header" id="encabezado">
+                <div *ngIf="editarRutina === false" class="card-header" id="encabezado">
                   Creacion de Rutina
+                </div>
+                <div *ngIf="editarRutina === true" class="card-header" id="encabezado">
+                  Editar Rutina
                 </div>
                 <div class="card-body">
                   <form class="row g-3">
@@ -36,8 +39,16 @@
                     </div>
 
                     <div class="col-4"></div>
-                    <div class="col-4"><button type="button" class="btn btn-primary" (click)="cambiarValoresIf();crearRutina()">Crear
-                        Rutina</button></div>
+
+                    <div class="col-4">
+                      <button *ngIf="editarRutina === false" type="button" class="btn btn-primary" (click)="cambiarValoresIf();crearRutina()">
+                        Crear Rutina
+                      </button>
+                      <button *ngIf="editarRutina === true" type="button" class="btn btn-primary" (click)="cambiarValoresIf();crearRutina()">
+                        Actualizar Rutina
+                      </button>
+                      
+                      </div>
                     <div class="col-4"></div>
                   </form>
                 </div>
@@ -59,8 +70,11 @@
           <div id="panelsStayOpen-collapseTwo" class="accordion-collapse " aria-labelledby="panelsStayOpen-headingTwo">
             <div class="accordion-body">
               <div class="card text-center" id="cuadro">
-                <div class="card-header" id="encabezado">
+                <div *ngIf="editarDia === false" class="card-header" id="encabezado">
                   Dia de Rutina
+                </div>
+                <div *ngIf="editarDia === true" class="card-header" id="encabezado">
+                  Actualizar Dia de Rutina
                 </div>
                 <div class="card-body">
                   <form class="row g-3">
@@ -74,8 +88,16 @@
                     </div>
 
                     <div class="col-4"></div>
-                    <div class="col-4"> <button type="button" class="btn btn-primary"
-                        (click)="cambiarValoresIf2(); agregarDia()">Agregar dia</button></div>
+
+                    <div class="col-4"> 
+                      <button *ngIf="editarDia === false" type="button" class="btn btn-primary"
+                        (click)="cambiarValoresIf2(); agregarDia()">Agregar dia
+                      </button>
+                      <button *ngIf="editarDia === true" type="button" class="btn btn-primary"
+                      (click)="cambiarValoresIf2(); agregarDia()">Actualizar dia
+                    </button>
+                    </div>
+
                     <div class="col-4"></div>
                   </form>
                 </div>
@@ -98,8 +120,11 @@
             aria-labelledby="panelsStayOpen-headingThree">
             <div class="accordion-body">
               <div class="card text-center" id="cuadro">
-                <div class="card-header" id="encabezado">
+                <div *ngIf="editarEjercicio === false" class="card-header" id="encabezado">
                   Ejercicios a realizar
+                </div>
+                <div *ngIf="editarEjercicio === true" class="card-header" id="encabezado">
+                  Actualizar Ejercicios a realizar
                 </div>
                 <div class="card-body">
                   <form class="row g-3">
@@ -128,10 +153,20 @@
                       <img src="./../../../assets/gym/fotoPerfil.jpg" class="img-thumbnail" alt="" width="300px">
                     </div>
 
-                    <div class="col-4"><button type="button" class="btn btn-primary"
-                        (click)="cambiarValoresIf();mostrarListaDias()">Agregar Dia</button></div>
-                    <div class="col-4"><button type="button" class="btn btn-primary"
-                        (click)="cambiarValoresIf2();agregarEjercicio()">Agregar ejercicio</button></div>
+                    <div class="col-4">
+                      <button *ngIf="editarEjercicio === false" type="button" class="btn btn-primary"
+                        (click)="cambiarValoresIf();mostrarListaDias()">Agregar Dia
+                      </button>
+                    </div>
+                    <div class="col-4">
+                      <button *ngIf="editarEjercicio === false" type="button" class="btn btn-primary"
+                        (click)="cambiarValoresIf2();agregarEjercicio()">Agregar ejercicio
+                      </button>
+                      <button *ngIf="editarEjercicio === true" type="button" class="btn btn-primary"
+                      (click)="cambiarValoresIf2();agregarEjercicio()">Actualizar ejercicio
+                    </button>
+                      </div>
+
                     <div class="col-4"></div>
                   </form>
                 </div>
@@ -167,7 +202,7 @@
               <td>{{lrutinas.exigencia}}</td>
               <td>{{lrutinas.semanas}}</td>
               <td>
-                <button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
+                <button (click)="editRutina()" type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
                 <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
               </td>
             </tr>
@@ -182,7 +217,8 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Nombre del Dia</th>
-              <th scope="col">Tipo de trabajo</th>
+              <th scope="col">Tipo de Trabajo</th>
+              <th scope="col">Accion</th>
             </tr>
           </thead>
           <tbody>
@@ -190,6 +226,10 @@
               <th scope="row">1</th>
               <td>{{ldias.dia}}</td>
               <td>{{ldias.tipoDeTrabajo}}</td>
+              <td>
+                <button (click)="editDia()" type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -205,6 +245,7 @@
               <th scope="col">Numero de series</th>
               <th scope="col">Repeticiones</th>
               <th scope="col">Descansos</th>
+              <th scope="col">Accion</th>
             </tr>
           </thead>
           <tbody>
@@ -214,6 +255,10 @@
               <td>{{lejercicios.series}}</td>
               <td>{{lejercicios.repeticiones}}</td>
               <td>{{lejercicios.descansoEntreSeries}}</td>
+              <td>
+                <button (click)="editEjercicio()" type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+              </td>
             </tr>
           </tbody>
         </table>

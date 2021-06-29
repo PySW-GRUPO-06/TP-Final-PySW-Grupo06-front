@@ -32,6 +32,10 @@ export class AdministrarRutinasComponent implements OnInit {
   cuadro2: boolean = false;
   cuadro3: boolean = false;
 
+  editarRutina:boolean=false;
+  editarDia:boolean=false;
+  editarEjercicio:boolean=false;
+
   constructor(private rutinaService: RutinaService,
     private diaService: DiaEjercicioService,
     private ejercicioService: EjercicioService,
@@ -72,6 +76,9 @@ export class AdministrarRutinasComponent implements OnInit {
     } catch (error) {
       console.log(error);
     }
+
+    this.editarRutina=false;
+
   }
 
   private obtenerRutina() {
@@ -169,7 +176,9 @@ export class AdministrarRutinasComponent implements OnInit {
     } catch (error) {
       console.log("" + error);
     }
+    this.editarDia=false;
   }
+
   agregarEjercicio() {
 
     this.modificarEjercicioB = true
@@ -188,6 +197,7 @@ export class AdministrarRutinasComponent implements OnInit {
     } catch (error) {
       console.log("" + error);
     }
+    this.editarRutina=false;
   }
 
 
@@ -257,6 +267,18 @@ export class AdministrarRutinasComponent implements OnInit {
 
   volverAPrincipal(){
     this.router.navigate(['principalEntrenador']);
+  }
+
+  editRutina(){
+    this.editarRutina=true;
+  }
+
+  editDia(){
+    this.editarDia=true;
+  }
+
+  editEjercicio(){
+    this.editarEjercicio=true;
   }
 
 
