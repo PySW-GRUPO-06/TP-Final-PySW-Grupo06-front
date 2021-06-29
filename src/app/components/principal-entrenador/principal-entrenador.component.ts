@@ -24,7 +24,7 @@ export class PrincipalEntrenadorComponent implements OnInit {
   alumnos!: Array<Alumno>
   usuario: Usuario = new Usuario()
   usuarios: Array<Usuario> = new Array<Usuario>()
-  fechaHoy = Date.now()
+  fechaHoy = Date()
   asistencias: Array<Asistencia> = new Array<Asistencia>()
   activos: Array<Alumno> = new Array<Alumno>()
   noActivos: Array<Alumno> = new Array<Alumno>()
@@ -32,6 +32,7 @@ export class PrincipalEntrenadorComponent implements OnInit {
   pNActivas: Array<Persona> = new Array<Persona>();
   cantInscriptos: number = 0;
   cantSolicitudes: number = 0;
+  cantAsistencia:number=0;
   constructor(private route: Router,
     private activatedRoute: ActivatedRoute, private personaService: PersonaService,
     private alumnoService: AlumnoService, private usuarioService: UsuarioService,
@@ -46,8 +47,9 @@ export class PrincipalEntrenadorComponent implements OnInit {
     this.mostrarPersonas()
     this.mostrarUsuarios() */
     this.mostrarAlumnos()
-    
-    
+    this.calcularAsistencia()
+
+
   }
 
   ngOnInit(): void {
@@ -103,8 +105,8 @@ export class PrincipalEntrenadorComponent implements OnInit {
           this.alumnos = result
           console.log("se cargo Alumnos al array alumnos" + this.alumnos.length)
           this.mostrarActivosYnoActivos()
-          this.cantInscriptos=this.alumnos.length
-          console.log("cantidad de inscriptos "+this.cantInscriptos)
+          this.cantInscriptos = this.alumnos.length
+          console.log("cantidad de inscriptos " + this.cantInscriptos)
         });
 
     } catch (error) {
@@ -136,27 +138,30 @@ export class PrincipalEntrenadorComponent implements OnInit {
     return element;
   }
 
-  calcularAsistencia(): number {
+  calcularAsistencia() {
     let contador = 0
     this.asistenciaService.getAllAsistencia().subscribe(
       result => {
         this.asistencias = result
+        for (let index = 0; index < this.asistencias.length; index++) {
+          if (this.asistencias[index].dia.toDateString == this.fechaHoy.toString
+            && this.asistencias[index].tipoAsistencia == "presente") {
+            contador = +1
+          }
+
+        }
+        
+        console.log("Cantidad Asistencia=>"+this.fechaHoy)
+        this.cantAsistencia=contador;
       }
     )
-    for (let index = 0; index < this.asistencias.length; index++) {
-      if (this.asistencias[index].dia.toDateString == this.fechaHoy.toString
-        || this.asistencias[index].tipoAsistencia == "presente") {
-        contador = +1
-      }
 
-    }
-    return contador
 
   }
 
- private mostrarActivosYnoActivos() {
-    console.log(" mostrar Act y no act Cant Alumnos==> " +this.alumnos.length )
-    
+  private mostrarActivosYnoActivos() {
+    console.log(" mostrar Act y no act Cant Alumnos==> " + this.alumnos.length)
+
     let encontrado = false
     for (let index = 0; index < this.alumnos.length; index++) {
       let vPersona: any
@@ -207,10 +212,10 @@ export class PrincipalEntrenadorComponent implements OnInit {
                   console.log(this.activos)
                   console.log(" No activos")
                   console.log(this.noActivos)
-                  
-                  this.cantInscriptos=this.activos.length
-                  console.log("cantidad de inscriptos"+this.cantInscriptos)
-                  this.cantSolicitudes=this.noActivos.length
+
+                  this.cantInscriptos = this.activos.length
+                  console.log("cantidad de inscriptos" + this.cantInscriptos)
+                  this.cantSolicitudes = this.noActivos.length
                 }
 
               )
@@ -229,33 +234,33 @@ export class PrincipalEntrenadorComponent implements OnInit {
     //this.cargarPersonasNoActivas()
   }
 
-  cargarPersonasActivas(alumno:Alumno) {
+  private cargarPersonasActivas(alumno: Alumno) {
     console.log("inicio de Cargar persona activas" + this.activos.length)
-    this.pActivas= []
-    
-      this.personaService.obtenerPersona(alumno.persona).subscribe(
-        result => {
-          this.pActivas.push(result)
-         /*  console.log("XXXXXX")
-          console.log(alumno.persona) */
-        }
-      )
+    this.pActivas = []
 
-   
+    this.personaService.obtenerPersona(alumno.persona).subscribe(
+      result => {
+        this.pActivas.push(result)
+        /*  console.log("XXXXXX")
+         console.log(alumno.persona) */
+      }
+    )
+
+
     console.log("Personas Activas ==>" + this.pActivas.length)
   }
 
-  cargarPersonasNoActivas( alumno:Alumno) {
+  private cargarPersonasNoActivas(alumno: Alumno) {
     console.log("inicio de Cargar persona no activas" + this.noActivos.length)
-    this.pNActivas=[]
-    
-      this.personaService.obtenerPersona(alumno.persona).subscribe(
-        result => {
-          this.pNActivas.push(result)
-        }
-      )
+    this.pNActivas = []
 
-    
+    this.personaService.obtenerPersona(alumno.persona).subscribe(
+      result => {
+        this.pNActivas.push(result)
+      }
+    )
+
+
     console.log("Personas NActivas ==>" + this.pActivas.length)
   }
 
