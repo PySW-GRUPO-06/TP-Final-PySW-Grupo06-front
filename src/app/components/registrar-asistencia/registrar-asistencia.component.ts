@@ -57,6 +57,7 @@ export class RegistrarAsistenciaComponent implements OnInit {
   guardarAsistencia() {
 
     this.asistencia = new Asistencia()
+    this.fechaDeHoy=new Date()
     this.asistencia.dia = this.fechaDeHoy
     this.asistencia.tipoAsistencia = this.tipoDeAsistencia
     console.log('a guardar asistencia')

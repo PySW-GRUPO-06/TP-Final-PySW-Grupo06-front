@@ -24,6 +24,7 @@ export class RegistrarCuotasComponent implements OnInit {
 
   fotoPefil:any='./../../../assets/gym/fotoPerfil.jpg'
 
+  sectores!: JSON
 
   private plan: any
   private cuotaGuardar!: Cuota
@@ -139,7 +140,11 @@ export class RegistrarCuotasComponent implements OnInit {
   }
 
   generarComprobante() {
-
+/*     print({
+      printable: this.sectores,
+      propiertes: ['cuota.modoPago','cuota.montoAPagar','cuota.fechaPago','cuota.mesAPagar'],
+      type: 'json'
+    }) */
   }
 
   volverAPrincipal(){
